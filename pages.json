@@ -1,0 +1,75 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "KL生活优选",
+				 "navigationBarBackgroundColor":"#92012a",
+				 "navigationBarTextStyle":"white"
+			}
+		}, {
+			"path": "pages/classification/classification",
+			"style": {
+				"navigationBarTitleText": "分类",
+				 "navigationBarBackgroundColor":"#92012a",
+				 "navigationBarTextStyle":"white"
+			}
+		}, {
+			"path": "pages/cart/cart",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				 "navigationBarBackgroundColor":"#92012a",
+				 "navigationBarTextStyle":"white"
+			}
+		}, {
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				 "navigationBarBackgroundColor":"#92012a",
+				 "navigationBarTextStyle":"white"
+			}
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#92012a"
+	},
+	"tabBar": {
+		"color": "#8a8a8a",
+		"selectedColor": "#92012a",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/images/tabber/home_no.png",
+			"selectedIconPath": "static/images/tabber/home_pre.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/classification/classification",
+			"iconPath": "static/images/tabber/classification_pre.png",
+			"selectedIconPath": "static/images/tabber/classification_no.png",
+			"text": "分类"
+		},
+		{
+			"pagePath": "pages/cart/cart",
+			"iconPath": "static/images/tabber/cart_no.png",
+			"selectedIconPath": "static/images/tabber/cart_pre.png",
+			"text": "购物车"
+		},
+		{
+			"pagePath": "pages/user/user",
+			"iconPath": "static/images/tabber/my_no.png",
+			"selectedIconPath": "static/images/tabber/my_pre.png",
+			"text": "我的"
+		}
+		]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}
