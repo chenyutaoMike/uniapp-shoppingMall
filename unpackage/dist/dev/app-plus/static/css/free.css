@@ -1,7 +1,12 @@
 /* 内外边距 */
+.p-1 {
+	padding: 10rpx;
+}
 .p-2 {
 	padding: 20rpx;
 }
+
+
 
 .mr-1 {
 	margin-right: 10rpx;
