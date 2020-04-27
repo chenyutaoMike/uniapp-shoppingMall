@@ -41,6 +41,14 @@
             "path" : "pages/order/order",
             "style" : {}
         }
+        ,{
+            "path" : "pages/addressList/addressList",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/addAddress/addAddress",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
@@ -79,7 +87,7 @@
 		"list": [
 			{
 				"name": "1", //模式名称
-				"path": "pages/order/order", //启动页面，必选
+				"path": "pages/addAddress/addAddress", //启动页面，必选
 				"query": "id=1" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

@@ -1,3 +1,10 @@
+.height-1{
+	height: 100rpx;
+}
+.line-height-1{
+	line-height: 100rpx;
+}
+
 /* 内外边距 */
 .p-1 {
 	padding: 10rpx;

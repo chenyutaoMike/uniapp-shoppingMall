@@ -1,7 +1,7 @@
 <template>
 	<view class="order-box">
 		<order-search />
-		<order-tab @changeTab="changeTab"/>
+		<order-tab  @changeTab="changeTab"/>
 		<view class="order-box-list">
 		<scroll-view scroll-y="true" class="good-list-bg" :style="`height:${scrollH}px`">
 		  	<order-list />
