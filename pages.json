@@ -49,6 +49,10 @@
             "path" : "pages/addAddress/addAddress",
             "style" : {}
         }
+        ,{
+            "path" : "pages/integral/integral",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
