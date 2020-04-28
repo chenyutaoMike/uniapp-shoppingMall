@@ -1,0 +1,35 @@
+<template>
+	<view>
+		<view class="integral-list" v-if="list.length > 1">
+			<view class="integral-list-item flex justify-between align-center">
+				<view class="flex flex-column">
+					<text class="font-m">兑换5元优惠劵</text>
+					<text class="font-sm text-light-muted">2020-04-28 14:23:23</text>
+				</view>
+				<text class="font-m text-pic">-50</text>
+			</view>
+		</view>
+		<view class="mt-2 font-m text-light-muted text-center" v-else>暂无积分信息</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data(){
+			return {
+				list:[1,2]
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.integral-list {
+		padding: 0 30upx;
+
+		.integral-list-item {
+			height: 100upx;
+			border-bottom: 1upx solid #F3F3F3;
+		}
+	}
+</style>

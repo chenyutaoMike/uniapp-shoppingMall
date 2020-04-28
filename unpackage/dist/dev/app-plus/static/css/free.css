@@ -184,6 +184,9 @@ margin-top: 20rpx;
 .font-w {
 	font-weight: bold;
 }
+.font-m{
+	font-size: 30upx;
+}
 
 /* 文字颜色 */
 .text-pic{
