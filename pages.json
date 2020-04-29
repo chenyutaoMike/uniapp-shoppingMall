@@ -57,6 +57,18 @@
             "path" : "pages/coupon/coupon",
             "style" : {}
         }
+        ,{
+            "path" : "pages/openVip/openVip",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/integralMall/integralMall",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/integralCart/integralCart",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
@@ -95,7 +107,7 @@
 		"list": [
 			{
 				"name": "1", //模式名称
-				"path": "pages/coupon/coupon", //启动页面，必选
+				"path": "pages/integralCart/integralCart", //启动页面，必选
 				"query": "id=1" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

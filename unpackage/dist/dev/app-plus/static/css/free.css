@@ -12,7 +12,15 @@
 .p-2 {
 	padding: 20rpx;
 }
-
+.pl-1{
+	padding-left: 10rpx;
+}
+.pl-2{
+	padding-left: 20rpx;
+}
+.pl-3{
+	padding-left: 30rpx;
+}
 
 
 .mr-1 {
