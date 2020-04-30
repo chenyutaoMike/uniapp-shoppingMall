@@ -1,7 +1,7 @@
 <template>
 	<scroll-view class="scroll-nav" scroll-x="true" :scroll-with-animation="scrollWithAnimation" >
 		<block v-if="slideNav && slideNav.length !== 0">
-			<view class="scroll-box-item" v-for="item in slideNav" :key="item.id" :data-id="item.id">
+			<view class="scroll-box-item" v-for="item in slideNav" :key="item.id" :data-id="item.id" @click="goGoodList(item.id)">
 				<view class="nav-item flex flex-column align-center justify-center">
 					<img :src="hostUrl+item.img_url" alt="" class='scroll-box-img'>
 					<text>{{item.title}}</text>
@@ -34,6 +34,14 @@
 			...mapState({
 				slideNav:state => state.home.slideNav
 			})
+		},
+		methods:{
+			goGoodList(id){
+				console.log(id)
+				uni.navigateTo({
+					url:`../../pages/goodList/good-list?typeId=${id}&type=0`
+				})
+			}
 		}
 	}
 </script>

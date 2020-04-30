@@ -3,7 +3,7 @@
 		<search-input />
 		<view class="top-bg"></view>
 		<view class="top">
-			<rotate />
+			<rotate @goDetail="goDetail"/>
 			<left-silde-nav :scrollWithAnimation="true"  />
 		</view>
 
@@ -23,6 +23,11 @@
 		data() {
 			return {
 				
+			}
+		},
+		methods:{
+			goDetail(id){
+				this.$emit('goDetail',id)
 			}
 		}
 	}

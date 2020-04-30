@@ -1,3 +1,8 @@
+.wall{
+	height: 20rpx;
+	width: 100%;
+	background-color: #F2F2F2;
+}
 .height-1{
 	height: 100rpx;
 }
@@ -230,7 +235,9 @@ margin-top: 20rpx;
 .text-center {
 	text-align: center;
 }
-
+.text-del{
+	text-decoration: line-through;
+}
 /* 文字换行溢出处理 */
 .text-ellipsis {
 	/* #ifndef APP-PLUS-NVUE */

@@ -3,58 +3,41 @@
 		<view class="like-title  bg-success ">
 			-_猜你喜欢_-
 		</view>
-		<ul class="like-list flex flex-wrap justify-between">
-			<li class="like-item">
-				<img class="like-img" src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191104/20191104170125_9514.png"
-				 alt="">
-				<view class="item-name">
-					【干唇救星，养出诱人嘟嘟唇】泰国treechada玫瑰精油睡眠唇膜
-					国treechada玫瑰精油睡眠唇膜
-					国treechada玫瑰精油睡眠唇膜
-				</view>
-				<view class="like-pic">
-					<text class="new-pic">￥88.00</text>
-					<text class="old-pic">￥128.00</text>
-				</view>
-			</li>
-			<li class="like-item">
-				<img class="like-img" src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191104/20191104170125_9514.png"
-				 alt="">
-				<view class="item-name">
-					【干唇救星，养出诱人嘟嘟唇】泰国treechada玫瑰精油睡眠唇膜
-				</view>
-				<view class="like-pic">
-					<text class="new-pic">￥88.00</text>
-					<text class="old-pic">￥128.00</text>
-				</view>
-			</li>
-			<li class="like-item">
-				<img class="like-img" src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191104/20191104170125_9514.png"
-				 alt="">
-				<view class="item-name">
-					【干唇救星，养出诱人嘟嘟唇】泰国treechada玫瑰精油睡眠唇膜
-				</view>
-				<view class="like-pic">
-					<text class="new-pic">￥88.00</text>
-					<text class="old-pic">￥128.00</text>
-				</view>
-			</li>
-			<li class="like-item">
-				<img class="like-img" src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191104/20191104170125_9514.png"
-				 alt="">
-				<view class="item-name">
-					【干唇救星，养出诱人嘟嘟唇】泰国treechada玫瑰精油睡眠唇膜
-				</view>
-				<view class="like-pic">
-					<text class="new-pic">￥88.00</text>
-					<text class="old-pic">￥128.00</text>
-				</view>
-			</li>
+		
+		<ul class="like-list flex flex-wrap justify-between" v-if="list.length !== 0">
+			<block v-for="item in list" :key="item.id">
+				<li class="like-item">
+					<img class="like-img" :src="hostUrl + item.litpic"
+					 alt="">
+					<view class="item-name">
+						{{item.name}}
+					</view>
+					<view class="like-pic">
+						<text class="new-pic">￥{{item.price}}</text>
+						<text class="old-pic">￥{{item.marketPrice}}</text>
+					</view>
+				</li>
+			</block>
+
 		</ul>
 	</view>
 </template>
 
 <script>
+	import {hostUrl} from '@/http/request.js';
+	export default{
+		props:{
+			list:{
+				type:Array,
+				default:() => []
+			}
+		},
+		data(){
+			return {
+				hostUrl:hostUrl
+			}
+		}
+	}
 </script>
 
 <style lang="scss">

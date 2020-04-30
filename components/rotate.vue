@@ -1,9 +1,9 @@
 <template>
 	<view>
 		<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
-		 :duration="duration" :indicator-active-color="indicatorActiveColor" :circular="circular">
+		 :duration="duration" :indicator-active-color="indicatorActiveColor" :circular="circular" >
 			<block v-if="bannerImg && bannerImg.length !== 0">
-				<swiper-item v-for="item in bannerImg" :key="item.id">
+				<swiper-item v-for="item in bannerImg" :key="item.id" @click="goDetail(item.linkUrl)">
 					<view class="swiper-item" :data-url="item.linkUrl">
 						<img class="swiper-img" :src="hostUrl+item.picUrl" alt="">
 					</view>
@@ -56,6 +56,13 @@
 			...mapState({
 				bannerImg:state => state.home.bannerImg
 			})
+		},
+		methods:{
+			goDetail(id){
+			const navId = id.split('?');
+			this.$emit('goDetail',navId[1])
+				
+			}
 		}
 	
 	}

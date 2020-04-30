@@ -22,6 +22,7 @@
 	import detailTop from '@/components/detailComponent/detailTop.vue';
 	import detailRichText from '@/components/detailComponent/detailRichText.vue';
 	import detailPopup from '@/components/detailComponent/detailPopup.vue';
+	import {mapActions} from 'vuex';
 	export default {
 		components:{
 			detailTop,
@@ -33,7 +34,14 @@
 				isShow:false
 			}
 		},
+		onLoad(option){
+			const id = option.id;
+			console.log(id)
+			this.getImages(id);
+			this.getDetailInfo(id)
+		},
 		methods: {
+			...mapActions(['getImages','getDetailInfo']),
 			clone(){
 				this.isShow = false;
 			},

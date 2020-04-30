@@ -1,11 +1,13 @@
-import {GETINDEXRECOMMEND,GETINDEXBANNER,GETINDEXSLIDENAV,GETINDEXTYPE} from './action-type.js';
-import {getIndexRecommend,getIndexBanner,getIndexSlideNav,getIndexType} from '@/http/home.js';
+import {GETINDEXRECOMMEND,GETINDEXBANNER,GETINDEXSLIDENAV,GETINDEXTYPE,GETINDEXYOULIKE} from './action-type.js';
+import {getIndexRecommend,getIndexBanner,getIndexSlideNav,getIndexType,getIndexYouLike} from '@/http/home.js';
 export const home = {
   state: { 
 		recommend:[],
 		bannerImg:[],
 		slideNav:[],
-		indexType: []
+		indexType: [],
+		youLike:[],
+		noList:true
 	},
 	actions:{
 		async getRecommend({commit}){
@@ -32,20 +34,37 @@ export const home = {
 				commit(GETINDEXTYPE,result.data)
 			}
 		},
+		async getYouLike({commit},type){
+		
+			let result = await getIndexYouLike(type);
+			if(result.data === ''){
+				commit(GETINDEXYOULIKE,null)
+			
+			}else {
+					commit(GETINDEXYOULIKE,result.data)
+			}
+				
+		}
 	},
   mutations: {
-    GETINDEXRECOMMEND (state,result) {
+    GETINDEXRECOMMEND(state,result) {
 			state.recommend = result;
     },
-		GETINDEXBANNER (state,result) {
+		GETINDEXBANNER(state,result) {
 			state.bannerImg = result;
 		},
-		GETINDEXSLIDENAV (state,result) {
+		GETINDEXSLIDENAV(state,result) {
 			state.slideNav = result;
-			console.log(state)
 		},
-		GETINDEXTYPE (state,result) {
+		GETINDEXTYPE(state,result) {
 			state.indexType = result;
+		},
+		GETINDEXYOULIKE(state,result){
+			if(result === null){
+				state.noList = false;
+				return;
+			}
+			state.youLike = [...state.youLike,...result];
 		}
   },
 

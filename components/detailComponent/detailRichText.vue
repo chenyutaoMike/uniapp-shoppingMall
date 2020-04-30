@@ -4,21 +4,35 @@
 			— 商品详情 — 
 		</view>
 		<view class="grace-rich-text">
-		  <rich-text type="text" :nodes="content"></rich-text>
+		  <rich-text type="text" :nodes="newContent"></rich-text>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {mapState} from 'vuex';
+	import {
+		hostUrl
+	} from '@/http/request.js';
 	let graceRichText = require('../../common/richText.js');
 	export default {
 		data(){
 			return {
-				// content:'<img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131435670.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131437975.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131439274.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131440504.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131441393.jpg\" />'
+				newContent:''
 			}
 		},
-		created() {
-			this.content = graceRichText.format('<img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"https://www.baquwangluo.cn//Upload/image/20191030/201910301131426256.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131435670.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131437975.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131439274.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131440504.jpg\" /><img alt=\"\" src=\"/Upload/image/20191030/201910301131441393.jpg\" />')
+		mounted(){
+			// console.log(this.content)
+		const result = 	graceRichText.format(this.content)
+		console.log(result)
+			// this.newContent = graceRichText.format(this.content)
+		},
+		computed:{
+			...mapState({
+				content:state => state.details.info.content
+			})
+		
+			
 		}
 	}
 </script>

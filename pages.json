@@ -31,7 +31,9 @@
 		}
         ,{
             "path" : "pages/details/details",
-            "style" : {}
+            "style" : {
+							"navigationBarTitleText": "商品详情"
+						}
         }
         ,{
             "path" : "pages/goodList/good-list",
@@ -67,6 +69,10 @@
         }
         ,{
             "path" : "pages/integralCart/integralCart",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/orderDetail/orderDetail",
             "style" : {}
         }
     ],
@@ -107,7 +113,7 @@
 		"list": [
 			{
 				"name": "1", //模式名称
-				"path": "pages/integralCart/integralCart", //启动页面，必选
+				"path": "pages/index/index", //启动页面，必选
 				"query": "id=1" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

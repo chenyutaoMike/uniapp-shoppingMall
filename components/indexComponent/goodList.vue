@@ -4,7 +4,7 @@
 			<block v-for="item in indexType" :key="item.id" >
 				<view class="good-title flex justify-between align-center" v-if="item.list.length !== 0">
 					<text class="title">{{item.title}}</text>
-					<view class="more text-center animated " hover-class="tada">更多</view>
+					<view class="more text-center animated " hover-class="tada" @click="goGoodList(item.id)">更多</view>
 				</view>
 				<block v-if="item.hot_img">
 					<view class="good-center">
@@ -14,7 +14,7 @@
 				</block>
 				<ul class="list flex flex-wrap justify-between">
 					<block v-for="itemList in item.list" :key="itemList.id">
-						<li class="list-item bg-white" :data-id="itemList.id">
+						<li class="list-item bg-white"  @click="goDetail(itemList.id)">
 							<img class="list-img" :src="hostUrl+itemList.litpic" alt="">
 							<text class="list-name">{{itemList.name}}</text>
 							<view class="list-pic flex flex-column">
@@ -47,6 +47,18 @@ import {mapState} from 'vuex';
 			...mapState({
 				indexType:state => state.home.indexType
 			})
+		},
+		methods:{
+			goGoodList(id){
+				uni.navigateTo({
+					url:`../../pages/goodList/good-list?typeId=${id}&type=0`
+				})
+			},
+			goDetail(id){
+				uni.navigateTo({
+					url:`../../pages/details/details?id=${id}`
+				})
+			}
 		}
 	}
 </script>

@@ -1,27 +1,32 @@
 <template>
 	<view class="detail-top">
 		<view class="detail-rotate">
-			<swiper class="detail-swiper" indicator-dots	circular :autoplay="true" :interval="3000" :duration="500">
+			<swiper 
+			class="detail-swiper" 
+			indicator-dots	
+			circular 
+			:autoplay="true" 
+			:interval="3000" 
+			:duration="500"
+			v-if="imgs !== 0"
+			>
+			<block v-for="item in imgs" :key="item.id">
 				<swiper-item class="detail-swiper-item" >
-					<image class="rotate-img" src="https://www.baquwangluo.cn/Upload/image/20191030/201910301131053595.png"></image>
+					<image class="rotate-img" :src="hostUrl+item.original_path"></image>
 				</swiper-item>
-				<swiper-item class="detail-swiper-item">
-					<image class="rotate-img" src="https://www.baquwangluo.cn/Upload/image/20191030/201910301131054835.png"></image>
-				</swiper-item>
-				<swiper-item class="detail-swiper-item">
-					<image class="rotate-img" src="https://www.baquwangluo.cn/Upload/image/20191030/201910301131104358.png"></image>
-				</swiper-item>
+			</block>
+			
 			</swiper>
 		</view>
 		<view class="detail-desc-box">
-			<view class="detail-title">纳米黑科技多功能无痕收纳魔力贴</view>
+			<view class="detail-title">{{info.name}}</view>
 			<view class="detail-desc flex justify-between">
 				<view class="detail-pic">
-					<text class="detail-newPic mr-1 ">￥29</text>
-					<text class="detail-oldPic">￥49</text>
+					<text class="detail-newPic mr-1 ">￥{{info.price}}</text>
+					<text class="detail-oldPic">￥{{info.marketPrice}}</text>
 				</view>
 				<view class="detail-store">
-					库存不足
+					{{info.stock >= 10 ? '库存充足':'库存不足'}}
 				</view>
 			</view>
 		</view>
@@ -30,18 +35,27 @@
 </template>
 
 <script>
-	
+	import {mapState} from 'vuex';
+	import {
+		hostUrl
+	} from '@/http/request.js';
 	export default {
 		components:{
 		
 		},
 		data() {
 			return {
-
+					hostUrl:hostUrl
 			}
 		},
 		methods: {
 
+		},
+		computed:{
+			...mapState({
+				imgs:state => state.details.imgs,
+				info:state => state.details.info
+			})
 		}
 	}
 </script>

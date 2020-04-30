@@ -35,3 +35,13 @@ export function getIndexType() {
 		parentId: 0
 	})
 }
+
+// => 获取首页猜你喜欢列表
+// type:请求的页数
+export function getIndexYouLike(type){
+	return request({
+					opt: 'getLikeProduct',
+					openid: '',
+		      type: type
+				})
+}
