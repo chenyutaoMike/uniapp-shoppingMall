@@ -4,44 +4,55 @@
 			<view class="detail-popup-box">
 				<view class="detail-popup-top flex align-center">
 					<view class="popup-top-img mr-2">
-						<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191230/20191230154848_0467.jpg"></image>
+						<image :src="hostUrl+info.litpic"></image>
 					</view>
 					<view class="detail-popup-pic">
-						<view>价格:<text class="text-pic">￥49</text></view>
-						<view>库存:<text>0</text></view>
-						<view>已选择:<text>个</text></view>
+						<view>价格:<text class="text-pic">￥{{info.price}}</text></view>
+						<view>库存:<text>{{info.stock}}</text></view>
+						<view>已选择:<text>{{seleteNumber+info.unit}}</text></view>
 					</view>
 					<image @click="clone" class="cloneImg" src="../../static/images/detailImg/gbico.png"></image>
 				</view>
 				<view class="detail-select" @click.stop>
 					<view class="text-secondary my-2 ">选择规格</view>
-					<view class="detail-select-item flex">
-						<view class="select-item selete">个</view>
-						<view class="select-item">吨</view>
+					<view class="detail-select-item flex" >
+						<block v-for="(item,index) in unit_arr" :key="item+index">
+							<view class="select-item" :class="index === seleteUnitIndex ? 'selete' : '' " @click="seleteUnit(index)">{{item}}</view>
+						</block>
 					</view>
 				</view>
 				<view class="detail-num">
 					<view class="text-secondary my-2 ">选择数量</view>
 					<view class="num-box flex font-md" >
-						<view class="num-decrease text-center">-</view>
-						<input type="num" value="1" class="numipt text-center" disabled />
-						<view class="num-add text-center" >+</view>
+						<view class="num-decrease text-center" @click.stop="decrease">-</view>
+						<input type="num" :value="seleteNumber" class="numipt text-center" disabled />
+						<view class="num-add text-center" @click.stop="add">+</view>
 					</view>
 				</view>
 
 			</view>
-				<view class="popup-button" v-if="isToBuy">立即购买</view>
-				<view class="popup-button" v-else>加入购物车</view>
+				<view class="popup-button" v-if="addCartorBuy === 0" @click.stop>加入购物车</view>
+				<view class="popup-button" v-else @click.stop>立即购买</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {mapState} from 'vuex';
+	import {hostUrl} from '@/http/request.js';
 	export default {
+		props:{
+			addCartorBuy:{
+				type:Number,
+				default:0
+			}
+		},
 		data() {
 			return {
 				cloneImg: '@/static/images/detailImg/gbico.png',
-				isToBuy:true
+				hostUrl:hostUrl,
+				seleteUnitIndex:-1,
+				seleteNumber:1
 			}
 		},
 		methods: {
@@ -50,6 +61,40 @@
 			},
 			move() {
 				return
+			},
+			seleteUnit(index){
+				this.seleteUnitIndex = index;
+			},
+			add(){
+				if(this.seleteNumber > this.info.stock){
+					uni.showToast({
+						title:'购买数量超过库存',
+						icon:'none',
+						duration:1500
+					})
+					return 
+				}
+				this.seleteNumber = this.seleteNumber+1;
+			},
+			decrease(){
+				if(this.seleteNumber <= 1){
+					uni.showToast({
+						title:'购买数量不能小于1',
+						icon:'none',
+						duration:1500
+					})
+					return 
+				}
+				this.seleteNumber = this.seleteNumber-1;
+			}
+		},
+		computed:{
+			...mapState({
+				info:state => state.details.info
+			}),
+			unit_arr(){
+				
+				return this.info.unit.split('/')
 			}
 		}
 	}

@@ -4,7 +4,7 @@
 		<view class="top">
 			<input type="text" placeholder="搜索商品名称" class="classification-input">
 		</view>
-	<!-- 	<view class="center" :style="`height:${scrollH}px`">
+		<!-- 	<view class="center" :style="`height:${scrollH}px`">
 			<scroll-view scroll-with-animation scroll-y="true" class="scroll-Y" :style="`height:${scrollH}px`">
 				<view :class="activeId === index ? 'scroll-view-item active' : 'scroll-view-item' " v-for="(item,index) in typeList"
 				 :key="item.id" @tap="changeTab(index)">{{item.title}}</view>
@@ -16,8 +16,8 @@
 			<view class='tui-fixed-left'>
 				<scroll-view class='tui-city-scroll' scroll-x="true" scroll-y="true" style='height:92%;' scroll-with-animation="true"
 				 @scroll-top="leftMenuTop">
-					<view :class="index === currentActiveIndex ? 'menu-item menu-active ' : 'menu-item' " v-for="(item,index) in typeList" :key="index"
-					 :data-index="index" :id='index' @tap='changeMenu'>{{item.title}}</view>
+					<view :class="index === currentActiveIndex ? 'menu-item menu-active ' : 'menu-item' " v-for="(item,index) in typeList"
+					 :key="index" :data-index="index" :id='index' @tap='changeMenu'>{{item.title}}</view>
 				</scroll-view>
 			</view>
 
@@ -28,7 +28,7 @@
 					<view class='pro-item' v-for="(item,index) in typeList" :key="index">
 						<view class='tui-list-head' :id='`NAV${index}`'>{{item.title}}</view>
 						<view class='tui-list-li'>
-							<view class='goods-box' :data-id="itemList.id" v-for="(itemList,index) in item.list" :key="index">
+							<view class='goods-box' @click="goGoodList" :data-id="itemList.id" v-for="(itemList,index) in item.list" :key="index">
 								<image class='goodsImg' :src='hostUrl+itemList.img_url'></image>
 								<view class='goodsName'>{{itemList.title}}</view>
 							</view>
@@ -50,7 +50,9 @@
 	import {
 		hostUrl
 	} from '@/http/request.js';
-	import {getClassification} from '@/http/classification.js'
+	import {
+		getClassification
+	} from '@/http/classification.js'
 	export default {
 		data() {
 			return {
@@ -64,10 +66,10 @@
 				currentActiveIndex: 0
 			}
 		},
-		
+
 		mounted() {
 
-		getClassification().then(res => {
+			getClassification().then(res => {
 				if (res.data !== null) {
 					console.log(res.data)
 
@@ -78,125 +80,131 @@
 						this.getSystemInfo()
 					})
 				}
-			
+
 			})
-	
 			let res = uni.getSystemInfoSync();
 			this.scrollH = res.windowHeight - uni.upx2px(100);
 
+
 		},
 		methods: {
-		
-			rightProTop(e){
-				
+			goGoodList(e) {
+				let id = e.currentTarget.dataset.id;
+
+				uni.navigateTo({
+					url: `/pages/goodList/good-list?typeId=${id}&type=1`
+				})
+			},
+			rightProTop(e) {
+
 			},
 			changeMenu(e) {
-			    // console.log(proListToTop);
-			    // 改变左侧tab栏操作
-			    if (Number(e.target.id) === this.currentActiveIndex) return
-			    this.MENU = 1
-			   
-			     this.currentActiveIndex = Number(e.target.id),
-			     this.rightProTop=this.proListToTop[Number(e.target.id)]
-			 
-			    this.setMenuAnimation(Number(e.target.id))
-			  },
-				leftMenuTop(){
-					
-				},
-			  scroll(e) {
-			    console.log(e);
-			    for (let i = 0; i < this.proListToTop.length; i++) {
-			      if (e.detail.scrollTop < this.proListToTop[i] && i !== 0 && e.detail.scrollTop > this.proListToTop[i - 1]) {
-			        return this.setDis(i)
-			      }
-			    }
-			    // 找不到匹配项，默认显示第一个数据
-			    if (!this.MENU) {
-			        this.currentActiveIndex = 0
-			    }
-			    this.MENU = 0
-			  },
-			  setDis(i) {
-			    // 设置左侧menu栏的选中状态
-			    if (i !== this.currentActiveIndex + 1 && !this.MENU) {
-			      
-			        this.currentActiveIndex = i - 1
-			     
-			    }
-			   this.MENU = 0
-			    this.setMenuAnimation(i)
-			  },
-			  setMenuAnimation(i) {
-			    // 设置动画，使menu滚动到指定位置。
-			    let _this = this
-			    // console.log(33)
-			    if (_this.menuToTop[i].animate) {
-			      // console.log(11111)
-			      // 节流操作
-			      if (_this.timeoutId) {
-			        clearTimeout(_this.timeoutId)
-			      }
-			      _this.timeoutId = setTimeout(() => {
-			        // console.log(12138)
-			      
-			          _this.leftMenuTop = (_this.menuToTop[i].top - _this.windowHeight)
-			        
-			      }, 50)
-			    } else {
-			      // console.log(11)
-			      if (_this.leftMenuTop === 0) return
-			      // console.log(22)
-			     
-			        _this.leftMenuTop= 0
-			      
-			    }
-			  },
-			 getActiveReacts() {
-			    uni.createSelectorQuery().selectAll('.menu-active').boundingClientRect(function(rects) {
-			      return rects[0].top
-			    }).exec()
-			  },
-			  getAllRects() {
-					let _this = this;
-			    // 获取商品数组的位置信息
-			    uni.createSelectorQuery().selectAll('.pro-item').boundingClientRect(function(rects) {
-			      rects.forEach(function(rect) {
-			        
-			        // 这里减去44是根据你的滚动区域距离头部的高度，如果没有高度，可以将其删去
-			        _this.proListToTop.push(rect.top - 50)
-			      })
-			    }).exec()
-			
-			    // 获取menu数组的位置信息
-			    uni.createSelectorQuery().selectAll('.menu-item').boundingClientRect(function(rects) {
-			      uni.getSystemInfo({
-			        success: function(res) {
-			         
-			          _this.windowHeight = res.windowHeight / 2
-			          //  console.log(windowHeight)
-			          rects.forEach(function(rect) {
-			            // console.log(rect)
-			            _this.menuToTop.push({
-			              top: rect.top,
-			              animate: rect.top > windowHeight
-			              
-			            })
-			          })
-			        }
-			      })
-			    }).exec()
-			  },
-			  // 获取系统的高度信息
-			  getSystemInfo() {
-			    let _this = this
-			    uni.getSystemInfo({
-			      success: function(res) {
-			        _this.windowHeight = res.windowHeight / 2
-			      }
-			    })
-			  },
+				// console.log(proListToTop);
+				// 改变左侧tab栏操作
+				if (Number(e.target.id) === this.currentActiveIndex) return
+				this.MENU = 1
+
+				this.currentActiveIndex = Number(e.target.id),
+					this.rightProTop = this.proListToTop[Number(e.target.id)]
+
+				this.setMenuAnimation(Number(e.target.id))
+			},
+			leftMenuTop() {
+
+			},
+			scroll(e) {
+				for (let i = 0; i < this.proListToTop.length; i++) {
+					if (e.detail.scrollTop < this.proListToTop[i] && i !== 0 && e.detail.scrollTop > this.proListToTop[i - 1]) {
+						return this.setDis(i)
+					}
+				}
+				// 找不到匹配项，默认显示第一个数据
+				if (!this.MENU) {
+					this.currentActiveIndex = 0
+				}
+				this.MENU = 0
+			},
+			setDis(i) {
+				// 设置左侧menu栏的选中状态
+				if (i !== this.currentActiveIndex + 1 && !this.MENU) {
+
+					this.currentActiveIndex = i - 1
+
+				}
+				this.MENU = 0
+				this.setMenuAnimation(i)
+			},
+			setMenuAnimation(i) {
+				// 设置动画，使menu滚动到指定位置。
+				let _this = this
+				// console.log(33)
+				if (_this.menuToTop[i].animate) {
+					// console.log(11111)
+					// 节流操作
+					if (_this.timeoutId) {
+						clearTimeout(_this.timeoutId)
+					}
+					_this.timeoutId = setTimeout(() => {
+						// console.log(12138)
+
+						_this.leftMenuTop = (_this.menuToTop[i].top - _this.windowHeight)
+
+					}, 50)
+				} else {
+					// console.log(11)
+					if (_this.leftMenuTop === 0) return
+					// console.log(22)
+
+					_this.leftMenuTop = 0
+
+				}
+			},
+			getActiveReacts() {
+				uni.createSelectorQuery().selectAll('.menu-active').boundingClientRect(function(rects) {
+					return rects[0].top
+				}).exec()
+			},
+			getAllRects() {
+				let _this = this;
+				// 获取商品数组的位置信息
+				uni.createSelectorQuery().selectAll('.pro-item').boundingClientRect(function(rects) {
+					rects.forEach(function(rect) {
+
+						// 这里减去44是根据你的滚动区域距离头部的高度，如果没有高度，可以将其删去
+						_this.proListToTop.push(rect.top - 50)
+					})
+				}).exec()
+
+				// 获取menu数组的位置信息
+				uni.createSelectorQuery().selectAll('.menu-item').boundingClientRect(function(rects) {
+					uni.getSystemInfo({
+						success: function(res) {
+
+							_this.windowHeight = res.windowHeight / 2
+							//  console.log(windowHeight)
+							rects.forEach(function(rect) {
+								// console.log(rect)
+								_this.menuToTop.push({
+									top: rect.top,
+									animate: rect.top > windowHeight
+
+								})
+							})
+						}
+					})
+				}).exec()
+			},
+			// 获取系统的高度信息
+			getSystemInfo() {
+				let _this = this
+				uni.getSystemInfo({
+					success: function(res) {
+						_this.windowHeight = res.windowHeight / 2
+					}
+				})
+			},
 		}
+	
 
 	}
 </script>

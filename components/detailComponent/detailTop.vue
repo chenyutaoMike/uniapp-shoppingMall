@@ -56,7 +56,8 @@
 				imgs:state => state.details.imgs,
 				info:state => state.details.info
 			})
-		}
+		},
+		
 	}
 </script>
 

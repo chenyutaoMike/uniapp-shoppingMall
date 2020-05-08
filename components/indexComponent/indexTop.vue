@@ -52,6 +52,7 @@
 		.top {
 			position: absolute;
 			left: 0;
+			width: 100%;
 		}
 	}
 </style>

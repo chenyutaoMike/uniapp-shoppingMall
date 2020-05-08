@@ -1,46 +1,47 @@
 <template>
 	<view class="detail-rich-text">
 		<view class="detail-cenert">
-			— 商品详情 — 
+			— 商品详情 —
 		</view>
 		<view class="grace-rich-text">
-		  <rich-text type="text" :nodes="newContent"></rich-text>
+			<u-parse :content="content" :imageProp="imageProp"></u-parse>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {mapState} from 'vuex';
+	import {
+		mapState
+	} from 'vuex';
 	import {
 		hostUrl
 	} from '@/http/request.js';
-	let graceRichText = require('../../common/richText.js');
+	import uParse from "@/components/feng-parse/parse.vue";
 	export default {
-		data(){
+		data() {
 			return {
-				newContent:''
+				imageProp: {
+					domain: 'https://www.baquwangluo.cn',
+					lazyLoad:true
+				}
 			}
 		},
-		mounted(){
-			// console.log(this.content)
-		const result = 	graceRichText.format(this.content)
-		console.log(result)
-			// this.newContent = graceRichText.format(this.content)
+		components: {
+			uParse
 		},
-		computed:{
+		computed: {
 			...mapState({
-				content:state => state.details.info.content
+				content: state => state.details.info.content
 			})
-		
-			
 		}
 	}
 </script>
 
 <style lang="scss">
-	.detail-rich-text{
+	.detail-rich-text {
 		margin-top: 20upx;
-		.detail-cenert{
+
+		.detail-cenert {
 			height: 80upx;
 			background-color: $bg;
 			margin-bottom: 20upx;
@@ -50,9 +51,10 @@
 			font-size: 36upx;
 			box-shadow: 0px 3px 5px #ccc;
 		}
-		.grace-rich-text{
-				padding: 0 20upx;
-			
+
+		.grace-rich-text {
+			padding: 0 20upx;
+
 		}
 	}
 </style>

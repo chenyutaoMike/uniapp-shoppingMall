@@ -14,7 +14,7 @@
 				</view>
 			</view>
 		</view>
-		<detail-popup v-if="isShow" @clone="clone"/>
+		<detail-popup v-if="isShow" @clone="clone" :addCartorBuy="addCartorBuy"/>
 	</view>
 </template>
 
@@ -23,6 +23,7 @@
 	import detailRichText from '@/components/detailComponent/detailRichText.vue';
 	import detailPopup from '@/components/detailComponent/detailPopup.vue';
 	import {mapActions} from 'vuex';
+	
 	export default {
 		components:{
 			detailTop,
@@ -31,7 +32,8 @@
 		},
 		data() {
 			return {
-				isShow:false
+				isShow:false,
+				addCartorBuy:0,     //0代表加入购物车,1代表购买
 			}
 		},
 		onLoad(option){
@@ -47,9 +49,11 @@
 			},
 			addCart(){
 				this.isShow = true;
+				this.addCartorBuy = 0;
 			},
 			buy(){
 				this.isShow = true;
+				this.addCartorBuy = 1;
 			}
 		}
 	}

@@ -37,7 +37,9 @@
         }
         ,{
             "path" : "pages/goodList/good-list",
-            "style" : {}
+            "style" : {
+							"navigationBarTitleText": "商品列表"
+						}
         }
         ,{
             "path" : "pages/order/order",

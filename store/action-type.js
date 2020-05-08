@@ -7,7 +7,13 @@ export const GETINDEXTYPE = 'GETINDEXTYPE';
 export const GETINDEXYOULIKE = 'GETINDEXYOULIKE';
 
 
-// 详情页的q请求
-
+// 详情页的请求
 export const GETDETAILSIMG = 'GETDETAILSIMG';
 export const GETDETAILSINFO = 'GETDETAILSINFO';
+
+
+// 商品列表的请求
+
+export const GETGOODLIST = 'GETGOODLIST';
+export const GETGOODNEXTLIST = 'GETGOODNEXTLIST';
+export const UPDATEGOODLIST = 'UPDATEGOODLIST';

@@ -1,285 +1,53 @@
 <template>
-	<view class="shop-list-box flex flex-wrap justify-between">
+	<view class="shop-list-box flex flex-wrap justify-between" v-if="gooListArr.length !== 0">
 		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒礼盒沁红茶（红茶）礼盒礼盒沁红茶（红茶）礼盒礼盒沁红茶（红茶）礼盒礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
+		<block v-for="(item,index) in gooListArr" :key="item.id + index">
+			<view class="shop-list-item" @click="goDetail(item.id)">
+				<view class="shop-list-img">
+					<image :src="hostUrl+item.litpic"></image>
+				</view>
+				<view class="item-content">
+					<text class="item-title">{{item.name}}</text>
+					<view class="item-bottom flex justify-between align-center">
+							<view class="flex flex-column">
+								<text class="item-new-pic">￥{{item.price}}</text>
+								<text class="item-old-pic">￥{{item.marketPrice}}</text>
+							</view>
+							<view class="item-shop-cart">
+								<image :src="shopCartImg"></image>
+							</view>
+					</view>
 				</view>
 			</view>
-		</view>
+			
+		</block>
 		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		<view class="shop-list-item">
-			<view class="shop-list-img">
-				<image src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-			</view>
-			<view class="item-content">
-				<text class="item-title">礼盒沁红茶（红茶）礼盒</text>
-				<view class="item-bottom flex justify-between align-center">
-						<view class="flex flex-column">
-							<text class="item-new-pic">￥5</text>
-							<text class="item-old-pic">￥10</text>
-						</view>
-						<view class="item-shop-cart">
-							<image :src="shopCartImg"></image>
-						</view>
-				</view>
-			</view>
-		</view>
-		
-		
-
-
 	</view>
 </template>
 
 <script>
+	import {
+		hostUrl
+	} from '@/http/request.js';
 	export default {
+		props:{
+			gooListArr:{
+				type:Array,
+				default:() => []
+			}
+		},
 		data(){
 			return {
-				shopCartImg:'/static/images/goodListImg/shopcart.png'
+				shopCartImg:'/static/images/goodListImg/shopcart.png',
+				hostUrl:hostUrl
+			}
+		},
+			
+		methods:{
+			goDetail(id){
+				uni.navigateTo({
+					url:`/pages/details/details?id=${id}`
+				})
 			}
 		}
 	}

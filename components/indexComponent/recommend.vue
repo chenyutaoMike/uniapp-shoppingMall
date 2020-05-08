@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<block v-for="item in recommend" :key="item.id">
-			<view class="recommend" :data-url="item.linkUrl" @click="godetail(item.id)">
+			<view class="recommend" :data-url="item.linkUrl" @click="godetail">
 				<img class="recommend-img" :src="hostUrl+item.picUrl" alt="">
 				<view class="day-recommend text-center text-white">{{item.name}}</view>
 			</view>
@@ -27,9 +27,9 @@
 			})
 		},
 		methods:{
-			godetail(id){
+			godetail(e){
 				uni.navigateTo({
-					url:`../../pages/details/details?id=${id}`
+					url:e.currentTarget.dataset.url
 				})
 			}
 		}

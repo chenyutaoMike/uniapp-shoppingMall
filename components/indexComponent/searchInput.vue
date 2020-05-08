@@ -1,7 +1,10 @@
 <template>
 	<view class="search-box">
-		<input type="text" class="text-center  bg-white" placeholder="搜索商品名称" />
-		<image :src="imgUrl" alt="search" class="searchImg">
+		<input type="text" 
+		class="text-center  bg-white" 
+		placeholder="搜索商品名称" 
+		@blur="showImg" @focus="hiddenImg" />
+		<image :src="imgUrl" alt="search" class="searchImg" >
 		</image>
 	</view>
 </template>
@@ -11,6 +14,14 @@
 		data() {
 			return {
 				imgUrl: '/static/images/indexImg/ssico.png'
+			}
+		},
+		methods:{
+			showImg(){
+				console.log('show')
+			},
+			hiddenImg(){
+				console.log('hidden')
 			}
 		}
 	}

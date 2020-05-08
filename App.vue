@@ -16,6 +16,8 @@
 	/*每个页面公共css */
 	@import '/static/css/reset.css';
 	@import './common/uni.css';
+	@import '@/components/feng-parse/parse.css';
 	@import './static/css/animate.min.css';
 	@import './static/css/free.css';
+	
 </style>

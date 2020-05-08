@@ -51,12 +51,12 @@ import {mapState} from 'vuex';
 		methods:{
 			goGoodList(id){
 				uni.navigateTo({
-					url:`../../pages/goodList/good-list?typeId=${id}&type=0`
+					url:`/pages/goodList/good-list?typeId=${id}&type=0`
 				})
 			},
 			goDetail(id){
 				uni.navigateTo({
-					url:`../../pages/details/details?id=${id}`
+					url:`/pages/details/details?id=${id}`
 				})
 			}
 		}

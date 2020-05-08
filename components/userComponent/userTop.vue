@@ -12,7 +12,7 @@
 		<!-- 订单信息 -->
 		<view class="order-list">
 			<block v-for="item in orderList" :key="item.id">
-					<view class="order-info" :data-id="item.id">
+					<view class="order-info" :data-id="item.id" @click="goOrder(item.id)">
 						<view class="order-icon" >
 								<image :src="item.img_url"></image>
 						</view>
@@ -59,6 +59,13 @@
 		created() {
 			this.orderList = orderList;
 		},
+		methods:{
+			goOrder(id){
+				uni.navigateTo({
+					url:`/pages/order/order?id=${id}`
+				})
+			}
+		}
 	}
 </script>
 

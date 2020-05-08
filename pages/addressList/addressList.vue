@@ -4,8 +4,8 @@
 		  	<address-info />
 			
 		</scroll-view>
-		<view class="address-add flex justify-between px-3 align-center">
-			<text class="text-white">新增收货地址</text>
+		<view class="address-add flex justify-between px-3 align-center" @click="goAddress">
+			<text class="text-white" >新增收货地址</text>
 			<image class="address-add-img" src="../../static/images/addressImg/jiaico.png"></image>
 		</view>
 	</view>
@@ -23,7 +23,11 @@
 			}
 		},
 		methods: {
-			
+			goAddress(){
+				uni.navigateTo({
+					url:'/pages/addAddress/addAddress'
+				})
+			}
 		},
 		mounted() {
 			let res = uni.getSystemInfoSync();

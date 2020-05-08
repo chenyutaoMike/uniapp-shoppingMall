@@ -41,7 +41,7 @@
 					duration:1500
 				})
 			}
-			console.log(this.youLike)
+			
 		},
 		computed:{
 			...mapState({
@@ -53,7 +53,7 @@
 			...mapActions(['getRecommend','getBanner','getSlide','getType','getYouLike']),
 			goDetail(id){
 				uni.navigateTo({
-					url:`../details/details?${id}`
+					url:`/pages/details/details?${id}`
 				})
 			}
 		}

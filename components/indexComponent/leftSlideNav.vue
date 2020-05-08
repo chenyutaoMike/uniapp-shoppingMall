@@ -39,7 +39,7 @@
 			goGoodList(id){
 				console.log(id)
 				uni.navigateTo({
-					url:`../../pages/goodList/good-list?typeId=${id}&type=0`
+					url:`/pages/goodList/good-list?typeId=${id}&type=0`
 				})
 			}
 		}

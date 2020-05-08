@@ -5,8 +5,8 @@
 		</view>
 		
 		<ul class="like-list flex flex-wrap justify-between" v-if="list.length !== 0">
-			<block v-for="item in list" :key="item.id">
-				<li class="like-item">
+			<block v-for="item in list" :key="item.id" >
+				<li class="like-item" @click="goDetail(item.id)">
 					<img class="like-img" :src="hostUrl + item.litpic"
 					 alt="">
 					<view class="item-name">
@@ -35,6 +35,13 @@
 		data(){
 			return {
 				hostUrl:hostUrl
+			}
+		},
+		methods:{
+			goDetail(id){
+				uni.navigateTo({
+					url:`/pages/details/details?id=${id}`
+				})
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="rotate-box">
 		<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 		 :duration="duration" :indicator-active-color="indicatorActiveColor" :circular="circular" >
 			<block v-if="bannerImg && bannerImg.length !== 0">
@@ -69,25 +69,28 @@
 </script>
 
 <style lang="scss">
-	.swiper {
-		swiper-item {
-			height: 300upx;
-		}
-
-		.swiper-item {
-			width: 90%;
-			height: 90%;
-			position: relative;
-			top: 50%;
-			left: 50%;
-			border-radius: 10upx;
-			overflow: hidden;
-			transform: translate(-50%, -50%);
-
-			.swiper-img {
-				width: 100%;
-				height: 100%;
+	.rotate-box{
+		width: 100%;
+		
+		.swiper {
+			width: 100%;
+			.swiper-item {
+				height: 300upx;
+				width: 90%;
+				height: 90%;
+				position: relative;
+				top: 50%;
+				left: 50%;
+				border-radius: 10upx;
+				overflow: hidden;
+				transform: translate(-50%, -50%);
+				z-index: 99;
+				.swiper-img {
+					width: 100%;
+					height: 100%;
+				}
 			}
 		}
+	
 	}
 </style>
