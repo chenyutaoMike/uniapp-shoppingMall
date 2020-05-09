@@ -1317,10 +1317,12 @@ var render = function() {
           }
         }
       }),
-      _c("v-uni-image", {
-        staticClass: _vm._$g(2, "sc"),
-        attrs: { src: _vm._$g(2, "a-src"), alt: "search", _i: 2 }
-      })
+      _vm._$g(2, "i")
+        ? _c("v-uni-image", {
+            staticClass: _vm._$g(2, "sc"),
+            attrs: { src: _vm._$g(2, "a-src"), alt: "search", _i: 2 }
+          })
+        : _vm._e()
     ],
     1
   )

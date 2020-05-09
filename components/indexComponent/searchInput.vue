@@ -1,10 +1,10 @@
 <template>
 	<view class="search-box">
 		<input type="text" 
-		class="text-center  bg-white" 
-		placeholder="搜索商品名称" 
-		@blur="showImg" @focus="hiddenImg" />
-		<image :src="imgUrl" alt="search" class="searchImg" >
+			class="text-center  bg-white" 
+			placeholder="搜索商品名称" 
+			@blur="showImg" @focus="hiddenImg" />
+		<image :src="imgUrl" alt="search" class="searchImg" v-if="searchImg">
 		</image>
 	</view>
 </template>
@@ -13,15 +13,16 @@
 	export default {
 		data() {
 			return {
-				imgUrl: '/static/images/indexImg/ssico.png'
+				imgUrl: '/static/images/indexImg/ssico.png',
+				searchImg:true
 			}
 		},
 		methods:{
 			showImg(){
-				console.log('show')
+				this.searchImg = true;
 			},
 			hiddenImg(){
-				console.log('hidden')
+				this.searchImg = false;
 			}
 		}
 	}

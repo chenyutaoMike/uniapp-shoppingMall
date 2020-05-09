@@ -32,8 +32,7 @@
 					{
 						id: 2,
 						value: '默认',
-						orderBy: '',
-						
+						orderBy: ''
 					},
 					{
 						id: 3,
@@ -43,7 +42,7 @@
 					{
 						id: 4,
 						value: '销量',
-						orderBy: 'sales asc',
+						orderBy: 'sales asc'
 					},
 					{
 						id: 5,
@@ -84,7 +83,7 @@
 				if(id === this.seleteId){
 					return;
 				}
-				
+				// this.$emit()
 				this.seleteId = id;
 			}
 		}
