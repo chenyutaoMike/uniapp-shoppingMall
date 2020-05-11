@@ -1,6 +1,12 @@
 <template>
 	<view class="good-list-search">
-		<input type="text"  placeholder="搜索商品名称" class="list-search"/>
+		<input 
+			type="text"  
+			placeholder="搜索商品名称" 
+			v-model="goodSearch" 
+			class="list-search"
+			@confirm="submitValue"
+		/>
 		<image :src="imgUrl" alt="search" class="list-search-img">
 		</image>
 	</view>
@@ -10,7 +16,15 @@
 	export default {
 		data(){
 			return {
-					imgUrl: '/static/images/indexImg/ssico.png'
+					imgUrl: '/static/images/indexImg/ssico.png',
+					goodSearch:''
+			}
+		},
+		methods:{
+			submitValue(){
+				uni.redirectTo({
+					url:`/pages/goodList/good-list?searchValue=${this.goodSearch}`
+				})
 			}
 		}
 	}

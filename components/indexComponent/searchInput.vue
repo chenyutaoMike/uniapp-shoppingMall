@@ -3,6 +3,8 @@
 		<input type="text" 
 			class="text-center  bg-white" 
 			placeholder="搜索商品名称" 
+			v-model="indexSearch"
+			@confirm="submitValue"
 			@blur="showImg" @focus="hiddenImg" />
 		<image :src="imgUrl" alt="search" class="searchImg" v-if="searchImg">
 		</image>
@@ -14,7 +16,8 @@
 		data() {
 			return {
 				imgUrl: '/static/images/indexImg/ssico.png',
-				searchImg:true
+				searchImg:true,
+				indexSearch:''
 			}
 		},
 		methods:{
@@ -23,6 +26,12 @@
 			},
 			hiddenImg(){
 				this.searchImg = false;
+			},
+			submitValue(){
+				uni.navigateTo({
+					url:`/pages/goodList/good-list?searchValue=${this.indexSearch}`
+				})
+				this.indexSearch = '';
 			}
 		}
 	}
@@ -48,7 +57,7 @@
 			left: 30%;
 			top: 20%;
 		}
-		text{
+		text {
 			color: rgb(45,45,45);
 			font-size: 24upx;
 		}

@@ -1,7 +1,8 @@
 <template>
+	<view>
 	<view class="shop-list-box flex flex-wrap justify-between" v-if="gooListArr.length !== 0">
 		
-		<block v-for="(item,index) in gooListArr" :key="item.id + index">
+		<block v-for="(item,index) in gooListArr" :key="index+item.id">
 			<view class="shop-list-item" @click="goDetail(item.id)">
 				<view class="shop-list-img">
 					<image :src="hostUrl+item.litpic"></image>
@@ -22,6 +23,8 @@
 			
 		</block>
 		
+	</view>
+	<view class="text-center my-4 font-lg text-secondary" v-else>暂无商品</view>
 	</view>
 </template>
 

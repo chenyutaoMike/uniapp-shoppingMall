@@ -2,7 +2,7 @@
 	<!-- <classification /> -->
 	<view class="classification">
 		<view class="top">
-			<input type="text" placeholder="搜索商品名称" class="classification-input">
+			<input type="text" v-model="classificationSearch" @confirm="submitValue" placeholder="搜索商品名称" class="classification-input">
 		</view>
 		<!-- 	<view class="center" :style="`height:${scrollH}px`">
 			<scroll-view scroll-with-animation scroll-y="true" class="scroll-Y" :style="`height:${scrollH}px`">
@@ -58,6 +58,7 @@
 			return {
 				typeList: [],
 				hostUrl: hostUrl,
+				classificationSearch: '',
 				proListToTop: [],
 				menuToTop: [],
 				MENU: 0,
@@ -88,6 +89,12 @@
 
 		},
 		methods: {
+			submitValue() {
+				uni.navigateTo({
+					url: `/pages/goodList/good-list?searchValue=${this.classificationSearch}`
+				})
+				this.classificationSearch = '';
+			},
 			goGoodList(e) {
 				let id = e.currentTarget.dataset.id;
 
@@ -204,7 +211,7 @@
 				})
 			},
 		}
-	
+
 
 	}
 </script>

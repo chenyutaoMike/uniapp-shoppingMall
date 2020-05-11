@@ -25,17 +25,24 @@
 		data() {
 			return {
 				scrollH: '',
-				where:'1=1 and isTop=1'
+				where: '1=1 and isTop=1',
+				search: ''
 			}
 		},
 		onLoad(option) {
 			console.log(option)
-			this.typeId = option.typeId;
-			this.type = option.type;
+			if(option.searchValue){
+				this.search = option.searchValue;
+			}
+				this.typeId = option.typeId;
+				this.type = option.type;
 		},
 		mounted() {
 			let res = uni.getSystemInfoSync();
 			this.scrollH = res.windowHeight - uni.upx2px(160);
+			if (this.search != '') {
+			      this.where = this.where + " and name like '%" + this.search + "%'";
+			    }
 			if (this.type === "0") {
 				if (this.typeId !== '') {
 					this.where = this.where + " and typeId in(select id from c_type where parent_id=" + this.typeId + ")";
@@ -53,7 +60,7 @@
 			})
 		},
 		methods: {
-			...mapActions(['getGoodListArr', 'getGoodNextListArr','updateGoodListArr']),
+			...mapActions(['getGoodListArr', 'getGoodNextListArr', 'updateGoodListArr']),
 			nextPage() {
 				if (!this.noList) {
 					this.getGoodNextListArr({
@@ -77,8 +84,9 @@
 				// 	where: this.where,
 				// 	page: 1
 				// })
-				
+
 			}
+			
 		},
 		computed: {
 			...mapState({

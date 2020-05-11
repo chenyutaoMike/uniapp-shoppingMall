@@ -69,7 +69,7 @@
 				height: 460upx;
 				width: 100%;
 				.detail-swiper-item {
-					width: 100%;
+					 width: 100%;
 					 height: 100%;
 					.rotate-img {
 						width: 100%;
