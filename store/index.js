@@ -4,13 +4,15 @@ import {home} from './home.js';
 import {cart} from './cart.js';
 import {details} from './details.js';
 import {goodList} from './good-list.js';
+import {user} from './user.js';
 Vue.use(Vuex);
 const store = new Vuex.Store({
     modules: {
         home,
         cart,
 				details,
-				goodList
+				goodList,
+				user
       }
 })
 export default store

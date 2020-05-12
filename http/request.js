@@ -27,3 +27,4 @@ export function request(dataType,method="GET") {
 export const hostUrl = 'https://www.baquwangluo.cn';
 export const bannerTypeId = 2;
 export const bannerId = 1;
+export const type = "3";

@@ -17,3 +17,11 @@ export const GETDETAILSINFO = 'GETDETAILSINFO';
 export const GETGOODLIST = 'GETGOODLIST';
 export const GETGOODNEXTLIST = 'GETGOODNEXTLIST';
 export const UPDATEGOODLIST = 'UPDATEGOODLIST';
+
+
+// 用户登陆请求
+export const UNILOGIN = 'UNILOGIN';
+export const GETPAY = 'GETPAY';
+export const GETDELIVERGOODS = 'GETDELIVERGOODS';
+export const GETRECEIPT = 'GETRECEIPT';
+export const GETCOMPLETE = 'GETCOMPLETE';

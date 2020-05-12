@@ -1,7 +1,7 @@
 <template>
 	<view class="user-box" :style="`height:${scrollH}px`" >
 	<scroll-view scroll-y="true" :style="`height:${scrollH}px`" >
-		<user-top />
+		<user-top :userInfo="userInfo"/>
 		<view class="wall"></view>
 		<userList />
 	</scroll-view>
@@ -13,6 +13,7 @@
 <script>
 	import userTop from '@/components/userComponent/userTop.vue';
 	import userList from '@/components/userComponent/userList.vue';
+	import {mapActions} from 'vuex';
 	export default {
 		components: {
 			userTop,
@@ -28,8 +29,13 @@
 			this.scrollH = res.windowHeight;
 		
 		},
+		onLoad(){
+			let userInfo = uni.getStorageSync('userInfo');
+			this.userInfo = userInfo;
+			this.getOrderPay(this.userInfo.userId)
+		},
 		methods: {
-
+			...mapActions(['getOrderPay'])
 		}
 	}
 </script>

@@ -2,10 +2,11 @@
 	<view class="user-top">
 		<!-- 用户信息 -->
 		<view class="user-info">
-			<image :src="user_img" class="user-img"></image>
-			<!-- <view class="user-login">登录/注册</view> -->
-			<view>
-				<view class="user-name">undefined</view>
+			<image :src="userInfo.avatarUrl ? userInfo.avatarUrl : user_img" class="user-img" ></image>
+	
+			<view class="user-login" @click="login" v-if="!userInfo.nickName">登录/注册</view>
+			<view v-else>
+				<view class="user-name">{{userInfo.nickName}}</view>
 				<view>积分：100</view>
 			</view>
 		</view>
@@ -47,23 +48,34 @@
 			img_url: '/static/images/userImg/order4.png',
 			title: '已完成'
 		}
-	]
+	];
+	import {mapActions} from 'vuex';
 	export default {
-
+		props:{
+			userInfo:{
+				type:Object,
+				default:() => ({})
+			}
+		},
 		data() {
 			return {
 				user_img: '/static/images/userImg/touxiang.png',
-				orderList: ''
+				orderList: '',
 			}
 		},
 		created() {
 			this.orderList = orderList;
 		},
 		methods:{
+			...mapActions(['getUniLogin']),
 			goOrder(id){
 				uni.navigateTo({
 					url:`/pages/order/order?id=${id}`
 				})
+			},
+			login(){
+				this.getUniLogin();
+			
 			}
 		}
 	}
@@ -90,7 +102,7 @@
 				width: 140upx;
 				height: 140upx;
 				margin-right: 60upx;
-
+				border-radius: 50%;
 			}
 
 			.user-name {
