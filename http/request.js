@@ -10,6 +10,7 @@ export function request(dataType,method="GET") {
 				...dataType,
 			},
 			method,
+			withCredentials:true,
 			header: {
 				'content-type': 'application/json'
 			},

@@ -3637,88 +3637,184 @@ var render = function() {
     "v-uni-view",
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
-      _c(
-        "v-uni-view",
-        { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
-        [
+      _vm._l(_vm._$g(1, "f"), function(item, $10, $20, $30) {
+        return [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+            {
+              key: item["k0"],
+              staticClass: _vm._$g("2-" + $30, "sc"),
+              class: _vm._$g("2-" + $30, "c"),
+              attrs: { _i: "2-" + $30 }
+            },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+                {
+                  staticClass: _vm._$g("3-" + $30, "sc"),
+                  attrs: { _i: "3-" + $30 }
+                },
                 [
                   _c(
-                    "v-uni-label",
-                    { attrs: { _i: 4 } },
-                    [_c("v-uni-checkbox", { attrs: { _i: 5 } })],
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g("4-" + $30, "sc"),
+                      attrs: { _i: "4-" + $30 }
+                    },
+                    [
+                      _vm._$g("5-" + $30, "i")
+                        ? _c(
+                            "v-uni-label",
+                            { attrs: { _i: "5-" + $30 } },
+                            [
+                              _vm._$g("6-" + $30, "i")
+                                ? _c("v-uni-checkbox", {
+                                    attrs: { _i: "6-" + $30 }
+                                  })
+                                : _vm._e(),
+                              _vm._$g("7-" + $30, "i")
+                                ? _c("v-uni-checkbox", {
+                                    attrs: { checked: true, _i: "7-" + $30 }
+                                  })
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        : _c(
+                            "v-uni-text",
+                            {
+                              staticClass: _vm._$g("8-" + $30, "sc"),
+                              attrs: { _i: "8-" + $30 }
+                            },
+                            [_vm._v(_vm._$g("8-" + $30, "t0-0"))]
+                          )
+                    ],
+                    1
+                  ),
+                  _c("img", {
+                    staticClass: _vm._$g("9-" + $30, "sc"),
+                    attrs: {
+                      src: _vm._$g("9-" + $30, "a-src"),
+                      alt: "",
+                      _i: "9-" + $30
+                    }
+                  })
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g("10-" + $30, "sc"),
+                  attrs: { _i: "10-" + $30 }
+                },
+                [
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g("11-" + $30, "sc"),
+                      attrs: { _i: "11-" + $30 }
+                    },
+                    [
+                      _c(
+                        "v-uni-view",
+                        {
+                          staticClass: _vm._$g("12-" + $30, "sc"),
+                          attrs: { _i: "12-" + $30 }
+                        },
+                        [_vm._v(_vm._$g("12-" + $30, "t0-0"))]
+                      ),
+                      _c(
+                        "v-uni-view",
+                        {
+                          staticClass: _vm._$g("13-" + $30, "sc"),
+                          attrs: { _i: "13-" + $30 }
+                        },
+                        [_vm._v("规格: " + _vm._$g("13-" + $30, "t0-0"))]
+                      ),
+                      _c(
+                        "v-uni-view",
+                        {
+                          staticClass: _vm._$g("14-" + $30, "sc"),
+                          attrs: { _i: "14-" + $30 }
+                        },
+                        [
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g("15-" + $30, "sc"),
+                              attrs: { _i: "15-" + $30 },
+                              on: {
+                                click: function($event) {
+                                  return _vm.$handleViewEvent($event)
+                                }
+                              }
+                            },
+                            [_vm._v("-")]
+                          ),
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g("16-" + $30, "sc"),
+                              attrs: { _i: "16-" + $30 }
+                            },
+                            [_vm._v(_vm._$g("16-" + $30, "t0-0"))]
+                          ),
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g("17-" + $30, "sc"),
+                              attrs: { _i: "17-" + $30 }
+                            },
+                            [_vm._v("+")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
                     1
                   )
                 ],
                 1
               ),
-              _c("img", {
-                staticClass: _vm._$g(6, "sc"),
-                attrs: {
-                  src:
-                    "https://www.baquwangluo.cn/admin/editor/Upload/image/20200106/20200106112221_1050.jpg",
-                  alt: "",
-                  _i: 6
-                }
-              })
-            ],
-            1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-            [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
+                {
+                  staticClass: _vm._$g("18-" + $30, "sc"),
+                  attrs: { _i: "18-" + $30 }
+                },
                 [
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
-                    [
-                      _vm._v(
-                        "「澳洲必带」NU-LAX乐康片原味/西梅加强版(40片/瓶） 果蔬膳食纤维清肠排宿便 香港直邮"
-                      )
-                    ]
+                    {
+                      staticClass: _vm._$g("19-" + $30, "sc"),
+                      attrs: { _i: "19-" + $30 }
+                    },
+                    [_vm._v("￥" + _vm._$g("19-" + $30, "t0-0"))]
                   ),
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-                    [_vm._v("规格: 瓶子")]
+                    {
+                      staticClass: _vm._$g("20-" + $30, "sc"),
+                      attrs: { _i: "20-" + $30 }
+                    },
+                    [_vm._v("￥" + _vm._$g("20-" + $30, "t0-0"))]
                   ),
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+                    {
+                      staticClass: _vm._$g("21-" + $30, "sc"),
+                      attrs: { _i: "21-" + $30 }
+                    },
                     [
-                      _c(
-                        "v-uni-view",
-                        {
-                          staticClass: _vm._$g(12, "sc"),
-                          attrs: { _i: 12 },
-                          on: {
-                            click: function($event) {
-                              return _vm.$handleViewEvent($event)
-                            }
-                          }
-                        },
-                        [_vm._v("-")]
-                      ),
-                      _c(
-                        "v-uni-view",
-                        { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
-                        [_vm._v("1")]
-                      ),
-                      _c(
-                        "v-uni-view",
-                        { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
-                        [_vm._v("+")]
-                      )
+                      _c("v-uni-image", {
+                        staticClass: _vm._$g("22-" + $30, "sc"),
+                        attrs: {
+                          src: _vm._$g("22-" + $30, "a-src"),
+                          mode: "",
+                          _i: "22-" + $30
+                        }
+                      })
                     ],
                     1
                   )
@@ -3727,40 +3823,11 @@ var render = function() {
               )
             ],
             1
-          ),
-          _c(
-            "v-uni-view",
-            { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
-            [
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
-                [_vm._v("￥99")]
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } },
-                [_vm._v("￥99")]
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(18, "sc"), attrs: { _i: 18 } },
-                [
-                  _c("v-uni-image", {
-                    staticClass: _vm._$g(19, "sc"),
-                    attrs: { src: _vm._$g(19, "a-src"), mode: "", _i: 19 }
-                  })
-                ],
-                1
-              )
-            ],
-            1
           )
-        ],
-        1
-      )
+        ]
+      })
     ],
-    1
+    2
   )
 }
 var recyclableRender = false
@@ -3851,7 +3918,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 20);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.cart-list-box[data-v-13aaa597] {\r\n  padding: 20upx;\r\n  background-color: #f2f2f2;\n}\n.cart-list-box .cart-list[data-v-13aaa597] {\r\n  height: 250upx;\r\n  background-color: #fff;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  padding: 25upx 30upx;\r\n  border-radius: 20upx;\r\n  -webkit-box-shadow: 0px 3px 3px #ccc;\r\n          box-shadow: 0px 3px 3px #ccc;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  position: relative;\n}\n.cart-list-box .cart-list.invalid[data-v-13aaa597] {\r\n  background-color: #f0f0f0;\n}\n.cart-list-box .cart-list .list-left[data-v-13aaa597] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  height: 100%;\n}\n.cart-list-box .cart-list .list-left .left-msg[data-v-13aaa597] {\r\n  max-width: 50upx;\r\n  font-size: 24upx;\r\n  margin-right: 10upx;\n}\n.cart-list-box .cart-list .list-left .left-msg .left-text[data-v-13aaa597] {\r\n  color: #c6c6c6;\n}\n.cart-list-box .cart-list .list-left .left-img[data-v-13aaa597] {\r\n  width: 175upx;\r\n  height: 175upx;\n}\n.cart-list-box .cart-list .list-right .list-detail[data-v-13aaa597] {\r\n  max-width: 280upx;\r\n  margin: 0 25upx;\n}\n.cart-list-box .cart-list .list-right .list-detail .title[data-v-13aaa597] {\r\n  font-size: 28rpx;\r\n  color: #4c4c4c;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;\r\n  -webkit-box-orient: vertical;\n}\n.cart-list-box .cart-list .list-right .list-detail .specifications[data-v-13aaa597] {\r\n  font-size: 26upx;\r\n  color: #c6c6c6;\n}\n.cart-list-box .cart-list .list-right .list-detail .compute[data-v-13aaa597] {\r\n  margin-top: 10upx;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  padding: 0 10upx;\r\n  width: 200upx;\r\n  height: 60upx;\r\n  border: 1upx solid #c6c6c6;\r\n  border-radius: 10upx;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  text-align: center;\r\n  color: #535353;\n}\n.cart-list-box .cart-list .list-right .list-detail .add[data-v-13aaa597] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\n}\n.cart-list-box .cart-list .list-right .list-detail .num[data-v-13aaa597] {\r\n  -webkit-box-flex: 3;\r\n  -webkit-flex: 3;\r\n          flex: 3;\n}\n.cart-list-box .cart-list .list-right .list-detail .decrease[data-v-13aaa597] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\n}\n.cart-list-box .cart-list .list-pic[data-v-13aaa597] {\r\n  text-align: right;\n}\n.cart-list-box .cart-list .list-pic .list-new-pic[data-v-13aaa597] {\r\n  font-size: 32upx;\r\n  color: #ff005a;\n}\n.cart-list-box .cart-list .list-pic .list-old-pic[data-v-13aaa597] {\r\n  text-decoration: line-through;\r\n  margin-top: 20upx;\r\n  font-size: 28upx;\r\n  color: #c6c6c6;\n}\n.cart-list-box .cart-list .list-pic .list-del[data-v-13aaa597] {\r\n  position: absolute;\r\n  bottom: 30upx;\r\n  right: 50upx;\r\n  width: 50upx;\r\n  height: 50upx;\n}\n.cart-list-box .cart-list .list-pic .list-del .deleteImg[data-v-13aaa597] {\r\n  width: 100%;\r\n  height: 100%;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.cart-list-box[data-v-13aaa597] {\r\n  padding: 20upx;\r\n  background-color: #f2f2f2;\n}\n.cart-list-box .cart-list[data-v-13aaa597] {\r\n  height: 250upx;\r\n  background-color: #fff;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  padding: 25upx 30upx;\r\n  border-radius: 20upx;\r\n  -webkit-box-shadow: 0px 3px 3px #ccc;\r\n          box-shadow: 0px 3px 3px #ccc;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  position: relative;\r\n  margin-bottom: 20upx;\n}\n.cart-list-box .cart-list.invalid[data-v-13aaa597] {\r\n  background-color: #f0f0f0;\n}\n.cart-list-box .cart-list .list-left[data-v-13aaa597] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  height: 100%;\n}\n.cart-list-box .cart-list .list-left .left-msg[data-v-13aaa597] {\r\n  max-width: 50upx;\r\n  font-size: 24upx;\r\n  margin-right: 10upx;\n}\n.cart-list-box .cart-list .list-left .left-msg .left-text[data-v-13aaa597] {\r\n  color: #c6c6c6;\n}\n.cart-list-box .cart-list .list-left .left-img[data-v-13aaa597] {\r\n  width: 175upx;\r\n  height: 175upx;\n}\n.cart-list-box .cart-list .list-right .list-detail[data-v-13aaa597] {\r\n  max-width: 280upx;\r\n  min-width: 280upx;\r\n  margin: 0 25upx;\n}\n.cart-list-box .cart-list .list-right .list-detail .title[data-v-13aaa597] {\r\n  font-size: 28rpx;\r\n  height: 90upx;\r\n  color: #4c4c4c;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  display: -webkit-box;\r\n  -webkit-line-clamp: 2;\r\n  -webkit-box-orient: vertical;\n}\n.cart-list-box .cart-list .list-right .list-detail .specifications[data-v-13aaa597] {\r\n  font-size: 26upx;\r\n  color: #c6c6c6;\n}\n.cart-list-box .cart-list .list-right .list-detail .compute[data-v-13aaa597] {\r\n  margin-top: 10upx;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  padding: 0 10upx;\r\n  width: 200upx;\r\n  height: 60upx;\r\n  border: 1upx solid #c6c6c6;\r\n  border-radius: 10upx;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  text-align: center;\r\n  color: #535353;\n}\n.cart-list-box .cart-list .list-right .list-detail .add[data-v-13aaa597] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\n}\n.cart-list-box .cart-list .list-right .list-detail .num[data-v-13aaa597] {\r\n  -webkit-box-flex: 3;\r\n  -webkit-flex: 3;\r\n          flex: 3;\n}\n.cart-list-box .cart-list .list-right .list-detail .decrease[data-v-13aaa597] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\n}\n.cart-list-box .cart-list .list-pic .list-new-pic[data-v-13aaa597] {\r\n  font-size: 32upx;\r\n  color: #ff005a;\n}\n.cart-list-box .cart-list .list-pic .list-old-pic[data-v-13aaa597] {\r\n  text-decoration: line-through;\r\n  margin-top: 20upx;\r\n  font-size: 28upx;\r\n  color: #c6c6c6;\n}\n.cart-list-box .cart-list .list-pic .list-del[data-v-13aaa597] {\r\n  position: absolute;\r\n  bottom: 30upx;\r\n  right: 50upx;\r\n  width: 50upx;\r\n  height: 50upx;\n}\n.cart-list-box .cart-list .list-pic .list-del .deleteImg[data-v-13aaa597] {\r\n  width: 100%;\r\n  height: 100%;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -4211,14 +4278,16 @@ var render = function() {
                     1
                   ),
                   _vm._v(_vm._$g("9-" + $30, "t1-0")),
-                  _c(
-                    "v-uni-text",
-                    {
-                      staticClass: _vm._$g("12-" + $30, "sc"),
-                      attrs: { _i: "12-" + $30 }
-                    },
-                    [_vm._v("10")]
-                  )
+                  _vm._$g("12-" + $30, "i")
+                    ? _c(
+                        "v-uni-text",
+                        {
+                          staticClass: _vm._$g("12-" + $30, "sc"),
+                          attrs: { _i: "12-" + $30 }
+                        },
+                        [_vm._v(_vm._$g("12-" + $30, "t0-0"))]
+                      )
+                    : _vm._e()
                 ],
                 1
               )
@@ -4319,7 +4388,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 20);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.user-top[data-v-f3e954aa] {\r\n  width: 100%;\r\n  background-color: #92012a;\n}\n.user-top .user-info[data-v-f3e954aa] {\r\n  height: 260upx;\r\n  width: 100%;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding-left: 20upx;\r\n  font-size: 30upx;\r\n  color: #fff;\n}\n.user-top .user-info .user-img[data-v-f3e954aa] {\r\n  width: 140upx;\r\n  height: 140upx;\r\n  margin-right: 60upx;\r\n  border-radius: 50%;\n}\n.user-top .user-info .user-name[data-v-f3e954aa] {\r\n  font-size: 42upx;\n}\n.user-top .order-list[data-v-f3e954aa] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  background-color: #fff;\r\n  height: 160upx;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  border-bottom: 1upx solid #f2f2f2;\n}\n.user-top .order-list .order-info[data-v-f3e954aa] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  height: 100%;\r\n  color: #070707;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  font-size: 28upx;\r\n  position: relative;\n}\n.user-top .order-list .order-info .order-icon[data-v-f3e954aa] {\r\n  width: 50upx;\r\n  height: 50upx;\r\n  margin-bottom: 10upx;\n}\n.user-top .order-list .order-info .order-icon uni-image[data-v-f3e954aa] {\r\n  width: 100%;\r\n  height: 100%;\n}\n.user-top .order-list .order-info .order-num[data-v-f3e954aa] {\r\n  width: 30upx;\r\n  height: 30upx;\r\n  padding: 5upx;\r\n  position: absolute;\r\n  right: 50upx;\r\n  top: 10upx;\r\n  background-color: #ee0c62;\r\n  border-radius: 50%;\r\n  color: #fff;\r\n  text-align: center;\r\n  line-height: 30upx;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.user-top[data-v-f3e954aa] {\r\n  width: 100%;\r\n  background-color: #92012a;\n}\n.user-top .user-info[data-v-f3e954aa] {\r\n  height: 260upx;\r\n  width: 100%;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding-left: 20upx;\r\n  font-size: 30upx;\r\n  color: #fff;\n}\n.user-top .user-info .user-img[data-v-f3e954aa] {\r\n  width: 140upx;\r\n  height: 140upx;\r\n  margin-right: 60upx;\r\n  border-radius: 50%;\n}\n.user-top .user-info .user-name[data-v-f3e954aa] {\r\n  font-size: 42upx;\n}\n.user-top .order-list[data-v-f3e954aa] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  background-color: #fff;\r\n  height: 160upx;\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  border-bottom: 1upx solid #f2f2f2;\n}\n.user-top .order-list .order-info[data-v-f3e954aa] {\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  height: 100%;\r\n  color: #070707;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  font-size: 28upx;\r\n  position: relative;\n}\n.user-top .order-list .order-info .order-icon[data-v-f3e954aa] {\r\n  width: 50upx;\r\n  height: 50upx;\r\n  margin-bottom: 10upx;\n}\n.user-top .order-list .order-info .order-icon uni-image[data-v-f3e954aa] {\r\n  width: 100%;\r\n  height: 100%;\n}\n.user-top .order-list .order-info .order-num[data-v-f3e954aa] {\r\n  min-width: 35upx;\r\n  padding: 0 5upx;\r\n  position: absolute;\r\n  right: 50upx;\r\n  top: 10upx;\r\n  background-color: #ee0c62;\r\n  border-radius: 50%;\r\n  color: #fff;\r\n  font-size: 24upx;\r\n  text-align: center;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

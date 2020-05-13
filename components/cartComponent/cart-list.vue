@@ -1,50 +1,74 @@
 <template>
 	<view class="cart-list-box">
-		<view class="cart-list invalid">
+		<block v-for="item in cartList" :key="item.id">
+			
+		<view 
+		class="cart-list flex justify-between" 
+		:class="item.invalid ? 'invalid' : '' "
+		>
+		<!--  -->
 			<view class="list-left ">
 				<view class="left-msg">
-					<label>
-						<checkbox />
+					<label v-if="!item.invalid">
+						<checkbox   v-if="item.is_checked === 1"/>
+						<checkbox checked  v-if="item.is_checked === 2" />
 					</label>
-					<!-- <text class="left-text">库存不足</text> -->
+					<text v-else class="left-text">
+					{{item.tips}}
+					</text>
 				</view>
-				<img class="left-img" src="https://www.baquwangluo.cn/admin/editor/Upload/image/20200106/20200106112221_1050.jpg"
+				<img class="left-img" :src="hostUrl+item.litpic"
 				 alt="">
 			</view>
 			<view class="list-right">
 				<view class="list-detail">
-					<view class="title text2-ellipsis">「澳洲必带」NU-LAX乐康片原味/西梅加强版(40片/瓶） 果蔬膳食纤维清肠排宿便 香港直邮</view>
-					<view class="specifications">规格: 瓶子</view>
+					<view class="title text2-ellipsis">{{item.title}}</view>
+					<view class="specifications">规格: {{item.property_value}}</view>
 					<view class="compute">
 						<view class="decrease" @click="decrease">-</view>
-						<view class="num">1</view>
+						<view class="num">{{item.quantity}}</view>
 						<view class="add">+</view>
 					</view>
 				</view>
 			
 			</view>
 			<view class="list-pic">
-				<view class="list-new-pic">￥99</view>
-				<view class="list-old-pic">￥99</view>
+				<view class="list-new-pic">￥{{item.price}}</view>
+				<view class="list-old-pic">￥{{item.marketPrice}}</view>
 				<view class="list-del">
 					<image class="deleteImg" :src="deleteImg" mode=""></image>
 				</view>
 			</view>
 		</view>
+		</block>
 	</view>
 </template>
 
 <script>
+	import {hostUrl} from '@/http/request.js';
 export default {
+	props:{
+		cartList:{
+			type:Array,
+			default:()=>[]
+		}
+	},
 	data(){
 		return {
-			deleteImg:'/static/images/cartImg/delete.png'
+			deleteImg:'/static/images/cartImg/delete.png',
+			hostUrl:hostUrl
 		}
+	},
+	mounted(){
+	console.log(this.cartList)
 	},
 	methods:{
 		decrease(){
 			console.log('减少')
 		}
+	},
+	computed:{
+		
 	}
 }
 </script>
@@ -63,6 +87,7 @@ export default {
 			box-shadow: 0px 3px 3px #ccc;
 			display: flex;
 			position: relative;
+			margin-bottom: 20upx;
 			&.invalid{
 				background-color: #f0f0f0;
 			}
@@ -88,12 +113,15 @@ export default {
 			}
 
 			.list-right {
+				
 				.list-detail {
 					max-width: 280upx;
+					min-width: 280upx;
 					margin: 0 25upx;
-
+					
 					.title {
 						font-size: 28rpx;
+						height: 90upx;
 						color: #4c4c4c;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -134,7 +162,7 @@ export default {
 				
 			}
 			.list-pic{
-				text-align: right;
+	
 				.list-new-pic{
 					font-size: 32upx;
 					color: $btnBg;

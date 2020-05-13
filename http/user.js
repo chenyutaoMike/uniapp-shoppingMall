@@ -55,39 +55,49 @@ export function addUser(res) {
 	})
 }
 
+//获取登陆信息
+export function getUser(userId){
+	return request({
+		 opt: 'getUser',
+		 userId: userId,
+	})
+}
+
+
+
 // 待支付
 export function getOrderRed(userId) {
-	return {
+	return request({
 		opt: 'getOrderRed',
 		userId: userId,
 		type: type,
 		where: 'is_payment=0 and order_status=0'
-	}
+	})
 }
 // 待发货
 export function getOrderRedOne(userId) {
-	return {
+	return request({
 		opt: 'getOrderRed',
 		userId: userId,
 		type: type,
 		where: 'is_payment=1 and order_status=0 and is_delivery=0',
-	}
+	})
 }
 // 待收货
 export function getOrderRedTwo(userId) {
-	return {
+	return request({
 		opt: 'getOrderRed',
 		userId: userId,
 		type: type,
 		where: 'is_payment=1 and order_status=0 and is_delivery=1 and is_receiving=0',
-	}
+	})
 }
 // 已完成
 export function getOrderRedThree(userId) {
-	return {
+	return request({
 		opt: 'getOrderRed',
 		userId: userId,
 		type: type,
 		where: 'is_payment=1 and is_delivery=1 and is_receiving=1 and is_transaction=0'
-	}
+	})
 }

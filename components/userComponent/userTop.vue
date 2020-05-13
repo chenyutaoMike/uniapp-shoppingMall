@@ -18,7 +18,7 @@
 								<image :src="item.img_url"></image>
 						</view>
 						{{item.title}}
-						<text class="order-num">10</text>
+						<text class="order-num" v-if="item.num !== '' ">{{item.num}}</text>
 					</view>
 			</block>
 		
@@ -28,43 +28,28 @@
 </template>
 
 <script>
-	const orderList = [{
-			id: 1,
-			img_url: '/static/images/userImg/order1.png',
-			title: '待支付'
-		},
-		{
-			id: 2,
-			img_url: '/static/images/userImg/order2.png',
-			title: '待发货'
-		},
-		{
-			id: 3,
-			img_url: '/static/images/userImg/order3.png',
-			title: '待收货'
-		},
-		{
-			id: 4,
-			img_url: '/static/images/userImg/order4.png',
-			title: '已完成'
-		}
-	];
+
 	import {mapActions} from 'vuex';
 	export default {
 		props:{
 			userInfo:{
 				type:Object,
 				default:() => ({})
+			},
+			orderList:{
+				type:Array,
+				default:() => ([])
 			}
 		},
 		data() {
 			return {
 				user_img: '/static/images/userImg/touxiang.png',
-				orderList: '',
 			}
 		},
-		created() {
-			this.orderList = orderList;
+
+		mounted(){
+		
+			
 		},
 		methods:{
 			...mapActions(['getUniLogin']),
@@ -75,7 +60,6 @@
 			},
 			login(){
 				this.getUniLogin();
-			
 			}
 		}
 	}
@@ -136,17 +120,16 @@
 					}
 				}
 				.order-num{
-					width: 30upx;
-					height: 30upx;
-					padding: 5upx;
+					min-width: 35upx;
+					padding: 0 5upx;
 					position: absolute;
 					right: 50upx;
 					top: 10upx;
 					background-color: #ee0c62;
 					border-radius: 50%;
 					color: #fff;
+					font-size: 24upx;
 					text-align: center;
-					line-height: 30upx;
 				}
 			}
 			

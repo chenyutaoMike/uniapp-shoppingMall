@@ -1,5 +1,5 @@
-import {GETDETAILSIMG,GETDETAILSINFO} from './action-type.js';
-import {getDetailImg,getDetailInfo} from '@/http/details.js'
+import {GETDETAILSIMG,GETDETAILSINFO,GETADDCART} from './action-type.js';
+import {getDetailImg,getDetailInfo,addCart} from '@/http/details.js'
 export  const details = {
   state: { 
 		imgs:[],
@@ -14,10 +14,17 @@ export  const details = {
     },
 		async getDetailInfo({commit},id){
 			 let result = await getDetailInfo(id);
-			 console.log(result)
 			 if(result !== null){
 			 	 commit(GETDETAILSINFO,result.data)
 			 }
+		},
+		async getAddCart({commit},option){
+			console.log(option)
+			let result = await addCart(option);
+			if(result.data !== null){
+				commit(GETADDCART,result.data)
+			}
+			
 		}
   },
 
@@ -27,6 +34,18 @@ export  const details = {
 	 },
 	 GETDETAILSINFO(state,result){
 		 state.info = result;
+	 },
+	 GETADDCART(state,result){
+		 if(result.status === 0){
+			 uni.showToast({
+				  title:'加入成功'
+			 })
+		 }else{
+			 uni.showToast({
+			 		title:'网络异常',
+					icon:'none'
+			 })
+		 }
 	 }
  }
 }

@@ -38,7 +38,7 @@
 		},
 		onLoad(option){
 			const id = option.id;
-			console.log(id)
+			
 			this.getImages(id);
 			this.getDetailInfo(id)
 		},

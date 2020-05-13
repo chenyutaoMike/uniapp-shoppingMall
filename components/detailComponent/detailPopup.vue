@@ -9,7 +9,7 @@
 					<view class="detail-popup-pic">
 						<view>价格:<text class="text-pic">￥{{info.price}}</text></view>
 						<view>库存:<text>{{info.stock}}</text></view>
-						<view>已选择:<text>{{seleteNumber+info.unit}}</text></view>
+						<view>已选择:<text>{{seleteNumber}}</text></view>
 					</view>
 					<image @click="clone" class="cloneImg" src="../../static/images/detailImg/gbico.png"></image>
 				</view>
@@ -31,14 +31,14 @@
 				</view>
 
 			</view>
-				<view class="popup-button" v-if="addCartorBuy === 0" @click.stop>加入购物车</view>
+				<view class="popup-button" v-if="addCartorBuy === 0" @click.stop="addCart">加入购物车</view>
 				<view class="popup-button" v-else @click.stop>立即购买</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {mapState} from 'vuex';
+	import {mapState,mapActions} from 'vuex';
 	import {hostUrl} from '@/http/request.js';
 	export default {
 		props:{
@@ -51,11 +51,33 @@
 			return {
 				cloneImg: '@/static/images/detailImg/gbico.png',
 				hostUrl:hostUrl,
-				seleteUnitIndex:-1,
+				seleteUnitIndex:0,
 				seleteNumber:1
 			}
 		},
 		methods: {
+			...mapActions(['getAddCart']),
+			addCart(){
+				// 验证登陆信息
+				let userId = uni.getStorageSync('userId');
+				if(!userId){
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+					})
+					return 
+				}
+				// 加入购物车
+				let option = {
+					id:this.info.id,
+					userId:userId,
+					quantity:this.seleteNumber,
+					isChecked:1,
+					unit:this.info.unit.split('/')[this.seleteUnitIndex]
+				}
+				this.getAddCart(option);
+				this.$emit('clone')
+			},
 			clone() {
 				this.$emit('clone')
 			},

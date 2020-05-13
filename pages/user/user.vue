@@ -1,7 +1,7 @@
 <template>
 	<view class="user-box" :style="`height:${scrollH}px`" >
 	<scroll-view scroll-y="true" :style="`height:${scrollH}px`" >
-		<user-top :userInfo="userInfo"/>
+		<user-top :userInfo="userInfo" :orderList="orderList"/>
 		<view class="wall"></view>
 		<userList />
 	</scroll-view>
@@ -11,9 +11,34 @@
 </template>
 
 <script>
+	const orderList = [{
+			id: 1,
+			img_url: '/static/images/userImg/order1.png',
+			title: '待支付',
+			num:''
+		},
+		{
+			id: 2,
+			img_url: '/static/images/userImg/order2.png',
+			title: '待发货',
+			num:''
+		},
+		{
+			id: 3,
+			img_url: '/static/images/userImg/order3.png',
+			title: '待收货',
+			num:''
+		},
+		{
+			id: 4,
+			img_url: '/static/images/userImg/order4.png',
+			title: '已完成',
+			num:''
+		}
+	];
 	import userTop from '@/components/userComponent/userTop.vue';
 	import userList from '@/components/userComponent/userList.vue';
-	import {mapActions} from 'vuex';
+	import {mapActions,mapState} from 'vuex';
 	export default {
 		components: {
 			userTop,
@@ -21,7 +46,8 @@
 		},
 		data() {
 			return {
-				scrollH: 0
+				scrollH: 0,
+				orderList:[]
 			}
 		},
 		mounted() {
@@ -32,10 +58,34 @@
 		onLoad(){
 			let userInfo = uni.getStorageSync('userInfo');
 			this.userInfo = userInfo;
-			this.getOrderPay(this.userInfo.userId)
+			this.orderList =orderList;
+		},
+		onShow(){
+			let userId = uni.getStorageSync('userId');
+			this.getOrderPay(userId); //获取待支付
+			this.getOrderDelivery(userId);//获取待发货
+			this.getOrderReceiving(userId);//获取待收货
+			this.getOrderTransaction(userId);//获取已完成
+				this.orderList.forEach(item =>{
+					if(item.id === 1){
+						item.num = this.isPay
+					}
+					if(item.id === 2){
+						item.num = this.isDelivery
+					}
+					if(item.id === 3){
+						item.num = this.isReceiving
+					}
+					if(item.id === 4){
+						item.num = this.isTransaction
+					}
+				})
 		},
 		methods: {
-			...mapActions(['getOrderPay'])
+			...mapActions(['getOrderPay','getOrderDelivery','getOrderReceiving','getOrderTransaction'])
+		},
+		computed:{
+			...mapState(['isPay','isDelivery','isReceiving','isTransaction'])
 		}
 	}
 </script>

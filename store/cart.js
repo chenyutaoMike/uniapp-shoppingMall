@@ -1,14 +1,35 @@
+import {GETCARTLIST} from './action-type.js';
+import {getCartList} from '@/http/cart.js';
 export  const cart = {
-  state: { count: 0 },
+  state: { 
+		cartList:[]
+	},
+	actions:{
+		async getCartListAry({commit},userId){
+				let result = await getCartList(userId);
+				if(result.data !== null){
+					commit(GETCARTLIST,result.data)
+				}
+		}
+	},
   mutations: {
-    increment (state) {
-      state.count++
-    }
-  },
-
-  getters: {
-    doubleCount (state) {
-      return state.count * 2
-    }
+   GETCARTLIST(state,result){
+		 // 处理后台传过来的数据
+		 result.forEach(item => {
+		 	 if(item.isTop === 0 ){
+		 		 item.invalid = true;
+				 item.tips = '商品失效'
+		 	 }else if(item.stock <= 0){
+				 item.invalid = true;
+				  item.tips = '库存不足'
+			 }else{
+		 		 item.invalid = false;
+		 	 }
+		 	 
+		 })
+		 state.cartList = result;
+	 }
   }
+
+ 
 }

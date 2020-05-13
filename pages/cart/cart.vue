@@ -2,8 +2,8 @@
 	<view class="cart-box">
 
 	<scroll-view scroll-y="true" :style="`height:${scrollH}px`">
-			<cart-none v-if="none"/>
-			<cart-list v-else/>
+			<cart-none v-if="isNone"/>
+			<cart-list :cartList="cartList" v-else />
 	</scroll-view>
 	
 
@@ -27,6 +27,7 @@
 <script>
 	import cartNone from '@/components/cartComponent/cart-none.vue';
 	import cartList from '@/components/cartComponent/cart-list.vue';
+	import {mapActions,mapState} from 'vuex';
 	export default {
 		components:{
 			cartNone,
@@ -34,16 +35,35 @@
 		},
 		data() {
 			return {
-				scrollH:0,
-				none:false
+				scrollH:0
 			}
 		},
 		mounted() {
 			let res = uni.getSystemInfoSync();
 			this.scrollH = res.windowHeight - uni.upx2px(100);
+		
+		},
+		onShow(){
+			let userId = uni.getStorageSync('userId');
+			if(!userId){
+				uni.showToast({
+					title:'请先登陆',
+					icon:'none'
+				})
+			}
+			this.getCartListAry(56);
 		},
 		methods: {
-
+			...mapActions(['getCartListAry'])
+		},
+		computed:{
+			...mapState({
+				cartList:state => state.cart.cartList
+			}),
+			isNone(){
+				// 判断购物车是否有商品,如果有商品就显示购物车,如果没有就显示猜你喜欢列表
+				return this.cartList.length >= 1 ? false : true
+			}
 		}
 	}
 </script>
