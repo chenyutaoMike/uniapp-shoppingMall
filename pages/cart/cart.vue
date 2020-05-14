@@ -3,21 +3,26 @@
 
 	<scroll-view scroll-y="true" :style="`height:${scrollH}px`">
 			<cart-none v-if="isNone"/>
-			<cart-list :cartList="cartList" v-else />
+			<cart-list :cartList="cartList" v-else  @choice="choice"/>
 	</scroll-view>
 	
 
 		<view class="cart-bottom">
 			<view class="cart-bottom-info">
-				<view class="info-left">
+				<view class="info-left flex  align-center">
 					<label>
-					   <checkbox  checked="" class="ml-4" />全选
+						<checkbox  v-if="selection === 1" class="ml-4" :data-id="selection" @click="cartSelect" />
+					   <checkbox v-else checked="" class="ml-4" :data-id="selection" @click="cartSelect" />
+						 全选
 					 </label>
-					<text class="pic mx-4" >￥888</text>
-					<text class="text-secondary">为您节省 ￥666</text>
+					 <view class="flex flex-column ml-2 text-center">
+						
+						 <text class="pic" >￥{{totalPic}}</text>
+						 <text class="text-secondary font-sm">为您节省 ￥{{marketPriceTotal}}</text>
+					 </view>
 				</view>
 				<view class="info-right">
-					去结算 (0)
+					去结算 ({{quantity}})
 				</view>
 			</view>
 		</view>
@@ -27,6 +32,10 @@
 <script>
 	import cartNone from '@/components/cartComponent/cart-none.vue';
 	import cartList from '@/components/cartComponent/cart-list.vue';
+	import {
+		cartChoice,
+		selectAll
+	} from '@/http/cart.js';
 	import {mapActions,mapState} from 'vuex';
 	export default {
 		components:{
@@ -35,7 +44,8 @@
 		},
 		data() {
 			return {
-				scrollH:0
+				scrollH:0,
+				selection:1
 			}
 		},
 		mounted() {
@@ -44,21 +54,45 @@
 		
 		},
 		onShow(){
-			let userId = uni.getStorageSync('userId');
-			if(!userId){
+			this.userId = uni.getStorageSync('userId');
+			if(!this.userId){
 				uni.showToast({
 					title:'请先登陆',
 					icon:'none'
 				})
 			}
-			this.getCartListAry(56);
+			// 56是userId
+			this.getCartListAry(this.userId);
+			this.getCartTotalPic(this.userId);
 		},
 		methods: {
-			...mapActions(['getCartListAry'])
+			...mapActions(['getCartListAry','getCartTotalPic']),
+			choice(option){  //单选
+				cartChoice(option).then(res => {
+					if(res.data !== null){
+						this.getCartTotalPic(this.userId);
+						this.getCartListAry(this.userId)
+					}
+				})
+			},
+			cartSelect(e){   //全选
+			
+				let checkId = e.currentTarget.dataset.id;
+				selectAll({userId:this.userId,checkId:checkId}).then(res=>{
+					if(res.data !== null && res.data.status === 0){
+						this.selection === 1? this.selection = 2 : this.selection = 1;
+						this.getCartTotalPic(this.userId);
+						this.getCartListAry(this.userId)
+					}
+				})
+			}
 		},
 		computed:{
 			...mapState({
-				cartList:state => state.cart.cartList
+				cartList:state => state.cart.cartList,
+				totalPic:state => state.cart.totalPic,
+				marketPriceTotal:state => state.cart.marketPriceTotal,
+				quantity:state => state.cart.quantity
 			}),
 			isNone(){
 				// 判断购物车是否有商品,如果有商品就显示购物车,如果没有就显示猜你喜欢列表
@@ -84,11 +118,12 @@
 				.info-left{
 					flex: 7;
 					line-height: 100upx;
-					.pic{
-						color: $btnBg;
-						font-size: 32upx;
-					}
+					
 				
+				}
+				.pic{
+					color: $btnBg;
+					font-size: 36upx;
 				}
 				.info-right{
 					flex: 3;

@@ -4,8 +4,9 @@
 		<detail-rich-text />
 		<view class="detail-bottom fixed-bottom flex justify-between align-center px-3">
 			<view class="detail-bottom-left">
-				<view class="detail-pic">￥39</view>
-				<view class="detail-oldPic">为您节省￥39</view>
+				<view class="detail-pic">￥{{info.price}}</view>
+				<view class="detail-oldPic" v-if="minprice > 0">为您节省￥{{minprice}}</view>
+				<view class="detail-oldPic" v-else >暂无优惠</view>
 			</view>
 			<view class="detail-bottom-right">
 				<view class="buy-button flex">
@@ -22,7 +23,7 @@
 	import detailTop from '@/components/detailComponent/detailTop.vue';
 	import detailRichText from '@/components/detailComponent/detailRichText.vue';
 	import detailPopup from '@/components/detailComponent/detailPopup.vue';
-	import {mapActions} from 'vuex';
+	import {mapActions,mapState} from 'vuex';
 	
 	export default {
 		components:{
@@ -50,10 +51,19 @@
 			addCart(){
 				this.isShow = true;
 				this.addCartorBuy = 0;
+			
 			},
 			buy(){
 				this.isShow = true;
 				this.addCartorBuy = 1;
+			}
+		},
+		computed:{
+			...mapState({
+				info:state => state.details.info
+			}),
+			minprice(){
+				return (this.info.marketPrice - this.info.price).toFixed(2)
 			}
 		}
 	}

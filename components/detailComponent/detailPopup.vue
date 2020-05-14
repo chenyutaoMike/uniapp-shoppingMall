@@ -67,13 +67,22 @@
 					})
 					return 
 				}
+				let {id,unit,stock} = this.info;
+				let {seleteNumber,seleteUnitIndex} = this;
+				if(seleteNumber > stock){
+					uni.showToast({
+						title:'选择数量大于库存',
+						icon:'none'
+					})
+					return
+				}
 				// 加入购物车
 				let option = {
-					id:this.info.id,
+					id:id,
 					userId:userId,
-					quantity:this.seleteNumber,
+					quantity:seleteNumber,
 					isChecked:1,
-					unit:this.info.unit.split('/')[this.seleteUnitIndex]
+					unit:unit.split('/')[seleteUnitIndex]
 				}
 				this.getAddCart(option);
 				this.$emit('clone')

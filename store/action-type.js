@@ -21,7 +21,8 @@ export const UPDATEGOODLIST = 'UPDATEGOODLIST';
 // 购物车页面的请求
 
 export const GETCARTLIST = 'GETCARTLIST';
-
+export const GETTOTALPIC = 'GETTOTALPIC';
+export const CARTCHOICE = 'CARTCHOICE';
 
 
 // 用户登陆请求
@@ -34,3 +35,9 @@ export const ORDERRONE = 'ORDERRONE';
 export const ORDERREDTWO = 'ORDERREDTWO';
 //已完成
 export const ORDERREDTHREE = 'ORDERREDTHREE';
+
+
+
+// 地址列表页面请求
+
+export const GETADDRESSLIST = 'GETADDRESSLIST';

@@ -1,8 +1,11 @@
-import {GETCARTLIST} from './action-type.js';
-import {getCartList} from '@/http/cart.js';
+import {GETCARTLIST,GETTOTALPIC,CARTCHOICE} from './action-type.js';
+import {getCartList,getToatlPic,cartChoice} from '@/http/cart.js';
 export  const cart = {
   state: { 
-		cartList:[]
+		cartList:[],
+		totalPic:'',
+		marketPriceTotal:'',
+		quantity:''
 	},
 	actions:{
 		async getCartListAry({commit},userId){
@@ -10,7 +13,21 @@ export  const cart = {
 				if(result.data !== null){
 					commit(GETCARTLIST,result.data)
 				}
-		}
+		},
+		async getCartTotalPic({commit},userId){
+				let result = await getToatlPic(userId);
+			
+				if(result.data !== null){
+					commit(GETTOTALPIC,result.data)
+				}
+		},
+		async getCartChoice({commit},option){
+				let result = await cartChoice(option);
+				console.log(result)
+				if(result.data !== null){
+					getCartListAry(56)
+				}
+		},
 	},
   mutations: {
    GETCARTLIST(state,result){
@@ -28,7 +45,14 @@ export  const cart = {
 		 	 
 		 })
 		 state.cartList = result;
+	 },
+	 GETTOTALPIC(state,result){
+		 state.totalPic = result.dTotal;
+		 state.marketPriceTotal =  result.marketPriceTotal;
+		 state.quantity = result.quantity;
 	 }
+	 
+	 
   }
 
  

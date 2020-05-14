@@ -19,7 +19,7 @@ export  const details = {
 			 }
 		},
 		async getAddCart({commit},option){
-			console.log(option)
+			
 			let result = await addCart(option);
 			if(result.data !== null){
 				commit(GETADDCART,result.data)

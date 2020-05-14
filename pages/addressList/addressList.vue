@@ -1,7 +1,7 @@
 <template>
 	<view class="address-box">
 		<scroll-view scroll-y="true" class="good-list-bg" :style="`height:${scrollH}px`">
-		  	<address-info />
+		  	<address-info :addressList="addressList" @changeSelete="changeSelete"/>
 			
 		</scroll-view>
 		<view class="address-add flex justify-between px-3 align-center" @click="goAddress">
@@ -13,6 +13,7 @@
 
 <script>
 	import addressInfo from '@/components/addressListComponent/addressInfo.vue';
+	import {mapActions,mapState} from 'vuex';
 	export default {
 		components:{
 			addressInfo
@@ -23,16 +24,40 @@
 			}
 		},
 		methods: {
+			...mapActions(['getAddressAry']),
 			goAddress(){
 				uni.navigateTo({
 					url:'/pages/addAddress/addAddress'
 				})
+			},
+			changeSelete(){
+				this.getAddressAry(56)
 			}
 		},
 		mounted() {
 			let res = uni.getSystemInfoSync();
-			this.scrollH = res.windowHeight
+			this.userId = uni.getStorageSync('userId');
+			this.scrollH = res.windowHeight;
+			if(!this.userId){
+				// 如果没登陆,提示用户登陆,并跳转到user页面进行登陆
+				uni.showModal({
+					title:'温馨提示',
+					content:'请先登陆',
+					showCancel:false,
+					success:() =>{
+						uni.switchTab({
+							url:'/pages/user/user'
+						})
+					}
+				})
+			}
+			this.getAddressAry(56)
 		},
+		computed:{
+			...mapState({
+				addressList:state => state.address.addressList
+			})
+		}
 	}
 </script>
 

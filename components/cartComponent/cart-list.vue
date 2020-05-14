@@ -1,76 +1,137 @@
 <template>
 	<view class="cart-list-box">
 		<block v-for="item in cartList" :key="item.id">
-			
-		<view 
-		class="cart-list flex justify-between" 
-		:class="item.invalid ? 'invalid' : '' "
-		>
-		<!--  -->
-			<view class="list-left ">
-				<view class="left-msg">
-					<label v-if="!item.invalid">
-						<checkbox   v-if="item.is_checked === 1"/>
-						<checkbox checked  v-if="item.is_checked === 2" />
-					</label>
-					<text v-else class="left-text">
-					{{item.tips}}
-					</text>
+
+			<view class="cart-list flex justify-between" :class="item.invalid ? 'invalid' : '' ">
+
+				<view class="list-left ">
+					<view class="left-msg">
+						<label v-if="!item.invalid">
+							<checkbox v-if="item.is_checked === 1" @click="choice" :data-id="item.id" :data-checkId="item.is_checked" />
+							<checkbox checked v-if="item.is_checked === 2" @click="choice" :data-id="item.id" :data-checkId="item.is_checked" />
+						</label>
+						<text v-else class="left-text">
+							{{item.tips}}
+						</text>
+					</view>
+					<img class="left-img" :src="hostUrl+item.litpic" alt="" @click.stop="goDetails(item.article_id)">
 				</view>
-				<img class="left-img" :src="hostUrl+item.litpic"
-				 alt="">
-			</view>
-			<view class="list-right">
-				<view class="list-detail">
-					<view class="title text2-ellipsis">{{item.title}}</view>
-					<view class="specifications">规格: {{item.property_value}}</view>
-					<view class="compute">
-						<view class="decrease" @click="decrease">-</view>
-						<view class="num">{{item.quantity}}</view>
-						<view class="add">+</view>
+				<view class="list-right">
+					<view class="list-detail">
+						<view class="title text2-ellipsis">{{item.title}}</view>
+						<view class="specifications">规格: {{item.property_value}}</view>
+						<view class="compute">
+							<view class="decrease animated" hover-class="tada" @click="decrease(item)" >-</view>
+							<view class="num">{{item.quantity}}</view>
+							<view class="add animated " hover-class="tada" @click="add(item)">+</view>
+						</view>
+					</view>
+
+				</view>
+				<view class="list-pic">
+					<view class="list-new-pic">￥{{item.price}}</view>
+					<view class="list-old-pic">￥{{item.marketPrice}}</view>
+					<view class="list-del" @click="delItem(item.id)">
+						<image class="deleteImg" :src="deleteImg" mode=""></image>
 					</view>
 				</view>
-			
 			</view>
-			<view class="list-pic">
-				<view class="list-new-pic">￥{{item.price}}</view>
-				<view class="list-old-pic">￥{{item.marketPrice}}</view>
-				<view class="list-del">
-					<image class="deleteImg" :src="deleteImg" mode=""></image>
-				</view>
-			</view>
-		</view>
 		</block>
 	</view>
 </template>
 
 <script>
-	import {hostUrl} from '@/http/request.js';
-export default {
-	props:{
-		cartList:{
-			type:Array,
-			default:()=>[]
+	import {
+		hostUrl
+	} from '@/http/request.js';
+	import {
+		mapActions
+	} from 'vuex';
+	import {
+		cartAdd,
+		cartDecrease,
+		cartDel
+	} from '@/http/cart.js';
+	export default {
+		props: {
+			cartList: {
+				type: Array,
+				default: () => []
+			}
+		},
+		data() {
+			return {
+				deleteImg: '/static/images/cartImg/delete.png',
+				hostUrl: hostUrl,
+
+			}
+		},
+		mounted() {
+				this.userId = uni.getStorageSync('userId');
+
+		},
+		methods: {
+			...mapActions(['getCartListAry','getCartTotalPic']),
+			decrease(info) {
+				let {id,quantity} = info;
+				if(quantity <= 1){
+					uni.showToast({
+						title:'购买数量不能为0',
+						icon:'none'
+					})
+					return
+				}
+				cartDecrease(id).then(res=>{
+					if(res.data !== null && res.data.status === 0){
+						this.getCartListAry(this.userId)
+						this.getCartTotalPic(this.userId)
+					}
+				})
+			},
+			add(info){
+				let {quantity,stock,id} = info;
+			
+				if(quantity > stock){
+					uni.showToast({
+						title:'购买数量大于库存',
+						icon:'none'
+					})
+					return
+				}
+				cartAdd(id).then(res =>{
+					
+					if(res.data !== null && res.data.status === 0){
+						this.getCartListAry(this.userId)
+						this.getCartTotalPic(this.userId)
+					}
+				})
+			},
+			delItem(id){
+				cartDel(id).then(res=>{
+					if(res.data !== null && res.data.status === 0){
+						this.getCartListAry(this.userId)
+						this.getCartTotalPic(this.userId)
+					}
+				})
+			},
+			choice(e) {
+				let {
+					id,
+					checkid
+				} = e.currentTarget.dataset;
+				this.$emit('choice',{id,checkId:checkid})
+			
+			},
+			goDetails(id){
+				uni.navigateTo({
+					url:`/pages/details/details?id=${id}`
+				})
+			}
+		},
+		computed: {
+
 		}
-	},
-	data(){
-		return {
-			deleteImg:'/static/images/cartImg/delete.png',
-			hostUrl:hostUrl
-		}
-	},
-	mounted(){
-	console.log(this.cartList)
-	},
-	methods:{
-		decrease(){
-			console.log('减少')
-		}
-	},
-	computed:{
-		
 	}
-}
 </script>
 
 <style lang="scss">
@@ -88,9 +149,11 @@ export default {
 			display: flex;
 			position: relative;
 			margin-bottom: 20upx;
-			&.invalid{
+
+			&.invalid {
 				background-color: #f0f0f0;
 			}
+
 			.list-left {
 				display: flex;
 				align-items: center;
@@ -113,12 +176,12 @@ export default {
 			}
 
 			.list-right {
-				
+
 				.list-detail {
 					max-width: 280upx;
 					min-width: 280upx;
 					margin: 0 25upx;
-					
+
 					.title {
 						font-size: 28rpx;
 						height: 90upx;
@@ -129,12 +192,14 @@ export default {
 						-webkit-line-clamp: 2;
 						-webkit-box-orient: vertical;
 					}
-					.specifications{
+
+					.specifications {
 						font-size: 26upx;
 						color: $cart-text;
-						
+
 					}
-					.compute{
+
+					.compute {
 						margin-top: 10upx;
 						display: flex;
 						box-sizing: border-box;
@@ -148,38 +213,45 @@ export default {
 						text-align: center;
 						color: #535353;
 					}
-					.add{
+
+					.add {
 						flex: 1;
 					}
-					.num{
+
+					.num {
 						flex: 3;
-						
+
 					}
-					.decrease{
+
+					.decrease {
 						flex: 1;
 					}
 				}
-				
+
 			}
-			.list-pic{
-	
-				.list-new-pic{
+
+			.list-pic {
+
+				.list-new-pic {
 					font-size: 32upx;
 					color: $btnBg;
 				}
-				.list-old-pic{
+
+				.list-old-pic {
 					text-decoration: line-through;
 					margin-top: 20upx;
 					font-size: 28upx;
 					color: $cart-text;
 				}
-				.list-del{
+
+				.list-del {
 					position: absolute;
 					bottom: 30upx;
 					right: 50upx;
 					width: 50upx;
 					height: 50upx;
-					.deleteImg{
+
+					.deleteImg {
 						width: 100%;
 						height: 100%;
 					}

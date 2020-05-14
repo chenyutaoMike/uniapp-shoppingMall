@@ -2,7 +2,7 @@ import {
 	request,
 	bannerTypeId,
 	bannerId
-} from './request.js'
+} from './request.js';
 
 // =>获取每日推荐
 export function getIndexRecommend() {
