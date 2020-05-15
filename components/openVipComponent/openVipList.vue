@@ -16,7 +16,9 @@
 		props:{
 			vipList:{
 				type:Array,
-				default:() => []
+				default:() => {
+					return []
+				}
 			}
 		},
 		data() {

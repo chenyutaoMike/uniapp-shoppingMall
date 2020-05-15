@@ -2,7 +2,7 @@ import {
 	GETADDRESSLIST,
 } from './action-type.js';
 import {
-	getAddressList,
+	getAddressList
 } from '@/http/address.js'
 export const address = {
 	state: {
@@ -16,7 +16,7 @@ export const address = {
 			if (result.data !== null) {
 				commit(GETADDRESSLIST, result.data)
 			}
-		},
+		}
 		
 
 	},

@@ -36,7 +36,9 @@
 		props:{
 			gooListArr:{
 				type:Array,
-				default:() => []
+				default:() => {
+					return []
+				}
 			}
 		},
 		data(){

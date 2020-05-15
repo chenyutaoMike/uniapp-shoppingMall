@@ -56,7 +56,9 @@
 		props: {
 			cartList: {
 				type: Array,
-				default: () => []
+				default: () => {
+					return []
+				}
 			}
 		},
 		data() {

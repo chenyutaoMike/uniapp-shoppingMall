@@ -1,49 +1,56 @@
 <template>
 	<view class="address-info-box">
 
-
-		<block v-for="item in addressList" :key="item.id">
-			<view class="address-info-item">
-				<view class="address-detail ">{{item.address}}</view>
-				<view class="address-user-info flex my-1 pb-2">
-					<view class="address-user-name mr-2">{{item.consignee}}</view>
-					<view class="address-user-phone">{{item.cellphone}}</view>
-				</view>
-				<view class="address-bottom flex justify-between align-center">
-					<view class="flex align-center " @click="changeSelete(item.id)">
-						<view class="flex align-center" >
-							<icon type="success" size="20" v-if="item.is_default === 1"></icon>
-							<image src="../../static/images/addressImg/Choice.png" v-else></image>
-						</view>
-						<text class="ml-1">设为默认</text>
+		<view v-if="addressList.length !== 0">
+			<block v-for="item in addressList" :key="item.id">
+				<view class="address-info-item">
+					<view class="address-detail ">{{item.address}}</view>
+					<view class="address-user-info flex my-1 pb-2">
+						<view class="address-user-name mr-2">{{item.consignee}}</view>
+						<view class="address-user-phone">{{item.cellphone}}</view>
 					</view>
-					<view class="flex align-center address-bottom-right">
-						<view>
-							<image class="mr-1 edit" src="../../static/images/addressImg/bjico.png"></image>
-							<text>编辑</text>
+					<view class="address-bottom flex justify-between align-center">
+						<view class="flex align-center " @click="changeSelete(item.id)">
+							<view class="flex align-center">
+								<icon type="success" size="20" v-if="item.is_default === 1"></icon>
+								<image src="../../static/images/addressImg/Choice.png" v-else></image>
+							</view>
+							<text class="ml-1">设为默认</text>
 						</view>
-						<view class="ml-3">
-							<image class="mr-1 delete" src="../../static/images/addressImg/scico.png"></image>
-							<text>删除</text>
+						<view class="flex align-center address-bottom-right">
+							<view @click="editAddress(item.id)">
+								<image class="mr-1 edit" src="../../static/images/addressImg/bjico.png"></image>
+								<text>编辑</text>
+							</view>
+							<view class="ml-3" @click="removeAddress(item.id)">
+								<image class="mr-1 delete" src="../../static/images/addressImg/scico.png"></image>
+								<text>删除</text>
+							</view>
 						</view>
 					</view>
 				</view>
-			</view>
-		</block>
-
-
+			</block>
+		</view>
+		<view v-else class="text-center mx-5 font-lg text-secondary">
+			空空如也,请添加地址
+		</view>
 
 	</view>
 </template>
 
 <script>
-	import {mapActions} from 'vuex';
-	import {defaultAddress} from '@/http/address.js';
+	import {
+		defaultAddress,
+		deleteAddress
+	} from '@/http/address.js';
+
 	export default {
 		props: {
 			addressList: {
 				type: Array,
-				default: () => []
+				default: () => {
+					return []
+				}
 			}
 		},
 		data() {
@@ -51,19 +58,35 @@
 				seleteDefault: false
 			}
 		},
-		created(){
+		created() {
 			this.userId = uni.getStorageSync('userId');
 		},
 		methods: {
 			changeSelete(id) {
-				
-				defaultAddress({id,userId:56}).then(res=>{
-					if(res.data.status === 0){
+				defaultAddress({
+					id,
+					userId: 56
+				}).then(res => {
+					if (res.data.status === 0) {
 						uni.showToast({
-							title:'设置成功'
+							title: '设置成功'
 						})
 						this.$emit('changeSelete')
 					}
+				})
+			},
+			async removeAddress(id) {
+				let result = await deleteAddress(id);
+				if (result.data !== null && result.data.status === 0) {
+					uni.showToast({
+						title: '删除成功'
+					})
+					this.$emit('removeAddress')
+				}
+			},
+			editAddress(id) {
+				uni.navigateTo({
+					url: `/pages/addAddress/addAddress?id=${id}`
 				})
 			}
 		}
@@ -73,6 +96,7 @@
 <style lang="scss">
 	.address-info-box {
 		padding: 20upx;
+		margin-bottom: 100upx;
 
 		.address-info-item {
 			padding: 25upx 25upx 20upx;

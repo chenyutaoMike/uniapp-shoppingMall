@@ -82,7 +82,8 @@
 					if(res.data !== null && res.data.status === 0){
 						this.selection === 1? this.selection = 2 : this.selection = 1;
 						this.getCartTotalPic(this.userId);
-						this.getCartListAry(this.userId)
+						this.getCartListAry(this.userId);
+						console.log(this.cartList)
 					}
 				})
 			}

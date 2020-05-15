@@ -29,7 +29,9 @@
 		props:{
 			list:{
 				type:Array,
-				default:() => []
+				default:() => {
+					return []
+				}
 			}
 		},
 		data(){

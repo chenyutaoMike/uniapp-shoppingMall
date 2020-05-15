@@ -1,7 +1,7 @@
 <template>
 	<view class="address-box">
 		<scroll-view scroll-y="true" class="good-list-bg" :style="`height:${scrollH}px`">
-		  	<address-info :addressList="addressList" @changeSelete="changeSelete"/>
+		  	<address-info :addressList="addressList" @changeSelete="changeSelete" @removeAddress="removeAddress"/>
 			
 		</scroll-view>
 		<view class="address-add flex justify-between px-3 align-center" @click="goAddress">
@@ -27,14 +27,17 @@
 			...mapActions(['getAddressAry']),
 			goAddress(){
 				uni.navigateTo({
-					url:'/pages/addAddress/addAddress'
+					url:`/pages/addAddress/addAddress?id=0`
 				})
 			},
 			changeSelete(){
-				this.getAddressAry(56)
+				this.getAddressAry(this.userId)
+			},
+			removeAddress(){
+				this.getAddressAry(this.userId)
 			}
 		},
-		mounted() {
+		onLoad() {
 			let res = uni.getSystemInfoSync();
 			this.userId = uni.getStorageSync('userId');
 			this.scrollH = res.windowHeight;
@@ -51,7 +54,9 @@
 					}
 				})
 			}
-			this.getAddressAry(56)
+		},
+		onShow(){
+			this.getAddressAry(this.userId)
 		},
 		computed:{
 			...mapState({
