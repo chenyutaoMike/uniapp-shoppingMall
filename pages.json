@@ -119,7 +119,7 @@
 		"list": [
 			{
 				"name": "1", //模式名称
-				"path": "pages/buy/buy", //启动页面，必选
+				"path": "pages/index/index", //启动页面，必选
 				"query": "id=1" //启动参数，在页面的onLoad函数里面得到
 			}
 		]

@@ -65,7 +65,7 @@
 			changeSelete(id) {
 				defaultAddress({
 					id,
-					userId: 56
+					userId: this.userId
 				}).then(res => {
 					if (res.data.status === 0) {
 						uni.showToast({

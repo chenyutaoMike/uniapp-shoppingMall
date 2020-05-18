@@ -11,6 +11,7 @@ export const GETINDEXYOULIKE = 'GETINDEXYOULIKE';
 export const GETDETAILSIMG = 'GETDETAILSIMG';
 export const GETDETAILSINFO = 'GETDETAILSINFO';
 export const GETADDCART = 'GETADDCART';
+export const GETTOBUY = 'GETTOBUY';
 
 // 商品列表的请求
 export const GETGOODLIST = 'GETGOODLIST';
@@ -41,3 +42,11 @@ export const ORDERREDTHREE = 'ORDERREDTHREE';
 // 地址列表页面请求
 
 export const GETADDRESSLIST = 'GETADDRESSLIST';
+
+
+// 用户支付页面
+export const GETDEFAULTADDRESS = 'GETDEFAULTADDRESS';
+export const GETORDERCART = 'GETORDERCART';
+export const GETCOUPON = 'GETCOUPON';
+export const GETCHECKCOUPON = 'GETCHECKCOUPON';
+export const NOTUSECOUPON = 'NOTUSECOUPON';

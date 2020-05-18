@@ -32,7 +32,7 @@
 
 			</view>
 				<view class="popup-button" v-if="addCartorBuy === 0" @click.stop="addCart">加入购物车</view>
-				<view class="popup-button" v-else @click.stop>立即购买</view>
+				<view class="popup-button" v-else @click.stop @click="buy">立即购买</view>
 		</view>
 	</view>
 </template>
@@ -117,6 +117,36 @@
 					return 
 				}
 				this.seleteNumber = this.seleteNumber-1;
+			},
+			buy(){
+				let userId = uni.getStorageSync('userId');
+				if(!userId){
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+					})
+					return 
+				}
+				let {id,unit,stock} = this.info;
+				let {seleteNumber,seleteUnitIndex} = this;
+				if(seleteNumber > stock){
+					uni.showToast({
+						title:'选择数量大于库存',
+						icon:'none'
+					})
+					return
+				}
+				// 立即购买
+				let option = {
+					id:id,
+					userId:userId,
+					quantity:seleteNumber,
+					isChecked:2,
+					unit:unit.split('/')[seleteUnitIndex]
+				}
+			
+				this.getAddCart(option)
+				this.$emit('clone')
 			}
 		},
 		computed:{
