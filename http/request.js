@@ -29,3 +29,4 @@ export const hostUrl = 'https://www.baquwangluo.cn';
 export const bannerTypeId = 2;
 export const bannerId = 1;
 export const type = "3";
+export const appid = 'wxeee2536abcf8a3d8';

@@ -1,4 +1,4 @@
-import {UNILOGIN,ORDERRED,ORDERRONE,ORDERREDTWO,ORDERREDTHREE} from './action-type.js';
+import {UNILOGIN,ORDERRED,ORDERRONE,ORDERREDTWO,ORDERREDTHREE,LOGOUT} from './action-type.js';
 import {uniLogin,getUserInfo,onLogin,addUser,getOrderRed,getOrderRedOne,getOrderRedTwo,getOrderRedThree} from '@/http/user.js'
 export  const user = {
   state: { 
@@ -24,30 +24,53 @@ export  const user = {
 		 },
 		 async getOrderPay({commit},userId){
 			 const result = await getOrderRed(userId);
+			
+			 if(result.data !== null && res.data.status !== 0){
+				 
 			 commit(ORDERRED,result.data)
+			 }
 		 },
 		async getOrderDelivery({commit},userId){
 					 const result = await getOrderRedOne(userId);
+					 if(result.data !== null && res.data.status !== 0){
+					 				 
 					 commit(ORDERRONE,result.data)
+					 }
+					
 		},
 		async getOrderReceiving({commit},userId){
 					 const result = await getOrderRedTwo(userId);
+					 if(result.data !== null && res.data.status !== 0){
+					 				 
 					 commit(ORDERREDTWO,result.data)
+					 }
+					
 		},
 		async getOrderTransaction({commit},userId){
 					 const result = await getOrderRedThree(userId);
-					 commit(ORDERREDTHREE,result.data)
+					 if(result.data !== null && res.data.status !== 0){
+					 				 
+					  commit(ORDERREDTHREE,result.data)
+					 }
+					
 		},
+		logout({commit}){
+			console.log('进来')
+			commit(LOGOUT)
+		}
   },
 
  mutations:{
 	 UNILOGIN(state,result){
+		 console.log(result)
 		 state.openId = result.openId;
 		 state.userId = result.userId;
 		 state.userInfo = result;
-		 uni.setStorageSync('openId',result.openid);
+		
+		 uni.setStorageSync('openId',result.openId);
 		 uni.setStorageSync('userId',result.userId);
 		 uni.setStorageSync('userInfo',result);
+		
 	 },
 	 ORDERRED(state,result){
 		 state.isPay = result;
@@ -60,6 +83,16 @@ export  const user = {
 	 },
 	 ORDERREDTHREE(state,result){
 		  state.isTransaction = result;
+	 },
+	 LOGOUT(state){
+		
+		 state.openId = '';
+		 state.userId = '';
+		 state.userInfo = '';
+		
+		 uni.removeStorageSync('openId');
+		 uni.removeStorageSync('userId');
+		 uni.removeStorageSync('userInfo');
 	 }
 		
  }

@@ -6,8 +6,7 @@
 			<cart-list :cartList="cartList" v-else  @choice="choice"/>
 	</scroll-view>
 	
-
-		<view class="cart-bottom">
+		<view class="cart-bottom"  >
 			<view class="cart-bottom-info">
 				<view class="info-left flex  align-center">
 					<label>

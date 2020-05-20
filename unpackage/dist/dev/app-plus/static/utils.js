@@ -23,3 +23,21 @@ export function formatAddress(address) {
 	return [region,newAddress]
 }
 
+export const calculation = (total, couponAmount) => { //这个函数用来计算价格,第一个参数总价格,第二个是要减去的价格
+  let baseNum, baseNum1, baseNum2;
+  let precision; // 精度
+  try {
+    baseNum1 = total.toString().split(".")[1].length;
+  } catch (e) {
+    baseNum1 = 0;
+  }
+  try {
+    baseNum2 = couponAmount.toString().split(".")[1].length;
+  } catch (e) {
+    baseNum2 = 0;
+  }
+  baseNum = Math.pow(10, Math.max(baseNum1, baseNum2));
+  precision = (baseNum1 >= baseNum2) ? baseNum1 : baseNum2;
+  return ((total * baseNum - couponAmount * baseNum) / baseNum).toFixed(precision);
+}
+

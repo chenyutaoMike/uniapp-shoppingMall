@@ -36,6 +36,7 @@ export const ORDERRONE = 'ORDERRONE';
 export const ORDERREDTWO = 'ORDERREDTWO';
 //已完成
 export const ORDERREDTHREE = 'ORDERREDTHREE';
+export const LOGOUT = 'LOGOUT';
 
 
 
@@ -50,3 +51,6 @@ export const GETORDERCART = 'GETORDERCART';
 export const GETCOUPON = 'GETCOUPON';
 export const GETCHECKCOUPON = 'GETCHECKCOUPON';
 export const NOTUSECOUPON = 'NOTUSECOUPON';
+export const GETINTEGRALDTOTAL = 'GETINTEGRALDTOTAL';
+export const GETBUYTOTALPIC = 'GETBUYTOTALPIC';
+export const USERCOUPON = 'USERCOUPON';

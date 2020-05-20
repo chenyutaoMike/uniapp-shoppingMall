@@ -4,7 +4,7 @@
 		<view class="user-info">
 			<image :src="userInfo.avatarUrl ? userInfo.avatarUrl : user_img" class="user-img" ></image>
 	
-			<view class="user-login" @click="login" v-if="!userInfo.nickName">登录/注册</view>
+			<view class="user-login" @click="goLogin" v-if="!userInfo.nickName">登录/注册</view>
 			<view v-else>
 				<view class="user-name">{{userInfo.nickName}}</view>
 				<view>积分：100</view>
@@ -34,11 +34,15 @@
 		props:{
 			userInfo:{
 				type:Object,
-				default:() => ({})
+				default:() => {
+					return {}
+				}
 			},
 			orderList:{
 				type:Array,
-				default:() => ([])
+				default:() => {
+					return []
+				}
 			}
 		},
 		data() {
@@ -58,8 +62,12 @@
 					url:`/pages/order/order?id=${id}`
 				})
 			},
-			login(){
-				this.getUniLogin();
+			goLogin(){
+				// this.getUniLogin();
+				console.log('change')
+				uni.navigateTo({
+					url:'/pages/login/login'
+				})
 			}
 		}
 	}

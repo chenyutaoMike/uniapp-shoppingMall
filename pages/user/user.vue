@@ -5,6 +5,7 @@
 		<view class="wall"></view>
 		<userList />
 	</scroll-view>
+	<button @click="userlogout">退出登陆</button>
 	</view>
 
 
@@ -56,8 +57,8 @@
 		
 		},
 		onLoad(){
-			let userInfo = uni.getStorageSync('userInfo');
-			this.userInfo = userInfo;
+			// let userInfo = uni.getStorageSync('userInfo');
+			// this.userInfo = userInfo;
 			this.orderList =orderList;
 		},
 		onShow(){
@@ -82,10 +83,19 @@
 				})
 		},
 		methods: {
-			...mapActions(['getOrderPay','getOrderDelivery','getOrderReceiving','getOrderTransaction'])
+			...mapActions(['getOrderPay','getOrderDelivery','getOrderReceiving','getOrderTransaction','logout']),
+			userlogout(){
+				this.logout()
+			}
 		},
 		computed:{
-			...mapState(['isPay','isDelivery','isReceiving','isTransaction'])
+			...mapState({
+				isPay:state => state.user.isPay,
+				isDelivery:state => state.user.isDelivery,
+				isReceiving:state => state.user.isReceiving,
+				isTransaction:state => state.user.isTransaction,
+				userInfo:state => state.user.userInfo
+			})
 		}
 	}
 </script>

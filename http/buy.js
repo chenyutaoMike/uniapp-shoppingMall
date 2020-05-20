@@ -1,6 +1,7 @@
 import {
 	request,
-	type
+	type,
+	appid
 } from './request.js';
 
 
@@ -41,5 +42,50 @@ export function seleteCoupon(option) {
 		opt: 'choiceIntegralsub',
 		id: option.id,
 		checkId: option.checkId
+	})
+}
+
+export function integralDTotal(userId) {
+	return request({
+		opt: 'integralDTotal',
+		userId: userId
+	})
+}
+
+
+export function choiceIntegralsub(id) {
+	return request({
+		opt: 'choiceIntegralsub',
+		id: id,
+		checkId: 2
+	})
+}
+
+
+// 添加订单
+export function addOrder(option) {
+	return request({
+		opt: 'addOrder',
+		userId: option.userId,
+		addressId: option.addressId,
+		quantity_sum: option.quantity_sum,
+		price_sum: option.price_sum,
+		shipping_method: option.shipping_method,
+		recommended_code: option.recommended_code,
+		note: option.note,
+		formId: option.formId
+	})
+}
+
+// 支付
+export function pay(option) {
+	console.log(appid)
+	return request({
+		opt: 'GetUnifiedOrderResult',
+		userId: option.userId,
+		id: option.id,
+		typeId: 1,
+		appid: appid,
+		openid:option.openid
 	})
 }

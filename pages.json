@@ -80,7 +80,11 @@
         ,{
             "path" : "pages/buy/buy",
             "style" : {}
-        }
+        },
+				{
+				    "path" : "pages/login/login",
+				    "style" : {}
+				}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

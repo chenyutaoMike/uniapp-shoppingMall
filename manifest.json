@@ -18,7 +18,8 @@
         },
         /* 模块配置 */
         "modules" : {
-            "Payment" : {}
+            "Payment" : {},
+            "OAuth" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -52,14 +53,22 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wxeee2536abcf8a3d8",
+                        "appsecret" : "",
+                        "UniversalLinks" : ""
+                    }
+                }
+            }
         }
     },
     /* 快应用特有相关 */
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxeee2536abcf8a3d8",
         "setting" : {
             "urlCheck" : false,
             "es6" : false

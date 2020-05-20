@@ -7,7 +7,7 @@
 				去逛逛
 					</view>
 		</view>
-	<youLike />
+	<youLike v-if="userId" />
 	</view>
 </template>
 
@@ -21,6 +21,9 @@
 			return {
 				imgUrl:'/static/images/cartImg/shopCart.png'
 			}
+		},
+		created() {
+			this.userId = uni.getStorageSync('userId');
 		}
 	}
 </script>

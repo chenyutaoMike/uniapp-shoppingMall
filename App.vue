@@ -19,5 +19,13 @@
 	@import '@/components/feng-parse/parse.css';
 	@import './static/css/animate.min.css';
 	@import './static/css/free.css';
+	@import "components/m-icon/m-icon.css";
 	
+	
+	
+
+	
+	
+	
+
 </style>

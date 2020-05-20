@@ -1,6 +1,6 @@
 <template>
 	<view class="buy-box">
-		<form>
+		<form report-submit="true" @submit="formSubit" @report-submit-timeout="5000" @reset="rsetForm">
 			<view class="buy-box-top">
 
 				<view class="top-list flex px-3">
@@ -80,7 +80,7 @@
 					实际付款:
 					<text class="font-lg ml-1">￥{{totalPic}}</text>
 				</view>
-				<view class="submit-order-buttom">提交订单</view>
+				<button class="submit-order-buttom" form-type="submit">提交订单</button>
 			</view>
 			<popup :isShow="isShow" @clone="clone">
 				<view class="buy-coupon-list" @click.stop>
@@ -90,7 +90,7 @@
 					</view>
 					<view class="text-center font-md text-muted" v-if="!isCoupon">订单中有优惠活动商品，不可用优惠券</view>
 					<scroll-view scroll-y style="height: 480upx;" v-else @touchmove.stop>
-						<block v-for="item in couponList" :key="item.id">
+						<block v-for="item in couponList" :key="item.id" v-if="couponList.length !== 0">
 							<view class="buy-coupon-item flex align-center justify-between px-3" :data-id="item.id" :data-is_checked="item.is_checked"
 							 @click="seleteCoupon">
 								<text>{{item.title}}</text>
@@ -98,7 +98,7 @@
 								<image v-else src="../../static/images/buyImg/Choice.png"></image>
 							</view>
 						</block>
-
+						<view v-else>暂无优惠劵</view>
 					</scroll-view>
 					<view class="selete-coupon" v-show="isCoupon" @click="clone">
 						完成
@@ -114,6 +114,13 @@
 	import buyList from '@/components/buyComponent/buyList.vue';
 	import popup from '@/components/popup.vue';
 	import {
+		calculation
+	} from '@/static/utils.js';
+	import {
+		addOrder,
+		pay
+	} from '@/http/buy.js';
+	import {
 		mapActions,
 		mapState,
 		mapGetters
@@ -126,7 +133,10 @@
 		data() {
 			return {
 				message: '',
-				isShow: false
+				isShow: false,
+				shipping_method: '',
+				recommended_code: undefined,
+				note: ''
 			}
 		},
 		onLoad() {
@@ -145,17 +155,160 @@
 				return
 			}
 			this.getOrderCartAry(this.userId);
-			this.getCartTotalPic(this.userId);
-			this.getCheckisCoupon(56)
+			this.getBuyToatlPic(this.userId);
+			this.getCheckisCoupon(this.userId)
 		},
 		onShow() {
 			// 获取地址
 			this.getDefaultAddress(this.userId);
 		},
 		methods: {
-			...mapActions(['getDefaultAddress', 'getOrderCartAry', 'getCartTotalPic', 'getCheckisCoupon', 'getSeleteCoupon']),
-			clone() {
+			...mapActions(['getDefaultAddress', 'getOrderCartAry', 'getBuyToatlPic', 'getCheckisCoupon', 'getSeleteCoupon',
+				'getIntegralDTotal', 'useCoupon', 'getChoiceIntegralsub'
+			]),
+			rsetForm() { //重置表单
+
+			},
+			async formSubit(e) { //提交订单
+				let formId = e.detail.formId;
+				console.log(e)
+				console.log(formId)
+				let {
+					cellphone,
+					address,
+					quantity,
+					totalPic,
+					userId,
+					addressId,
+					shipping_method,
+					recommended_code,
+					note
+				} = this;
+				if (!cellphone || !address) {
+					uni.showToast({
+						title: '请选择地址',
+						icon: 'none'
+					})
+				}
+				console.log('userId', userId)
+				console.log('addressId', addressId)
+				console.log('quantity_sum', quantity)
+				console.log('price_sum', totalPic)
+				console.log('shipping_method', shipping_method)
+				console.log('recommended_code', recommended_code)
+				console.log('note', note)
+				console.log('formId', formId)
+				let res = await addOrder({
+					userId: userId,
+					addressId: addressId,
+					quantity_sum: quantity,
+					price_sum: totalPic,
+					shipping_method: shipping_method,
+					recommended_code: recommended_code,
+					note: note,
+					formId: formId
+				});
+				console.log(res)
+				if (totalPic <= 0) {
+					uni.showToast({
+						title: '购买成功',
+						icon: 'success',
+						duration: 1000,
+						success: () => {
+							uni.redirectTo({
+								url: '/pages/order/order',
+							})
+						}
+					})
+					return
+				} else {
+					if (res.data.status != null) {
+						this.payment(res.data.status)
+					} else {
+						uni.showToast({
+							title: '提交失败!',
+							icon: 'none',
+							duration: 1500
+						})
+					}
+				}
+			},
+			async payment(id) { //付款函数
+				let {userId,openId} = this;
+				console.log({id,userId})
+				
+				let openid = uni.getStorageSync('openId');
+				console.log(openid)
+				let res = await pay({id,userId,openid:openid});
+				console.log(res)
+				if (res.data != null) {
+					console.log('进来')
+					uni.requestPayment({
+						'provider': "weixin",
+						"orderInfo":res.data.timeStamp,
+						'timeStamp': res.data.timeStamp,
+						'nonceStr': res.data.nonceStr,
+						'package': res.data.package,
+						'signType': 'MD5',
+						'paySign': res.data.paySign,
+						success:(res)=>{
+							console.log(res)
+						}
+					})
+				}
+			},
+			clone() { //关闭窗口并计算金额
 				this.isShow = false;
+				console.log(this.couponList)
+				let {
+					couponList
+				} = this;
+				let number = couponList.reduce((pre, item) => {
+					if (item.is_checked === 1) {
+						pre += 1;
+					}
+					return pre
+				}, 0);
+				if (number === couponList.length) {
+					// 没有选择任何优惠劵
+					this.getBuyToatlPic(this.userId) //重新获取购物车价钱
+					return
+				}
+				this.getIntegralDTotal(this.userId).then(() => {
+					let {
+						preferentialAmount,
+						totalPic
+					} = this;
+					let newPic = calculation(totalPic, preferentialAmount);
+					if (newPic < 0) {
+						uni.showModal({
+							title: '温馨提示',
+							content: '优惠劵金额大于商品金额,确定使用吗',
+							cancelText: "不使用",
+							confirmText: '使用',
+							success: res => {
+
+								if (res.confirm) {
+									console.log('点了确定')
+									this.useCoupon(0)
+								}
+								if (res.cancel) {
+									console.log('点了取消')
+									// 点击了取消,遍历优惠劵,取消选择优惠劵
+									this.couponList.forEach(item => {
+										if (item.is_checked === 2) {
+											this.getChoiceIntegralsub(item.id)
+										}
+									})
+									this.getBuyToatlPic(this.userId)
+								}
+							}
+						})
+					} else {
+						this.useCoupon(newPic)
+					}
+
+				})
 			},
 			openCoupon() {
 				this.isShow = true;
@@ -166,7 +319,6 @@
 				})
 			},
 			seleteCoupon(e) {
-				console.log(e)
 				let {
 					id,
 					is_checked
@@ -186,11 +338,14 @@
 				address: state => state.buy.address,
 				cellphone: state => state.buy.cellphone,
 				orderList: state => state.buy.orderList,
-				totalPic: state => state.cart.totalPic,
-				quantity: state => state.cart.quantity,
-				marketPriceTotal: state => state.cart.marketPriceTotal,
+				totalPic: state => state.buy.totalPic,
+				quantity: state => state.buy.quantity,
+				marketPriceTotal: state => state.buy.marketPriceTotal,
 				couponList: state => state.buy.couponList,
-				isCoupon: state => state.buy.isCoupon
+				isCoupon: state => state.buy.isCoupon,
+				preferentialAmount: state => state.buy.preferentialAmount,
+				addressId: state => state.buy.addressId,
+				openId : state => state.user.openId
 			}),
 			...mapGetters(['getSeleteCouponList'])
 
@@ -199,6 +354,10 @@
 </script>
 
 <style lang="scss">
+	button::after {
+		border: none;
+	}
+
 	.buy-box {
 		padding-bottom: 100upx;
 
@@ -293,6 +452,7 @@
 			.coupon-right {
 				width: 30upx;
 				height: 30upx;
+
 				.coupon-img {
 					width: 100%;
 					height: 100%;
@@ -326,6 +486,8 @@
 				line-height: 100upx;
 				background-color: $btnBg;
 				color: #fff;
+				margin: 0;
+				padding: 0;
 			}
 		}
 
