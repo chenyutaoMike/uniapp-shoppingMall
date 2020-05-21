@@ -7,7 +7,7 @@
 			<view class="user-login" @click="goLogin" v-if="!userInfo.nickName">登录/注册</view>
 			<view v-else>
 				<view class="user-name">{{userInfo.nickName}}</view>
-				<view>积分：100</view>
+				<!-- <view>积分：100</view> -->
 			</view>
 		</view>
 		<!-- 订单信息 -->

@@ -1,11 +1,11 @@
 <template>
-	<view class="user-box" :style="`height:${scrollH}px`" >
-	<scroll-view scroll-y="true" :style="`height:${scrollH}px`" >
-		<user-top :userInfo="userInfo" :orderList="orderList"/>
-		<view class="wall"></view>
-		<userList />
-	</scroll-view>
-	<button @click="userlogout">退出登陆</button>
+	<view class="user-box" :style="`height:${scrollH}px`">
+		<scroll-view scroll-y="true" :style="`height:${scrollH}px`">
+			<user-top :userInfo="userInfo" :orderList="orderList" />
+			<view class="wall"></view>
+			<userList />
+		</scroll-view>
+		<button @click="userlogout">退出登陆</button>
 	</view>
 
 
@@ -16,30 +16,33 @@
 			id: 1,
 			img_url: '/static/images/userImg/order1.png',
 			title: '待支付',
-			num:''
+			num: ''
 		},
 		{
 			id: 2,
 			img_url: '/static/images/userImg/order2.png',
 			title: '待发货',
-			num:''
+			num: ''
 		},
 		{
 			id: 3,
 			img_url: '/static/images/userImg/order3.png',
 			title: '待收货',
-			num:''
+			num: ''
 		},
 		{
 			id: 4,
 			img_url: '/static/images/userImg/order4.png',
 			title: '已完成',
-			num:''
+			num: ''
 		}
 	];
 	import userTop from '@/components/userComponent/userTop.vue';
 	import userList from '@/components/userComponent/userList.vue';
-	import {mapActions,mapState} from 'vuex';
+	import {
+		mapActions,
+		mapState
+	} from 'vuex';
 	export default {
 		components: {
 			userTop,
@@ -48,64 +51,75 @@
 		data() {
 			return {
 				scrollH: 0,
-				orderList:[]
+				orderList: []
 			}
 		},
 		mounted() {
 			let res = uni.getSystemInfoSync();
 			this.scrollH = res.windowHeight;
-		
+
 		},
-		onLoad(){
+		onLoad() {
 			// let userInfo = uni.getStorageSync('userInfo');
 			// this.userInfo = userInfo;
-			this.orderList =orderList;
+			this.orderList = orderList;
+			let {
+				userInfo
+			} = this;
+			if (Object.keys(userInfo).length === 0) {
+				let newInfo = uni.getStorageSync('userInfo');
+				if (Object.keys(newInfo).length !== 0) {
+				this.setUserInfo(newInfo)
+				}
+
+			}
+
 		},
-		onShow(){
+		onShow() {
 			let userId = uni.getStorageSync('userId');
 			this.getOrderPay(userId); //获取待支付
-			this.getOrderDelivery(userId);//获取待发货
-			this.getOrderReceiving(userId);//获取待收货
-			this.getOrderTransaction(userId);//获取已完成
-				this.orderList.forEach(item =>{
-					if(item.id === 1){
-						item.num = this.isPay
-					}
-					if(item.id === 2){
-						item.num = this.isDelivery
-					}
-					if(item.id === 3){
-						item.num = this.isReceiving
-					}
-					if(item.id === 4){
-						item.num = this.isTransaction
-					}
-				})
+			this.getOrderDelivery(userId); //获取待发货
+			this.getOrderReceiving(userId); //获取待收货
+			this.getOrderTransaction(userId); //获取已完成
+			this.orderList.forEach(item => {
+				if (item.id === 1) {
+					item.num = this.isPay
+				}
+				if (item.id === 2) {
+					item.num = this.isDelivery
+				}
+				if (item.id === 3) {
+					item.num = this.isReceiving
+				}
+				if (item.id === 4) {
+					item.num = this.isTransaction
+				}
+			})
 		},
 		methods: {
-			...mapActions(['getOrderPay','getOrderDelivery','getOrderReceiving','getOrderTransaction','logout']),
-			userlogout(){
+			...mapActions(['getOrderPay', 'getOrderDelivery', 'getOrderReceiving', 'getOrderTransaction', 'logout','setUserInfo']),
+			userlogout() {
 				this.logout()
 			}
 		},
-		computed:{
+		computed: {
 			...mapState({
-				isPay:state => state.user.isPay,
-				isDelivery:state => state.user.isDelivery,
-				isReceiving:state => state.user.isReceiving,
-				isTransaction:state => state.user.isTransaction,
-				userInfo:state => state.user.userInfo
+				isPay: state => state.user.isPay,
+				isDelivery: state => state.user.isDelivery,
+				isReceiving: state => state.user.isReceiving,
+				isTransaction: state => state.user.isTransaction,
+				userInfo: state => state.user.userInfo
 			})
 		}
 	}
 </script>
 
 <style lang="scss">
-.user-box{
-	.wall{
-		width: 100%;
-		height: 10upx;
-		background-color: #f5f5f5;
+	.user-box {
+		.wall {
+			width: 100%;
+			height: 10upx;
+			background-color: #f5f5f5;
+		}
 	}
-}
 </style>

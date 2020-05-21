@@ -83,7 +83,11 @@
         },
 				{
 				    "path" : "pages/login/login",
-				    "style" : {}
+				    "style": {
+				    	"navigationBarTitleText": "登陆帐号",
+				    	 "navigationBarBackgroundColor":"#92012a",
+				    	 "navigationBarTextStyle":"white"
+				    }
 				}
     ],
 	"globalStyle": {

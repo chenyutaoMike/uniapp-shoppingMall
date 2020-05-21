@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="input-group">
+		<!-- <view class="input-group">
 			<view class="input-row border">
 				<text class="title">账号：</text>
 				<m-input class="m-input" type="text" clearable focus v-model="account" placeholder="请输入账号"></m-input>
@@ -9,16 +9,16 @@
 				<text class="title">密码：</text>
 				<m-input type="password" displayable v-model="password" placeholder="请输入密码"></m-input>
 			</view>
-		</view>
-		<view class="btn-row">
+		</view> -->
+		<!-- <view class="btn-row">
 			<button type="primary" class="primary login-btn" @tap="bindLogin">登录</button>
-		</view>
-		<view class="action-row">
+		</view> -->
+	<!-- 	<view class="action-row">
 			<navigator url="../reg/reg">注册账号</navigator>
 			<text>|</text>
 			<navigator url="../pwd/pwd">忘记密码</navigator>
-		</view>
-		<view class="oauth-row" v-if="hasProvider" v-bind:style="{top: positionTop + 'px'}">
+		</view> -->
+		<view class="oauth-row" v-if="hasProvider" :style="{top: '100upx'}">
 			<view class="oauth-image" v-for="provider in providerList" :key="provider.value">
 				<image :src="provider.image" @tap="oauth(provider.value)"></image>
 				<!-- #ifdef MP-WEIXIN -->
@@ -26,6 +26,7 @@
 				<!-- #endif -->
 			</view>
 		</view>
+		<view  class="wxLogin" @tap="oauth('weixin')">微信登陆</view>
 	</view>
 </template>
 
@@ -56,7 +57,7 @@
 		methods: {
 			...mapActions(['getUniLogin']),
 			initProvider() {
-				const filters = ['weixin', 'qq'];
+				const filters = ['weixin'];
 				uni.getProvider({
 					service: 'oauth',
 					success: (res) => {
@@ -113,12 +114,11 @@
 						uni.getUserInfo({
 							provider: value,
 							success: (infoRes) => {
-								console.log(infoRes)
-								/**
-								 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
-								 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
-								 */
-								// this.getUniLogin(infoRes.userInfo.nickName);
+								
+								this.getUniLogin(infoRes);
+								uni.navigateBack({
+									delta:1
+								})
 							},
 							fail() {
 								uni.showToast({
@@ -190,6 +190,7 @@
 		width: 100%;
 		min-height: 100%;
 		display: flex;
+	
 	}
 
 	/* 原生组件模式下需要注意组件外部样式 */
@@ -332,5 +333,16 @@
 		height: 100%;
 		opacity: 0;
 	}
-	
+	.wxLogin{
+		width: 100%;
+		height: 100upx;
+		background-color: #33FF00;
+		margin-top: 200upx;
+		text-align: center;
+		line-height: 100upx;
+		color: #fff;
+		font-size: 34upx;
+		border-radius: 10upx;
+		
+	}
 </style>

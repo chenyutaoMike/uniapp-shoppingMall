@@ -4,38 +4,38 @@ import {
 } from './request.js';
 
 
-export function uniLogin() {
-	return new Promise((resolve, reject) => {
-		uni.login({
-			provider: 'weixin',
-			success: loginRes => {
-				resolve(loginRes)
-			},
-			fail: err => {
-				uni.showToast({
-					title: '网络错误',
-					icon: 'none'
-				})
-			}
-		})
-	})
-}
-export function getUserInfo() {
-	return new Promise((resolve, reject) => {
-		uni.getUserInfo({
-			withCredentials: false,
-			success: userinfo => {
-				resolve(userinfo)
-			},
-			fail: err => {
-				uni.showToast({
-					title: '网络错误',
-					icon: 'none'
-				})
-			}
-		})
-	})
-}
+// export function uniLogin() {
+// 	return new Promise((resolve, reject) => {
+// 		uni.login({
+// 			provider: 'weixin',
+// 			success: loginRes => {
+// 				resolve(loginRes)
+// 			},
+// 			fail: err => {
+// 				uni.showToast({
+// 					title: '网络错误',
+// 					icon: 'none'
+// 				})
+// 			}
+// 		})
+// 	})
+// }
+// export function getUserInfo() {
+// 	return new Promise((resolve, reject) => {
+// 		uni.getUserInfo({
+// 			withCredentials: false,
+// 			success: userinfo => {
+// 				resolve(userinfo)
+// 			},
+// 			fail: err => {
+// 				uni.showToast({
+// 					title: '网络错误',
+// 					icon: 'none'
+// 				})
+// 			}
+// 		})
+// 	})
+// }
 
 export function onLogin(res) {
 	return request({

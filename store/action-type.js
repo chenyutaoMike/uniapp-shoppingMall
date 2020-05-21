@@ -37,7 +37,7 @@ export const ORDERREDTWO = 'ORDERREDTWO';
 //已完成
 export const ORDERREDTHREE = 'ORDERREDTHREE';
 export const LOGOUT = 'LOGOUT';
-
+export const SETUSERINFO = 'SETUSERINFO'
 
 
 // 地址列表页面请求

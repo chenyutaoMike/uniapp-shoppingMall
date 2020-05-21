@@ -78,6 +78,8 @@
 				}
 			},
 			updataList(result) {
+				console.log(result)
+				console.log(this.where)
 				// 接口有问题
 				// this.updateGoodListArr({
 				// 	orderBy: result,

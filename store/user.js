@@ -1,5 +1,5 @@
-import {UNILOGIN,ORDERRED,ORDERRONE,ORDERREDTWO,ORDERREDTHREE,LOGOUT} from './action-type.js';
-import {uniLogin,getUserInfo,onLogin,addUser,getOrderRed,getOrderRedOne,getOrderRedTwo,getOrderRedThree} from '@/http/user.js'
+import {UNILOGIN,ORDERRED,ORDERRONE,ORDERREDTWO,ORDERREDTHREE,LOGOUT,SETUSERINFO} from './action-type.js';
+import {onLogin,addUser,getOrderRed,getOrderRedOne,getOrderRedTwo,getOrderRedThree} from '@/http/user.js'
 export  const user = {
   state: { 
 		userInfo:{}, //用户信息
@@ -11,9 +11,8 @@ export  const user = {
 		isTransaction:'' //已完成
 	},
   actions: {
-		async getUniLogin({commit}) {
-		  const authResult = await uniLogin();
-			const userInfo = await getUserInfo();
+		async getUniLogin({commit},userInfo) {
+			// console.log(userInfo)
 			const loginInfo = await addUser(userInfo);
 			const userId = loginInfo.data.userId;
 			let result = {
@@ -54,8 +53,11 @@ export  const user = {
 					 }
 					
 		},
+		setUserInfo({commit},userInfo){
+			commit(SETUSERINFO,userInfo)
+		},
 		logout({commit}){
-			console.log('进来')
+			
 			commit(LOGOUT)
 		}
   },
@@ -70,7 +72,10 @@ export  const user = {
 		 uni.setStorageSync('openId',result.openId);
 		 uni.setStorageSync('userId',result.userId);
 		 uni.setStorageSync('userInfo',result);
-		
+		 
+	 },
+	 SETUSERINFO(state,result){
+		 state.userInfo = result;
 	 },
 	 ORDERRED(state,result){
 		 state.isPay = result;
