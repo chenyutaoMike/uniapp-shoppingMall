@@ -60,8 +60,6 @@
 
 		},
 		onLoad() {
-			// let userInfo = uni.getStorageSync('userInfo');
-			// this.userInfo = userInfo;
 			this.orderList = orderList;
 			let {
 				userInfo

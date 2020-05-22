@@ -3,7 +3,7 @@
 		<good-list-search />
 		<goodSort :typeid="typeId" @updataList="updataList" />
 		<scroll-view scroll-y="true" class="good-list-bg" :style="`height:${scrollH}px`" @scrolltolower='nextPage'>
-			<shop-list :gooListArr="gooListArr" />
+			<shop-list  :gooListArr="gooListArr" />
 		</scroll-view>
 	</view>
 </template>
@@ -26,7 +26,8 @@
 			return {
 				scrollH: '',
 				where: '1=1 and isTop=1',
-				search: ''
+				search: '',
+				orderBy:''
 			}
 		},
 		onLoad(option) {
@@ -64,7 +65,7 @@
 			nextPage() {
 				if (!this.noList) {
 					this.getGoodNextListArr({
-						orderBy: '',
+						orderBy: this.orderBy,
 						where: this.where,
 						page: this.page + 1,
 						type: this.type
@@ -78,15 +79,16 @@
 				}
 			},
 			updataList(result) {
-				console.log(result)
-				console.log(this.where)
+				// console.log(result)
+				// console.log(this.where)
 				// 接口有问题
-				// this.updateGoodListArr({
-				// 	orderBy: result,
-				// 	where: this.where,
-				// 	page: 1
-				// })
-
+				this.orderBy = result;
+				this.updateGoodListArr({
+					orderBy: result,
+					where: this.where,
+					page: 1
+				})
+				
 			}
 			
 		},

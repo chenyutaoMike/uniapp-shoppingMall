@@ -1,6 +1,6 @@
 {
-    "name" : "ShoppingMall",
-    "appid" : "",
+    "name" : "KL生活优选",
+    "appid" : "__UNI__A92FB28",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -57,10 +57,11 @@
                 "oauth" : {
                     "weixin" : {
                         "appid" : "wxeee2536abcf8a3d8",
-                        "appsecret" : "",
+                        "appsecret" : "0ca58f88bdd759d4d4ada4a6457681c0",
                         "UniversalLinks" : ""
                     }
-                }
+                },
+                "ad" : {}
             }
         }
     },

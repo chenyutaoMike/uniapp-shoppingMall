@@ -31,39 +31,67 @@
 		}
         ,{
             "path" : "pages/details/details",
-            "style" : {
-							"navigationBarTitleText": "商品详情"
-						}
+            "style": {
+            	"navigationBarTitleText": "商品详情",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/goodList/good-list",
-            "style" : {
-							"navigationBarTitleText": "商品列表"
-						}
+            "style": {
+            	"navigationBarTitleText": "商品列表",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/order/order",
-            "style" : {}
+           "style": {
+           	"navigationBarTitleText": "查看订单",
+           	 "navigationBarBackgroundColor":"#92012a",
+           	 "navigationBarTextStyle":"white"
+           }
         }
         ,{
             "path" : "pages/addressList/addressList",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "选择地址",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/addAddress/addAddress",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "添加地址",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/integral/integral",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "积分商城",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/coupon/coupon",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "优惠劵",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/openVip/openVip",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "开通vip",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/integralMall/integralMall",
@@ -71,15 +99,27 @@
         }
         ,{
             "path" : "pages/integralCart/integralCart",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "积分购物车",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/orderDetail/orderDetail",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "订单详情",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         }
         ,{
             "path" : "pages/buy/buy",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "立即购买",
+            	 "navigationBarBackgroundColor":"#92012a",
+            	 "navigationBarTextStyle":"white"
+            }
         },
 				{
 				    "path" : "pages/login/login",

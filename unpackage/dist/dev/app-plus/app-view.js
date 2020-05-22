@@ -7467,7 +7467,7 @@ var render = function() {
     "v-uni-view",
     { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
-      _vm._l(_vm._$g(1, "f"), function(item, $10, $20, $30) {
+      _vm._l(_vm._$g(1, "f"), function(item, index, $20, $30) {
         return [
           _c(
             "v-uni-view",
@@ -12805,15 +12805,14 @@ var render = function() {
       _c("v-uni-view", { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } }, [
         _vm._v("我的积分:100")
       ]),
-      _c("shop-list", { attrs: { _i: 2 } }),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
         [
-          _c("v-uni-image", { attrs: { src: _vm._$g(4, "a-src"), _i: 4 } }),
+          _c("v-uni-image", { attrs: { src: _vm._$g(3, "a-src"), _i: 3 } }),
           _c(
             "v-uni-text",
-            { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
+            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
             [_vm._v("积分购物车")]
           )
         ],

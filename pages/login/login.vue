@@ -13,7 +13,7 @@
 		<!-- <view class="btn-row">
 			<button type="primary" class="primary login-btn" @tap="bindLogin">登录</button>
 		</view> -->
-	<!-- 	<view class="action-row">
+		<!-- 	<view class="action-row">
 			<navigator url="../reg/reg">注册账号</navigator>
 			<text>|</text>
 			<navigator url="../pwd/pwd">忘记密码</navigator>
@@ -26,7 +26,7 @@
 				<!-- #endif -->
 			</view>
 		</view>
-		<view  class="wxLogin" @tap="oauth('weixin')">微信登陆</view>
+		<view class="wxLogin" @tap="oauth('weixin')">微信登陆</view>
 	</view>
 </template>
 
@@ -51,8 +51,8 @@
 				isDevtools: false,
 			}
 		},
-		computed:{
-			
+		computed: {
+
 		},
 		methods: {
 			...mapActions(['getUniLogin']),
@@ -68,7 +68,7 @@
 										value: res.provider[i],
 										image: '../../static/images/img/' + res.provider[i] + '.png'
 									});
-									
+
 								}
 							}
 							this.hasProvider = true;
@@ -105,16 +105,17 @@
 					});
 					return;
 				}
-				
+
 			},
 			oauth(value) {
 				uni.login({
 					provider: value,
-					success: (res) => {
+					success: (loginRes) => {
+
 						uni.getUserInfo({
 							provider: value,
 							success: (infoRes) => {
-								
+								console.log(infoRes)
 								this.getUniLogin(infoRes);
 								uni.navigateBack({
 									delta:1
@@ -132,34 +133,73 @@
 						console.error('授权登录失败：' + JSON.stringify(err));
 					}
 				});
-			},
-			getUserInfo({
-				detail
-			}) {
-				if (detail.userInfo) {
-					this.toMain(detail.userInfo.nickName);
-				} else {
-					uni.showToast({
-						icon: 'none',
-						title: '登陆失败'
-					});
-				}
-			},
-			toMain(userName) {
-				this.login(userName);
-				/**
-				 * 强制登录时使用reLaunch方式跳转过来
-				 * 返回首页也使用reLaunch方式
-				 */
-				if (this.forcedLogin) {
-					uni.reLaunch({
-						url: 'pages/user/user'
-					});
-				} else {
-					uni.navigateBack();
-				}
 
-			}
+				// let _this = this;
+				// let getAppid = 'wxeee2536abcf8a3d8';
+				// uni.login({
+				// 	provider: value,
+				// 	success: (loginRes) => {
+				
+				// 		uni.getUserInfo({
+				// 			provider: value,
+				// 			success: (infoRes) => {
+				// 				console.log(infoRes)
+				// 				// this.getUniLogin(infoRes);
+				// 				this.userInfo = infoRes;
+				// 				let weixinService = null;
+				// 				// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.getServices
+				// 				plus.oauth.getServices(function(services) {
+				
+				// 					if (services && services.length) {
+				// 						for (let i = 0, len = services.length; i < len; i++) {
+				// 							if (services[i].id === 'weixin') {
+				// 								weixinService = services[i];
+				// 								break;
+				// 							}
+				// 						}
+				// 						if (!weixinService) {
+				// 							console.log('没有微信登录授权服务');
+				// 							return;
+				// 						}
+				// 						// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.AuthService.authorize
+				// 						weixinService.authorize(function(event) { //此处获取code的关键
+									
+				// 							// _this.weixinCode = event.code; //用户换取 access_token 的 code
+				// 							// it.requestLogin();
+				// 						  _this.getUniLogin({code:event.code,userInfo:_this.userInfo})
+									
+								
+				// 						}, function(error) {
+				// 							console.error('authorize fail:' + JSON.stringify(error));
+				// 						}, {
+				// 							// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.AuthOptions
+				// 							appid: getAppid, //开放平台的应用标识。暂时填个假的充数，仅做演示。
+				// 						});
+				// 					} else {
+				// 						console.log('无可用的登录授权服务');
+				// 					}
+				// 				}, function(error) {
+				// 					console.error('getServices fail:' + JSON.stringify(error));
+				// 				});
+				// 			},
+				// 			fail() {
+				// 				uni.showToast({
+				// 					icon: 'none',
+				// 					title: '登陆失败'
+				// 				});
+				// 			}
+				// 		});
+				// 	},
+				// 	fail: (err) => {
+				// 		console.error('授权登录失败：' + JSON.stringify(err));
+				// 	}
+				// });
+				
+			
+			},
+			
+
+			
 		},
 		onReady() {
 			this.initPosition();
@@ -190,7 +230,7 @@
 		width: 100%;
 		min-height: 100%;
 		display: flex;
-	
+
 	}
 
 	/* 原生组件模式下需要注意组件外部样式 */
@@ -288,6 +328,7 @@
 	button.primary {
 		background-color: #0faeff;
 	}
+
 	.action-row {
 		display: flex;
 		flex-direction: row;
@@ -333,7 +374,8 @@
 		height: 100%;
 		opacity: 0;
 	}
-	.wxLogin{
+
+	.wxLogin {
 		width: 100%;
 		height: 100upx;
 		background-color: #33FF00;
@@ -343,6 +385,6 @@
 		color: #fff;
 		font-size: 34upx;
 		border-radius: 10upx;
-		
+
 	}
 </style>

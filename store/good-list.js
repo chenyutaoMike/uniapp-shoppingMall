@@ -23,7 +23,10 @@ export  const goodList = {
 		async updateGoodListArr({commit},option){
 			// 返回值错误
 			const result = await updateGoodList(option);
-			console.log(result)
+		
+			if(result.data.length !== 0){
+				commit(UPDATEGOODLIST,{data:result.data,page:option.page})
+			}
 		}
 	},
   mutations: {
@@ -40,6 +43,13 @@ export  const goodList = {
 				}
 				state.gooListArr.push(...data);
 				state.page = page;
+		},
+		UPDATEGOODLIST(state,{data,page}){
+		
+		
+			state.gooListArr = data;
+			state.page = page;
+			
 		}
   }
 

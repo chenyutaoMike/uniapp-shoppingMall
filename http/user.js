@@ -37,10 +37,11 @@ import {
 // 	})
 // }
 
-export function onLogin(res) {
+export function onLogin(code) {
+	
 	return request({
 		opt: 'onLogin',
-		code: res.code
+		code: code
 	})
 }
 

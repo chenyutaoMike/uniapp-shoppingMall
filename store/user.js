@@ -12,7 +12,9 @@ export  const user = {
 	},
   actions: {
 		async getUniLogin({commit},userInfo) {
-			// console.log(userInfo)
+		
+			let loginCode = await onLogin(code);
+			
 			const loginInfo = await addUser(userInfo);
 			const userId = loginInfo.data.userId;
 			let result = {

@@ -4,7 +4,7 @@
 		<view class="integral-mall-top border-bottom">
 			我的积分:100
 		</view>
-		<shop-list />
+		<!-- <shop-list /> -->
 		<view class="to-integral-cart flex flex-column align-center text-white justify-center">
 			<image :src="cartIcon"></image>
 			<text class="font-small">积分购物车</text>

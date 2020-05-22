@@ -18,10 +18,20 @@ export function getGoodListNext (option){
 }
 
 export function updateGoodList(option){
+		console.log({
+		   opt: 'getProductPageList',
+		   orderBy: option.orderBy,
+		   where: option.where,
+		   page: option.page,
+			 type:3,
+			 size:8
+	})
 	return request({
-		 opt: 'getProductPageList',
-		 size: 8,
-		 type:3,
-		 ...option
+		   opt: 'getProductPageList',
+		   orderBy: option.orderBy,
+		   where: option.where,
+		   page: option.page,
+			 type:3,
+			 size:8
 	})
 }
