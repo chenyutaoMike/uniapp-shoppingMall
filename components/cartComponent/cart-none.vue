@@ -7,12 +7,13 @@
 				去逛逛
 					</view>
 		</view>
-	<youLike v-if="userId" :list='youLikeList' />
+	<youLike v-if="userId" :list='youLikeList' @addCart="addCart" />
 	</view>
 </template>
 
 <script>
-	import youLike from '@/components/youLike.vue'
+	import youLike from '@/components/youLike.vue';
+	import {mapActions} from 'vuex';
 	export default {
 		props:{
 			isNone:Boolean,
@@ -39,10 +40,41 @@
 			console.log(this.isNone)
 		},
 		methods:{
+				...mapActions(['getAddCart']),
 			goGoodList(){
 				uni.navigateTo({
 					url:'/pages/goodList/good-list'
 				})
+			},
+			addCart(detail){
+				// 验证登陆信息
+					let userId = uni.getStorageSync('userId');
+					if(!userId){
+						uni.showToast({
+							title:'请先登陆',
+							icon:'none'
+						})
+						return 
+					}
+					let seleteNumber = 1;
+					let seleteUnitIndex = 0;
+					if(seleteNumber > detail.stock){
+						uni.showToast({
+							title:'库存不足',
+							icon:'none'
+						})
+						return
+					}
+					// 加入购物车
+					let option = {
+						id:detail.id,
+						userId:userId,
+						quantity:seleteNumber,
+						isChecked:1,
+						unit:detail.unit.split('/')[seleteUnitIndex]
+					}
+					this.getAddCart(option);
+					this.$emit('changeCart')
 			}
 		},
 	

@@ -2,7 +2,7 @@
 	<view class="cart-box">
 
 	<scroll-view scroll-y="true" :style="`height:${scrollH}px`">
-			<cart-none v-if="isNone" :youLikeList="youLike" />
+			<cart-none v-if="isNone" :youLikeList="youLike" @changeCart="changeCart" />
 			<cart-list  v-else :cartList="cartList"  @choice="choice" @changeCart="changeCart" />
 	</scroll-view>
 	

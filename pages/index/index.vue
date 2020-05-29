@@ -2,7 +2,7 @@
 	<view class="index">
 		<index-top @goDetail="goDetail"/>
 		<index-center  />
-		<like :list="youLike"/>
+		<like :list="youLike" @addCart="addCart"  />
 	</view>
 </template>
 
@@ -50,12 +50,45 @@
 			})
 		},
 		methods: {
-			...mapActions(['getRecommend','getBanner','getSlide','getType','getYouLike']),
+			...mapActions(['getRecommend','getBanner','getSlide','getType','getYouLike','getAddCart']),
 			goDetail(id){
 				uni.navigateTo({
 					url:`/pages/details/details?${id}`
 				})
-			}
+			},
+			addCart(detail){
+				// 验证登陆信息
+					let userId = uni.getStorageSync('userId');
+					if(!userId){
+						uni.showToast({
+							title:'请先登陆',
+							icon:'none'
+						})
+						return 
+					}
+				
+				
+					
+					let seleteNumber = 1;
+					let seleteUnitIndex = 0;
+					if(seleteNumber > detail.stock){
+						uni.showToast({
+							title:'库存不足',
+							icon:'none'
+						})
+						return
+					}
+					// 加入购物车
+					let option = {
+						id:detail.id,
+						userId:userId,
+						quantity:seleteNumber,
+						isChecked:1,
+						unit:detail.unit.split('/')[seleteUnitIndex]
+					}
+					this.getAddCart(option);
+				}
+			
 		}
 	}
 </script>

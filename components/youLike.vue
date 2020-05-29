@@ -16,6 +16,7 @@
 						<text class="new-pic">￥{{item.price}}</text>
 						<text class="old-pic">￥{{item.marketPrice}}</text>
 					</view>
+					<image class="like-cart" @click.stop="addCart(item)" src="../static/images/goodListImg/shopcart.png" mode=""></image>
 				</li>
 			</block>
 
@@ -44,6 +45,9 @@
 				uni.navigateTo({
 					url:`/pages/details/details?id=${id}`
 				})
+			},
+			addCart(item){
+				this.$emit('addCart',item)
 			}
 		}
 	}
@@ -68,7 +72,7 @@
 			padding-bottom: 10upx;
 			.like-item {
 				background-color: #fff;
-				// height: 475upx;
+				position: relative;
 				width: 49%;
 				margin-bottom: 20upx;
 				border-radius: 10upx;
@@ -92,7 +96,7 @@
 					-webkit-box-orient: vertical;
 				}
 				.like-pic{
-					padding: 0 10upx;
+					padding: 10upx 10upx;
 					.new-pic{
 						font-size: 32upx;
 						color: #ff005a;
@@ -103,6 +107,13 @@
 						color: #2d2d2d;
 						text-decoration: line-through;
 					}
+				}
+				.like-cart{
+					width: 80upx;
+					height: 80upx;
+					position: absolute;
+					right: 10upx;
+					bottom: 10upx;
 				}
 			}
 		}
