@@ -2,8 +2,8 @@
 	<view class="cart-box">
 
 	<scroll-view scroll-y="true" :style="`height:${scrollH}px`">
-			<cart-none v-if="isNone"/>
-			<cart-list :cartList="cartList" v-else  @choice="choice"/>
+			<cart-none v-if="isNone" :youLikeList="youLike" />
+			<cart-list  v-else :cartList="cartList"  @choice="choice" @changeCart="changeCart" />
 	</scroll-view>
 	
 		<view class="cart-bottom"  >
@@ -33,7 +33,8 @@
 	import cartList from '@/components/cartComponent/cart-list.vue';
 	import {
 		cartChoice,
-		selectAll
+		selectAll,
+		checkCount
 	} from '@/http/cart.js';
 	import {mapActions,mapState} from 'vuex';
 	export default {
@@ -52,6 +53,11 @@
 			this.scrollH = res.windowHeight - uni.upx2px(100);
 		
 		},
+		onLoad() {
+			if(this.cartList !== 0){
+				this.getCartYouLike()
+			}
+		},
 		onShow(){
 			this.userId = uni.getStorageSync('userId');
 			if(!this.userId){
@@ -63,16 +69,36 @@
 			// 56是userId
 			this.getCartListAry(this.userId);
 			this.getCartTotalPic(this.userId);
+		
 		},
 		methods: {
-			...mapActions(['getCartListAry','getCartTotalPic']),
-			choice(option){  //单选
-				cartChoice(option).then(res => {
+			...mapActions(['getCartListAry','getCartTotalPic','getCartYouLike']),
+			changeCart(){
+				
+				this.getCartListAry(this.userId);
+				this.getCartTotalPic(this.userId);
+			},
+			async choice(option){  //单选
+					let res = await	cartChoice(option);
 					if(res.data !== null){
-						this.getCartTotalPic(this.userId);
-						this.getCartListAry(this.userId)
+						// 检查是否全选
+					let result = await checkCount(this.userId);
+						
+						if(result.data.status === 2){
+								// 如果全部选择了,那么this.selection = 2,全选框会打上勾
+							this.selection = 2;
+							this.getCartTotalPic(this.userId);
+							this.getCartListAry(this.userId)
+					
+						}else if(result.data.status === 0 || result.data.status === 1){
+							// 如果没有全选,那么this.selection = 1,全选框不打钩
+							this.selection = 1;
+							this.getCartTotalPic(this.userId);
+							this.getCartListAry(this.userId)
+						}
+						
 					}
-				})
+			
 			},
 			cartSelect(e){   //全选
 			
@@ -82,7 +108,7 @@
 						this.selection === 1? this.selection = 2 : this.selection = 1;
 						this.getCartTotalPic(this.userId);
 						this.getCartListAry(this.userId);
-						console.log(this.cartList)
+						
 					}
 				})
 			}
@@ -92,7 +118,8 @@
 				cartList:state => state.cart.cartList,
 				totalPic:state => state.cart.totalPic,
 				marketPriceTotal:state => state.cart.marketPriceTotal,
-				quantity:state => state.cart.quantity
+				quantity:state => state.cart.quantity,
+				youLike:state => state.cart.youLike,
 			}),
 			isNone(){
 				// 判断购物车是否有商品,如果有商品就显示购物车,如果没有就显示猜你喜欢列表

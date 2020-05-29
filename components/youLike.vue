@@ -1,10 +1,10 @@
 <template>
-	<view class="like">
+	<view class="like" v-if="list.length !== 0">
 		<view class="like-title  bg-success ">
 			-_猜你喜欢_-
 		</view>
 		
-		<ul class="like-list flex flex-wrap justify-between" v-if="list.length !== 0">
+		<ul class="like-list flex flex-wrap justify-between" >
 			<block v-for="item in list" :key="item.id" >
 				<li class="like-item" @click="goDetail(item.id)">
 					<img class="like-img" :src="hostUrl + item.litpic"

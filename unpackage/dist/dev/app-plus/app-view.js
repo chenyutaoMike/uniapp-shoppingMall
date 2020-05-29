@@ -2200,7 +2200,12 @@ var render = function() {
                         {
                           key: _vm._$g("7-" + $30, "a-key"),
                           staticClass: _vm._$g("7-" + $30, "sc"),
-                          attrs: { _i: "7-" + $30 }
+                          attrs: { _i: "7-" + $30 },
+                          on: {
+                            click: function($event) {
+                              return _vm.$handleViewEvent($event)
+                            }
+                          }
                         },
                         [
                           _c("img", {
@@ -2560,15 +2565,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-uni-view",
-    { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
-    [
-      _c("v-uni-view", { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } }, [
-        _vm._v("-_猜你喜欢_-")
-      ]),
-      _vm._$g(2, "i")
-        ? _c(
+  return _vm._$g(0, "i")
+    ? _c(
+        "v-uni-view",
+        { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
+        [
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
+            [_vm._v("-_猜你喜欢_-")]
+          ),
+          _c(
             "ul",
             { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
             [
@@ -2637,10 +2644,10 @@ var render = function() {
             ],
             2
           )
-        : _vm._e()
-    ],
-    1
-  )
+        ],
+        1
+      )
+    : _vm._e()
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -3257,6 +3264,9 @@ var render = function() {
                 on: {
                   choice: function($event) {
                     return _vm.$handleViewEvent($event)
+                  },
+                  changeCart: function($event) {
+                    return _vm.$handleViewEvent($event)
                   }
                 }
               })
@@ -3487,7 +3497,15 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+            {
+              staticClass: _vm._$g(4, "sc"),
+              attrs: { _i: 4 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
+            },
             [_vm._v("去逛逛")]
           )
         ],
@@ -7763,7 +7781,14 @@ var render = function() {
                                 "v-uni-view",
                                 {
                                   staticClass: _vm._$g("12-" + $30, "sc"),
-                                  attrs: { _i: "12-" + $30 }
+                                  attrs: { _i: "12-" + $30 },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$handleViewEvent($event, {
+                                        stop: true
+                                      })
+                                    }
+                                  }
                                 },
                                 [
                                   _c("v-uni-image", {
@@ -14933,11 +14958,7 @@ var render = function() {
       _vm._$g(1, "i")
         ? _c(
             "v-uni-view",
-            {
-              staticClass: _vm._$g(1, "sc"),
-              style: _vm._$g(1, "s"),
-              attrs: { _i: 1 }
-            },
+            { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
             _vm._l(_vm._$g(2, "f"), function(provider, $10, $20, $30) {
               return _c(
                 "v-uni-view",
@@ -15494,7 +15515,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 20);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\r\n/*每个页面公共css */\nbody {\r\n  min-height: 100%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  font-size: 16px;\n}\r\n/* 原生组件模式下需要注意组件外部样式 */\nm-input {\r\n  width: 100%;\r\n  /* min-height: 100%; */\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\n}\n.content {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  background-color: #efeff4;\r\n  padding: 10px;\n}\n.input-group {\r\n  background-color: #ffffff;\r\n  margin-top: 20px;\r\n  position: relative;\n}\n.input-group::before {\r\n  position: absolute;\r\n  right: 0;\r\n  top: 0;\r\n  left: 0;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.input-group::after {\r\n  position: absolute;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.input-row {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  position: relative;\r\n  font-size: 18px;\r\n  line-height: 40px;\n}\n.input-row .title {\r\n  width: 72px;\r\n  padding-left: 15px;\n}\n.input-row.border::after {\r\n  position: absolute;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 8px;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.btn-row {\r\n  margin-top: 25px;\r\n  padding: 10px;\n}\nuni-button.primary {\r\n  background-color: #0faeff;\n}\n.action-row {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\n}\n.action-row uni-navigator {\r\n  color: #007aff;\r\n  padding: 0 10px;\n}\n.oauth-row {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\n}\n.oauth-image {\r\n  position: relative;\r\n  width: 50px;\r\n  height: 50px;\r\n  border: 1px solid #dddddd;\r\n  -webkit-border-radius: 50px;\r\n          border-radius: 50px;\r\n  margin: 0 20px;\r\n  background-color: #ffffff;\n}\n.oauth-image uni-image {\r\n  width: 30px;\r\n  height: 30px;\r\n  margin: 10px;\n}\n.oauth-image uni-button {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0;\n}\n.wxLogin {\r\n  width: 100%;\r\n  height: 100upx;\r\n  background-color: #33FF00;\r\n  margin-top: 200upx;\r\n  text-align: center;\r\n  line-height: 100upx;\r\n  color: #fff;\r\n  font-size: 34upx;\r\n  -webkit-border-radius: 10upx;\r\n          border-radius: 10upx;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\r\n/*每个页面公共css */\nbody {\r\n  min-height: 100%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  font-size: 16px;\n}\r\n/* 原生组件模式下需要注意组件外部样式 */\nm-input {\r\n  width: 100%;\r\n  /* min-height: 100%; */\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\n}\n.content {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  background-color: #efeff4;\r\n  padding: 10px;\n}\n.input-group {\r\n  background-color: #ffffff;\r\n  margin-top: 20px;\r\n  position: relative;\n}\n.input-group::before {\r\n  position: absolute;\r\n  right: 0;\r\n  top: 0;\r\n  left: 0;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.input-group::after {\r\n  position: absolute;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.input-row {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  position: relative;\r\n  font-size: 18px;\r\n  line-height: 40px;\n}\n.input-row .title {\r\n  width: 72px;\r\n  padding-left: 15px;\n}\n.input-row.border::after {\r\n  position: absolute;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 8px;\r\n  height: 1px;\r\n  content: '';\r\n  -webkit-transform: scaleY(0.5);\r\n  transform: scaleY(0.5);\r\n  background-color: #c8c7cc;\n}\n.btn-row {\r\n  margin-top: 25px;\r\n  padding: 10px;\n}\nuni-button.primary {\r\n  background-color: #0faeff;\n}\n.action-row {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\n}\n.action-row uni-navigator {\r\n  color: #007aff;\r\n  padding: 0 10px;\n}\n.oauth-row {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  position: absolute;\r\n  top: 100upx;\r\n  left: 0;\r\n  width: 100%;\n}\n.oauth-image {\r\n  position: relative;\r\n  width: 50px;\r\n  height: 50px;\r\n  border: 1px solid #dddddd;\r\n  -webkit-border-radius: 50px;\r\n          border-radius: 50px;\r\n  margin: 0 20px;\r\n  background-color: #ffffff;\n}\n.oauth-image uni-image {\r\n  width: 30px;\r\n  height: 30px;\r\n  margin: 10px;\n}\n.oauth-image uni-button {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0;\n}\n.wxLogin {\r\n  width: 100%;\r\n  height: 100upx;\r\n  background-color: #33FF00;\r\n  margin-top: 200upx;\r\n  text-align: center;\r\n  line-height: 100upx;\r\n  color: #fff;\r\n  font-size: 34upx;\r\n  -webkit-border-radius: 10upx;\r\n          border-radius: 10upx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

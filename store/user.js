@@ -3,7 +3,7 @@ import {onLogin,addUser,getOrderRed,getOrderRedOne,getOrderRedTwo,getOrderRedThr
 export  const user = {
   state: { 
 		userInfo:{}, //用户信息
-		openId:'',  
+		openId:'',   //登陆之后用户的openId
 		userId:'',   //用户Id
 		isPay:'',   //待支付
 		isDelivery:'',  //待发货
@@ -13,8 +13,8 @@ export  const user = {
   actions: {
 		async getUniLogin({commit},userInfo) {
 		
-			let loginCode = await onLogin(code);
-			
+			// let loginCode = await onLogin(code);
+			// console.log(loginCode)
 			const loginInfo = await addUser(userInfo);
 			const userId = loginInfo.data.userId;
 			let result = {
@@ -95,7 +95,7 @@ export  const user = {
 		
 		 state.openId = '';
 		 state.userId = '';
-		 state.userInfo = '';
+		 state.userInfo = {};
 		
 		 uni.removeStorageSync('openId');
 		 uni.removeStorageSync('userId');

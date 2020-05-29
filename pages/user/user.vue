@@ -1,9 +1,10 @@
 <template>
 	<view class="user-box" :style="`height:${scrollH}px`">
-		<scroll-view scroll-y="true" :style="`height:${scrollH}px`">
+		<scroll-view scroll-y="true" :style="`height:${scrollH}px` ">
 			<user-top :userInfo="userInfo" :orderList="orderList" />
 			<view class="wall"></view>
 			<userList />
+
 		</scroll-view>
 		<button @click="userlogout">退出登陆</button>
 	</view>
@@ -64,10 +65,12 @@
 			let {
 				userInfo
 			} = this;
+			// 如果useInfo没有值,就向缓存的userInfo取值
 			if (Object.keys(userInfo).length === 0) {
 				let newInfo = uni.getStorageSync('userInfo');
+				// 取到UserInfo后,更新store中的userInfo
 				if (Object.keys(newInfo).length !== 0) {
-				this.setUserInfo(newInfo)
+					this.setUserInfo(newInfo)
 				}
 
 			}
@@ -95,8 +98,11 @@
 			})
 		},
 		methods: {
-			...mapActions(['getOrderPay', 'getOrderDelivery', 'getOrderReceiving', 'getOrderTransaction', 'logout','setUserInfo']),
+			...mapActions(['getOrderPay', 'getOrderDelivery', 'getOrderReceiving', 'getOrderTransaction', 'logout',
+				'setUserInfo'
+			]),
 			userlogout() {
+				// 退出登陆
 				this.logout()
 			}
 		},
@@ -108,6 +114,9 @@
 				isTransaction: state => state.user.isTransaction,
 				userInfo: state => state.user.userInfo
 			})
+		},
+		updated() {
+			console.log(this.userInfo)
 		}
 	}
 </script>

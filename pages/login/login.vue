@@ -18,7 +18,7 @@
 			<text>|</text>
 			<navigator url="../pwd/pwd">忘记密码</navigator>
 		</view> -->
-		<view class="oauth-row" v-if="hasProvider" :style="{top: '100upx'}">
+		<view class="oauth-row" v-if="hasProvider">
 			<view class="oauth-image" v-for="provider in providerList" :key="provider.value">
 				<image :src="provider.image" @tap="oauth(provider.value)"></image>
 				<!-- #ifdef MP-WEIXIN -->
@@ -54,10 +54,13 @@
 		computed: {
 
 		},
+		onReady() {
+			this.initProvider()
+		},
 		methods: {
 			...mapActions(['getUniLogin']),
 			initProvider() {
-				const filters = ['weixin'];
+				const filters = ['weixin','qq'];
 				uni.getProvider({
 					service: 'oauth',
 					success: (res) => {
@@ -68,7 +71,7 @@
 										value: res.provider[i],
 										image: '../../static/images/img/' + res.provider[i] + '.png'
 									});
-
+									console.log('../../static/images/img/' + res.provider[i] + '.png')
 								}
 							}
 							this.hasProvider = true;
@@ -130,83 +133,82 @@
 						});
 					},
 					fail: (err) => {
-						console.error('授权登录失败：' + JSON.stringify(err));
+						// console.error('授权登录失败：' + JSON.stringify(err));
+					
+							uni.showToast({
+								icon: 'none',
+								title: '登陆失败'
+							});
+						
 					}
 				});
 
-				// let _this = this;
-				// let getAppid = 'wxeee2536abcf8a3d8';
-				// uni.login({
-				// 	provider: value,
-				// 	success: (loginRes) => {
+			// 	let _this = this;
+			// 	let getAppid = 'wxeee2536abcf8a3d8';
+			// 	uni.login({
+			// 		provider: value,
+			// 		success: (loginRes) => {
 				
-				// 		uni.getUserInfo({
-				// 			provider: value,
-				// 			success: (infoRes) => {
-				// 				console.log(infoRes)
-				// 				// this.getUniLogin(infoRes);
-				// 				this.userInfo = infoRes;
-				// 				let weixinService = null;
-				// 				// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.getServices
-				// 				plus.oauth.getServices(function(services) {
+			// 			uni.getUserInfo({
+			// 				provider: value,
+			// 				success: (infoRes) => {
+			// 					console.log(infoRes)
+			// 					// this.getUniLogin(infoRes);
+			// 					this.userInfo = infoRes;
+			// 					let weixinService = null;
+			// 					// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.getServices
+			// 					plus.oauth.getServices(function(services) {
 				
-				// 					if (services && services.length) {
-				// 						for (let i = 0, len = services.length; i < len; i++) {
-				// 							if (services[i].id === 'weixin') {
-				// 								weixinService = services[i];
-				// 								break;
-				// 							}
-				// 						}
-				// 						if (!weixinService) {
-				// 							console.log('没有微信登录授权服务');
-				// 							return;
-				// 						}
-				// 						// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.AuthService.authorize
-				// 						weixinService.authorize(function(event) { //此处获取code的关键
+			// 						if (services && services.length) {
+			// 							for (let i = 0, len = services.length; i < len; i++) {
+			// 								if (services[i].id === 'weixin') {
+			// 									weixinService = services[i];
+			// 									break;
+			// 								}
+			// 							}
+			// 							if (!weixinService) {
+			// 								console.log('没有微信登录授权服务');
+			// 								return;
+			// 							}
+			// 							// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.AuthService.authorize
+			// 							weixinService.authorize(function(event) { //此处获取code的关键
 									
-				// 							// _this.weixinCode = event.code; //用户换取 access_token 的 code
-				// 							// it.requestLogin();
-				// 						  _this.getUniLogin({code:event.code,userInfo:_this.userInfo})
+			// 								// _this.weixinCode = event.code; //用户换取 access_token 的 code
+			// 								// it.requestLogin();
+											
+			// 							  _this.getUniLogin({code:event.code,userInfo:_this.userInfo})
 									
 								
-				// 						}, function(error) {
-				// 							console.error('authorize fail:' + JSON.stringify(error));
-				// 						}, {
-				// 							// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.AuthOptions
-				// 							appid: getAppid, //开放平台的应用标识。暂时填个假的充数，仅做演示。
-				// 						});
-				// 					} else {
-				// 						console.log('无可用的登录授权服务');
-				// 					}
-				// 				}, function(error) {
-				// 					console.error('getServices fail:' + JSON.stringify(error));
-				// 				});
-				// 			},
-				// 			fail() {
-				// 				uni.showToast({
-				// 					icon: 'none',
-				// 					title: '登陆失败'
-				// 				});
-				// 			}
-				// 		});
-				// 	},
-				// 	fail: (err) => {
-				// 		console.error('授权登录失败：' + JSON.stringify(err));
-				// 	}
-				// });
+			// 							}, function(error) {
+			// 								console.error('authorize fail:' + JSON.stringify(error));
+			// 							}, {
+			// 								// http://www.html5plus.org/doc/zh_cn/oauth.html#plus.oauth.AuthOptions
+			// 								appid: getAppid, //开放平台的应用标识。暂时填个假的充数，仅做演示。
+			// 							});
+			// 						} else {
+			// 							console.log('无可用的登录授权服务');
+			// 						}
+			// 					}, function(error) {
+			// 						console.error('getServices fail:' + JSON.stringify(error));
+			// 					});
+			// 				},
+			// 				fail() {
+			// 					uni.showToast({
+			// 						icon: 'none',
+			// 						title: '登陆失败'
+			// 					});
+			// 				}
+			// 			});
+			// 		},
+			// 		fail: (err) => {
+			// 			console.error('授权登录失败：' + JSON.stringify(err));
+			// 		}
+			// 	});
 				
 			
-			},
-			
+			 },
 
 			
-		},
-		onReady() {
-			this.initPosition();
-			this.initProvider();
-			// #ifdef MP-WEIXIN
-			this.isDevtools = uni.getSystemInfoSync().platform === 'devtools';
-			// #endif
 		}
 	}
 </script>
@@ -345,7 +347,7 @@
 		flex-direction: row;
 		justify-content: center;
 		position: absolute;
-		top: 0;
+		top: 100upx;
 		left: 0;
 		width: 100%;
 	}

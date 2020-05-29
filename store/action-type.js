@@ -24,7 +24,7 @@ export const UPDATEGOODLIST = 'UPDATEGOODLIST';
 export const GETCARTLIST = 'GETCARTLIST';
 export const GETTOTALPIC = 'GETTOTALPIC';
 export const CARTCHOICE = 'CARTCHOICE';
-
+export const CARTYOULIKE = 'CARTYOULIKE';
 
 // 用户登陆请求
 export const UNILOGIN = 'UNILOGIN';

@@ -4,12 +4,7 @@
 		<view class="top">
 			<input type="text" v-model="classificationSearch" @confirm="submitValue" placeholder="搜索商品名称" class="classification-input">
 		</view>
-		<!-- 	<view class="center" :style="`height:${scrollH}px`">
-			<scroll-view scroll-with-animation scroll-y="true" class="scroll-Y" :style="`height:${scrollH}px`">
-				<view :class="activeId === index ? 'scroll-view-item active' : 'scroll-view-item' " v-for="(item,index) in typeList"
-				 :key="item.id" @tap="changeTab(index)">{{item.title}}</view>
-			</scroll-view>
-		</view> -->
+	
 
 		<view class="classificationpage">
 			<!-- 左侧导航 -->
@@ -103,7 +98,7 @@
 				})
 			},
 			rightProTop(e) {
-
+				
 			},
 			changeMenu(e) {
 				// console.log(proListToTop);
@@ -153,7 +148,7 @@
 					}
 					_this.timeoutId = setTimeout(() => {
 						// console.log(12138)
-
+						console.log('151:',_this.windowHeight)
 						_this.leftMenuTop = (_this.menuToTop[i].top - _this.windowHeight)
 
 					}, 50)
@@ -186,14 +181,16 @@
 				uni.createSelectorQuery().selectAll('.menu-item').boundingClientRect(function(rects) {
 					uni.getSystemInfo({
 						success: function(res) {
-
-							_this.windowHeight = res.windowHeight / 2
-							//  console.log(windowHeight)
+							
+							_this.windowHeight = res.windowHeight / 2;
+						
+						
 							rects.forEach(function(rect) {
 								// console.log(rect)
+								
 								_this.menuToTop.push({
 									top: rect.top,
-									animate: rect.top > windowHeight
+									animate: rect.top > _this.windowHeight
 
 								})
 							})

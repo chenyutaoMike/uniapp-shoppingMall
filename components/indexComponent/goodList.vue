@@ -7,9 +7,9 @@
 					<view class="more text-center animated " hover-class="tada" @click="goGoodList(item.id)">更多</view>
 				</view>
 				<block v-if="item.hot_img">
-					<view class="good-center">
+					<view class="good-center" @click="goDetail(item.hot_id)">
 						<img class="center-img" :src="hostUrl+item.hot_img" alt="">
-						<view class="center-title text-white">{{item.hot_title}}</view>
+						<view class="center-title text-white text-center">{{item.hot_title}}</view>
 					</view>
 				</block>
 				<ul class="list flex flex-wrap justify-between">

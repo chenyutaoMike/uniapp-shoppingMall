@@ -14,7 +14,7 @@
 								<text class="item-new-pic">￥{{item.price}}</text>
 								<text class="item-old-pic">￥{{item.marketPrice}}</text>
 							</view>
-							<view class="item-shop-cart">
+							<view class="item-shop-cart" @click.stop="addCart(item.id)">
 								<image :src="shopCartImg"></image>
 							</view>
 					</view>
@@ -32,6 +32,7 @@
 	import {
 		hostUrl
 	} from '@/http/request.js';
+	import {mapActions} from 'vuex';
 	export default {
 		props:{
 			gooListArr:{
@@ -49,10 +50,49 @@
 		},
 			
 		methods:{
+				...mapActions(['getAddCart']),
 			goDetail(id){
 				uni.navigateTo({
 					url:`/pages/details/details?id=${id}`
 				})
+			},
+			addCart(id){
+				// 验证登陆信息
+				let userId = uni.getStorageSync('userId');
+				if(!userId){
+					uni.showToast({
+						title:'请先登陆',
+						icon:'none'
+					})
+					return 
+				}
+			
+			
+				let {gooListArr} = this;
+					
+				let info = gooListArr.find(item =>{
+					return item.id === id;
+				})
+				
+				
+				let seleteNumber = 1;
+				let seleteUnitIndex = 0;
+				if(seleteNumber > info.stock){
+					uni.showToast({
+						title:'库存不足',
+						icon:'none'
+					})
+					return
+				}
+				// 加入购物车
+				let option = {
+					id:info.id,
+					userId:userId,
+					quantity:seleteNumber,
+					isChecked:1,
+					unit:info.unit.split('/')[seleteUnitIndex]
+				}
+				this.getAddCart(option);
 			}
 		},
 		

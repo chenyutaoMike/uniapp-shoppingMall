@@ -45,9 +45,6 @@
 		hostUrl
 	} from '@/http/request.js';
 	import {
-		mapActions
-	} from 'vuex';
-	import {
 		cartAdd,
 		cartDecrease,
 		cartDel
@@ -70,10 +67,9 @@
 		},
 		mounted() {
 				this.userId = uni.getStorageSync('userId');
-
+				console.log(this.userId)
 		},
 		methods: {
-			...mapActions(['getCartListAry','getCartTotalPic']),
 			decrease(info) {
 				let {id,quantity} = info;
 				if(quantity <= 1){
@@ -85,8 +81,7 @@
 				}
 				cartDecrease(id).then(res=>{
 					if(res.data !== null && res.data.status === 0){
-						this.getCartListAry(this.userId)
-						this.getCartTotalPic(this.userId)
+						this.$emit('changeCart')
 					}
 				})
 			},
@@ -103,16 +98,15 @@
 				cartAdd(id).then(res =>{
 					
 					if(res.data !== null && res.data.status === 0){
-						this.getCartListAry(this.userId)
-						this.getCartTotalPic(this.userId)
+						this.$emit('changeCart')
 					}
 				})
 			},
 			delItem(id){
+				
 				cartDel(id).then(res=>{
 					if(res.data !== null && res.data.status === 0){
-						this.getCartListAry(this.userId)
-						this.getCartTotalPic(this.userId)
+						this.$emit('changeCart')
 					}
 				})
 			},

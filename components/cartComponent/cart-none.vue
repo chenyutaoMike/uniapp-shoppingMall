@@ -3,17 +3,26 @@
 		<image class="cart-none-img" :src="imgUrl" alt="" />
 		<view class="cart-none-bottom text-center ">
 			<text class="font-md text-secondary">购物车空空如也</text>
-				<view class="cart-none-btn text-center mg0-auto">
+				<view class="cart-none-btn text-center mg0-auto" @click="goGoodList">
 				去逛逛
 					</view>
 		</view>
-	<youLike v-if="userId" />
+	<youLike v-if="userId" :list='youLikeList' />
 	</view>
 </template>
 
 <script>
 	import youLike from '@/components/youLike.vue'
 	export default {
+		props:{
+			isNone:Boolean,
+			youLikeList:{
+				type:Array,
+				default:()=>{
+					return []
+				}
+			}
+		},
 		components:{
 			youLike
 		},
@@ -24,7 +33,19 @@
 		},
 		created() {
 			this.userId = uni.getStorageSync('userId');
-		}
+			
+		},
+		mounted() {
+			console.log(this.isNone)
+		},
+		methods:{
+			goGoodList(){
+				uni.navigateTo({
+					url:'/pages/goodList/good-list'
+				})
+			}
+		},
+	
 	}
 </script>
 

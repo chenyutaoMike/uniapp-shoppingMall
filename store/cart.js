@@ -1,16 +1,21 @@
-import {GETCARTLIST,GETTOTALPIC,CARTCHOICE} from './action-type.js';
-import {getCartList,getToatlPic,cartChoice} from '@/http/cart.js';
+import {GETCARTLIST,GETTOTALPIC,CARTCHOICE,CARTYOULIKE} from './action-type.js';
+import {getCartList,getToatlPic,cartChoice,cartYouLike} from '@/http/cart.js';
 export  const cart = {
   state: { 
 		cartList:[],
 		totalPic:'',
 		marketPriceTotal:'',
-		quantity:''
+		quantity:'',
+		youLike:[]
 	},
 	actions:{
 		async getCartListAry({commit},userId){
 				let result = await getCartList(userId);
 				if(result.data !== null){
+					if(result.statusCode === 200 && result.data === ''){
+						commit(GETCARTLIST,[])
+						return
+					}
 					commit(GETCARTLIST,result.data)
 				}
 		},
@@ -21,13 +26,12 @@ export  const cart = {
 					commit(GETTOTALPIC,result.data)
 				}
 		},
-		async getCartChoice({commit},option){
-				let result = await cartChoice(option);
-				console.log(result)
-				if(result.data !== null){
-					getCartListAry(56)
-				}
-		},
+		async getCartYouLike({commit}){
+			let result = await cartYouLike();
+			if(result.data !== null){
+				commit(CARTYOULIKE,result.data)
+			}
+		}
 	},
   mutations: {
    GETCARTLIST(state,result){
@@ -50,10 +54,11 @@ export  const cart = {
 		 state.totalPic = result.dTotal;
 		 state.marketPriceTotal =  result.marketPriceTotal;
 		 state.quantity = result.quantity;
-	 }
+	 },
+	 CARTYOULIKE(state,result){
+		 state.youLike = result;
+	 } 
 	 
-	 
-  }
-
- 
+  },
+	
 }

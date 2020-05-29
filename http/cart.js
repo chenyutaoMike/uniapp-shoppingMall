@@ -28,6 +28,13 @@ export function cartChoice(option) {
 		checkId: option.checkId,
 	})
 }
+// 检查是否全选
+export function checkCount(userId) {
+	return request({
+		opt: 'getCountChecked',
+		userId
+	})
+}
 // 全选
 export function selectAll(option) {
 	return request({
@@ -55,9 +62,17 @@ export function cartDecrease(id) {
 	})
 }
 
+//删除购物车
 export function cartDel(id) {
 	return request({
 		opt: 'deleteCart',
 		id: id
 	})
 }
+// 购物车猜你喜欢
+export function cartYouLike(){
+	return request({
+		 opt: 'getCartProduct'
+	})
+}
+
