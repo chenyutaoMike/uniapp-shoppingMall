@@ -2,7 +2,7 @@
 	<!-- <classification /> -->
 	<view class="classification">
 		<view class="top">
-			<input type="text" v-model="classificationSearch" @confirm="submitValue" placeholder="搜索商品名称" class="classification-input">
+			<input type="text" confirm-type="search" v-model="classificationSearch" @confirm="submitValue" placeholder="搜索商品名称" class="classification-input">
 		</view>
 	
 

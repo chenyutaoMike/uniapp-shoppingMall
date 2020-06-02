@@ -3,6 +3,7 @@
 		<input 
 			type="text"  
 			placeholder="搜索商品名称" 
+			confirm-type="search"
 			v-model="goodSearch" 
 			class="list-search"
 			@confirm="submitValue"

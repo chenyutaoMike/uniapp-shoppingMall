@@ -5,7 +5,7 @@
 			<text class="font-md text-secondary">购物车空空如也</text>
 				<view class="cart-none-btn text-center mg0-auto" @click="goGoodList">
 				去逛逛
-					</view>
+				</view>
 		</view>
 	<youLike v-if="userId" :list='youLikeList' @addCart="addCart" />
 	</view>

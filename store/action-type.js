@@ -54,3 +54,13 @@ export const NOTUSECOUPON = 'NOTUSECOUPON';
 export const GETINTEGRALDTOTAL = 'GETINTEGRALDTOTAL';
 export const GETBUYTOTALPIC = 'GETBUYTOTALPIC';
 export const USERCOUPON = 'USERCOUPON';
+
+
+
+// 积分页面
+export const GETINTEGRAL = 'GETINTEGRAL';
+export const USEINTEGRAL = 'USEINTEGRAL';
+
+
+
+

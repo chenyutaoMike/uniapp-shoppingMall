@@ -1317,7 +1317,12 @@ var render = function() {
     [
       _c("v-uni-input", {
         staticClass: _vm._$g(1, "sc"),
-        attrs: { type: "text", placeholder: "搜索商品名称", _i: 1 },
+        attrs: {
+          type: "text",
+          placeholder: "搜索商品名称",
+          "confirm-type": "search",
+          _i: 1
+        },
         on: {
           confirm: function($event) {
             return _vm.$handleViewEvent($event)
@@ -2904,7 +2909,12 @@ var render = function() {
         [
           _c("v-uni-input", {
             staticClass: _vm._$g(2, "sc"),
-            attrs: { type: "text", placeholder: "搜索商品名称", _i: 2 },
+            attrs: {
+              type: "text",
+              "confirm-type": "search",
+              placeholder: "搜索商品名称",
+              _i: 2
+            },
             on: {
               confirm: function($event) {
                 return _vm.$handleViewEvent($event)
@@ -7322,7 +7332,12 @@ var render = function() {
     [
       _c("v-uni-input", {
         staticClass: _vm._$g(1, "sc"),
-        attrs: { type: "text", placeholder: "搜索商品名称", _i: 1 },
+        attrs: {
+          type: "text",
+          placeholder: "搜索商品名称",
+          "confirm-type": "search",
+          _i: 1
+        },
         on: {
           confirm: function($event) {
             return _vm.$handleViewEvent($event)
@@ -10625,14 +10640,79 @@ var render = function() {
       ),
       _vm._$g(5, "i") ? _c("integral-list", { attrs: { _i: 5 } }) : _vm._e(),
       _vm._$g(6, "i") ? _c("integral-list", { attrs: { _i: 6 } }) : _vm._e(),
-      _c("popup", {
-        attrs: { _i: 7 },
-        on: {
-          clone: function($event) {
-            return _vm.$handleViewEvent($event)
+      _c(
+        "popup",
+        {
+          attrs: { _i: 7 },
+          on: {
+            clone: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
           }
-        }
-      })
+        },
+        [
+          _c(
+            "v-uni-view",
+            {
+              staticClass: _vm._$g(8, "sc"),
+              attrs: { _i: 8 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event, { stop: true })
+                }
+              }
+            },
+            [
+              _c("v-uni-image", {
+                staticClass: _vm._$g(9, "sc"),
+                attrs: { src: _vm._$g(9, "a-src"), _i: 9 },
+                on: {
+                  click: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                }
+              }),
+              _c(
+                "ul",
+                { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+                [
+                  _c("li", { attrs: { _i: 11 } }, [
+                    _vm._v(
+                      "1、积分获取：用户购买商品（特价和限时等活动商品除外）获得相应积分；如用户购买商品价格为100元，则获得100积分。"
+                    )
+                  ]),
+                  _c("li", { attrs: { _i: 12 } }, [
+                    _vm._v(
+                      "2、积分使用：用户可选择用积分兑换优惠券，按10：1兑换，既100积分兑换10元优惠卷。"
+                    )
+                  ]),
+                  _c("li", { attrs: { _i: 13 } }, [
+                    _vm._v("3、优惠券面值：5元、10元、20元、50元、100元。")
+                  ]),
+                  _c("li", { attrs: { _i: 14 } }, [
+                    _vm._v(
+                      "4、优惠券使用：用户购买商品（特价和限时等活动商品除外）可使用优惠卷抵扣等额现金，例如用户A购买价值100元的001商品，使用10元优惠卷抵扣后，用户只需使用90元现金；同一个订单可使用多张优惠券抵扣。"
+                    )
+                  ]),
+                  _c("li", { attrs: { _i: 15 } }, [
+                    _vm._v(
+                      "5、用户购买商品（特价和限时商品等活动商品除外）使用优惠卷后，使用现金部分仍可获得对应等额积分；例如用户A使用10元优惠卷抵扣购买100元的001商品,实际付出90元现金，既自动获得90积分"
+                    )
+                  ]),
+                  _c("li", { attrs: { _i: 16 } }, [
+                    _vm._v(
+                      "6、用户积分兑换优惠卷过程不可逆，既用户不可使用优惠卷换回积分。"
+                    )
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -10773,7 +10853,15 @@ var render = function() {
       }),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+        {
+          staticClass: _vm._$g(2, "sc"),
+          attrs: { _i: 2 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
         [
           _c(
             "v-uni-view",
@@ -10797,7 +10885,15 @@ var render = function() {
       ),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
+        {
+          staticClass: _vm._$g(6, "sc"),
+          attrs: { _i: 6 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
         [
           _c("v-uni-text", { attrs: { _i: 7 } }, [_vm._v("积分商城")]),
           _c("v-uni-image", { attrs: { src: _vm._$g(8, "a-src"), _i: 8 } })
@@ -11009,37 +11105,63 @@ var render = function() {
         ? _c(
             "v-uni-view",
             { staticClass: _vm._$g(1, "sc"), attrs: { _i: 1 } },
-            [
-              _c(
+            _vm._l(_vm._$g(2, "f"), function(item, $10, $20, $30) {
+              return _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+                {
+                  key: item,
+                  staticClass: _vm._$g("2-" + $30, "sc"),
+                  attrs: { _i: "2-" + $30 }
+                },
                 [
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
+                    {
+                      staticClass: _vm._$g("3-" + $30, "sc"),
+                      attrs: { _i: "3-" + $30 }
+                    },
                     [
                       _c(
                         "v-uni-text",
-                        { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
-                        [_vm._v("兑换5元优惠劵")]
+                        {
+                          staticClass: _vm._$g("4-" + $30, "sc"),
+                          attrs: { _i: "4-" + $30 }
+                        },
+                        [
+                          _vm._v(
+                            _vm._$g("4-" + $30, "t0-0") +
+                              _vm._$g("4-" + $30, "t0-1")
+                          )
+                        ]
                       ),
                       _c(
                         "v-uni-text",
-                        { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
-                        [_vm._v("2020-04-28 14:23:23")]
+                        {
+                          staticClass: _vm._$g("5-" + $30, "sc"),
+                          attrs: { _i: "5-" + $30 }
+                        },
+                        [_vm._v(_vm._$g("5-" + $30, "t0-0"))]
                       )
                     ],
                     1
                   ),
                   _c(
                     "v-uni-text",
-                    { staticClass: _vm._$g(6, "sc"), attrs: { _i: 6 } },
-                    [_vm._v("-50")]
+                    {
+                      staticClass: _vm._$g("6-" + $30, "sc"),
+                      attrs: { _i: "6-" + $30 }
+                    },
+                    [
+                      _vm._v(
+                        _vm._$g("6-" + $30, "t0-0") +
+                          _vm._$g("6-" + $30, "t0-1")
+                      )
+                    ]
                   )
                 ],
                 1
               )
-            ],
+            }),
             1
           )
         : _c(
@@ -11394,7 +11516,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 20);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.integral-box .integral-tab {\r\n  height: 100upx;\n}\n.integral-box .integral-tab .integral-tab-item {\r\n  color: #727272;\r\n  height: 100%;\r\n  border-bottom: 1upx solid #C5C5C5;\n}\n.integral-box .integral-tab .integral-tab-item.selete {\r\n  color: #C02316;\r\n  border-color: #C02316;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.integral-box .integral-tab {\r\n  height: 100upx;\n}\n.integral-box .integral-tab .integral-tab-item {\r\n  color: #727272;\r\n  height: 100%;\r\n  border-bottom: 1upx solid #C5C5C5;\n}\n.integral-box .integral-tab .integral-tab-item.selete {\r\n  color: #C02316;\r\n  border-color: #C02316;\n}\n.integral-popup {\r\n  position: relative;\r\n  width: 90%;\r\n  padding: 30upx 20upx;\r\n  background-color: #fff;\r\n  -webkit-border-radius: 30upx;\r\n          border-radius: 30upx;\n}\n.integral-popup .integral-popup-clone {\r\n  position: absolute;\r\n  right: 30upx;\r\n  top: -30upx;\r\n  width: 60upx;\r\n  height: 60upx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

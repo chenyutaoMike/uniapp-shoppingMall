@@ -7,6 +7,7 @@ import {goodList} from './good-list.js';
 import {user} from './user.js';
 import {address} from './address.js';
 import {buy} from './buy.js';
+import {integral} from './integral.js';
 Vue.use(Vuex);
 const store = new Vuex.Store({
     modules: {
@@ -16,7 +17,8 @@ const store = new Vuex.Store({
 				goodList,
 				user,
 				address,
-				buy
+				buy,
+				integral
       }
 })
 export default store

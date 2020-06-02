@@ -3,11 +3,13 @@
 		<input type="text" 
 			class="text-center  bg-white" 
 			placeholder="搜索商品名称" 
+			confirm-type="search"
 			v-model="indexSearch"
 			@confirm="submitValue"
 			@blur="showImg" @focus="hiddenImg" />
 		<image :src="imgUrl" alt="search" class="searchImg" v-if="searchImg">
 		</image>
+		
 	</view>
 </template>
 

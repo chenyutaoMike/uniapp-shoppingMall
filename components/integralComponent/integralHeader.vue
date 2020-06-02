@@ -1,13 +1,13 @@
 <template>
 	<view class="integral-header">
 		<image class="integral-header-bg" :src="integralImg"></image>
-		<view class="integral-info flex align-center justify-center">
-			<view class="integral-info-border flex align-center justify-center flex-column">
-				<text class="my-integral">我的积分</text>
+		<view class="integral-info flex align-center justify-center" @click="goIntegralMall">
+			<view class="integral-info-border flex align-center justify-center flex-column" >
+				<text class="my-integral" >我的积分</text>
 				<text class="integral-num">100</text>
 			</view>
 		</view>
-		<view class="go-shop flex align-center">
+		<view class="go-shop flex align-center" @click="goIntegralMall">
 			<text>积分商城</text>
 			<image :src="goShopImg" ></image>
 		</view>
@@ -30,6 +30,11 @@
 		methods:{
 			openPopup(){
 				this.$emit("openPopup")
+			},
+			goIntegralMall(){
+				uni.navigateTo({
+					url:'/pages/integralMall/integralMall'
+				})
 			}
 		}
 	}

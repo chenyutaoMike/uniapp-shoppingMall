@@ -20,24 +20,32 @@ export function formatAddress(address) {
 		str = str.join(''); //转为字符串
 		newAddress = address.replace(str, ''); //截取剩下的地址
 	}
-	return [region,newAddress]
+	return [region, newAddress]
 }
 
 export const calculation = (total, couponAmount) => { //这个函数用来计算价格,第一个参数总价格,第二个是要减去的价格
-  let baseNum, baseNum1, baseNum2;
-  let precision; // 精度
-  try {
-    baseNum1 = total.toString().split(".")[1].length;
-  } catch (e) {
-    baseNum1 = 0;
-  }
-  try {
-    baseNum2 = couponAmount.toString().split(".")[1].length;
-  } catch (e) {
-    baseNum2 = 0;
-  }
-  baseNum = Math.pow(10, Math.max(baseNum1, baseNum2));
-  precision = (baseNum1 >= baseNum2) ? baseNum1 : baseNum2;
-  return ((total * baseNum - couponAmount * baseNum) / baseNum).toFixed(precision);
+	let baseNum, baseNum1, baseNum2;
+	let precision; // 精度
+	try {
+		baseNum1 = total.toString().split(".")[1].length;
+	} catch (e) {
+		baseNum1 = 0;
+	}
+	try {
+		baseNum2 = couponAmount.toString().split(".")[1].length;
+	} catch (e) {
+		baseNum2 = 0;
+	}
+	baseNum = Math.pow(10, Math.max(baseNum1, baseNum2));
+	precision = (baseNum1 >= baseNum2) ? baseNum1 : baseNum2;
+	return ((total * baseNum - couponAmount * baseNum) / baseNum).toFixed(precision);
 }
 
+export function formatDate(ary) {
+	let str = /\//g; //处理时间格式正则
+	let result = ary.map(item => {
+		item.updateTime = item.updateTime.replace(str, "-")
+		return item
+	})
+	return result
+}

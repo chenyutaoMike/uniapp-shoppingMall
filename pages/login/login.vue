@@ -55,12 +55,13 @@
 
 		},
 		onReady() {
+		
 			this.initProvider()
 		},
 		methods: {
 			...mapActions(['getUniLogin']),
 			initProvider() {
-				const filters = ['weixin','qq'];
+				const filters = ['weixin'];
 				uni.getProvider({
 					service: 'oauth',
 					success: (res) => {
@@ -71,7 +72,7 @@
 										value: res.provider[i],
 										image: '../../static/images/img/' + res.provider[i] + '.png'
 									});
-									console.log('../../static/images/img/' + res.provider[i] + '.png')
+									
 								}
 							}
 							this.hasProvider = true;

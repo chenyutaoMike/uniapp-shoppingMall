@@ -1,12 +1,12 @@
 <template>
 	<view>
 		<view class="integral-list" v-if="list.length > 1">
-			<view class="integral-list-item flex justify-between align-center">
+			<view class="integral-list-item flex justify-between align-center" v-for="item in list" :key="item.id">
 				<view class="flex flex-column">
-					<text class="font-m">兑换5元优惠劵</text>
-					<text class="font-sm text-light-muted">2020-04-28 14:23:23</text>
+					<text class="font-m">{{list.methods === 'get'? '购买商品':'兑换'}}{{item.title}}</text>
+					<text class="font-sm text-light-muted">{{item.updateTime}}</text>
 				</view>
-				<text class="font-m text-pic">-50</text>
+				<text class="font-m text-pic">{{list.methods === 'get'? '+':'-'}}{{item.integral_sum}}</text>
 			</view>
 		</view>
 		<view class="mt-2 font-m text-light-muted text-center" v-else>暂无积分信息</view>
@@ -15,9 +15,18 @@
 
 <script>
 	export default {
+		props:{
+			list:{
+				type:Array,
+				default:()=>{
+					return []
+				}
+			}
+		},
+		
 		data(){
 			return {
-				list:[1,2]
+				
 			}
 		}
 	}
