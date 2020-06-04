@@ -60,7 +60,7 @@ export function addUser(res) {
 export function getUser(userId){
 	return request({
 		 opt: 'getUser',
-		 userId: userId,
+		 userId: userId
 	})
 }
 

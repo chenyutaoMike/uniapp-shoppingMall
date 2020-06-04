@@ -1,7 +1,7 @@
 <template>
 	<view class="integral-cart-box">
 		<scroll-view scroll-y="true" class="good-list-bg" :style="`height:${scrollH}px`">
-			<integral-cart-list />
+			<integral-cart-list :cartList="cartList" />
 		</scroll-view>
 		<view class="integral-cart-bottom flex align-center">
 			<view class="integral-cart-bottom-left flex pl-3">
@@ -22,6 +22,7 @@
 
 <script>
 	import integralCartList from '@/components/integralCartComponent/integralCartList.vue';
+	import {mapState,mapActions} from 'vuex';
 	export default {
 		components: {
 			integralCartList
@@ -37,6 +38,11 @@
 		},
 		methods: {
 
+		},
+		computed:{
+			...mapState({
+				cartList:state => state.integral.cartList
+			})
 		}
 	}
 </script>

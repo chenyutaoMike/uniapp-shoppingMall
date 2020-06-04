@@ -4,7 +4,7 @@
 		<view class="integral-info flex align-center justify-center" @click="goIntegralMall">
 			<view class="integral-info-border flex align-center justify-center flex-column" >
 				<text class="my-integral" >我的积分</text>
-				<text class="integral-num">100</text>
+				<text class="integral-num">{{score}}</text>
 			</view>
 		</view>
 		<view class="go-shop flex align-center" @click="goIntegralMall">
@@ -20,6 +20,12 @@
 
 <script>
 	export default {
+		props:{
+			score:{
+				type:Number,
+				default:0
+			}
+		},
 		data(){
 			return {
 				integralImg:'/static/images/integralImg/bg.png',

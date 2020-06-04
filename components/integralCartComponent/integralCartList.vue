@@ -1,47 +1,62 @@
 <template>
-	<view class="integral-cart-list">
-		<view class="integral-cart-item flex align-center">
-			<view>
+	<view>
+		<view class="integral-cart-list" v-if="cartList.length !== 0">
+			<view class="integral-cart-item flex align-center" v-for="item in cartList" :key="item.id + item.title">
+				<view>
 				<label>
-					<checkbox checked="true" />
+					<checkbox v-if="item.is_checked === 1" @click="choice" :data-id="item.id" :data-checkId="item.is_checked" />
+					<checkbox checked v-if="item.is_checked === 2" @click="choice" :data-id="item.id" :data-checkId="item.is_checked" />
 				</label>
-			</view>
-			<view class="integral-cart-item-center flex">
-				<image class="mx-3" src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-				<view class="flex flex-column font-m">
-					<text>50元优惠劵</text>
-					<text class="text-muted my-1">x1</text>
+				</view>
+				<view class="integral-cart-item-center flex">
+					<image class="mx-3" :src="hostUrl+item.litpic"></image>
+					<view class="flex flex-column font-m">
+						<text>{{item.title}}</text>
+						<text class="text-muted my-1">x{{item.quantity}}</text>
+					</view>
+				</view>
+				<view class="integral-cart-item-bottom flex flex-column">
+					<text class="font-lg text-pic">{{item.integral}}</text>
+					<image @click="delItem(item.id)" class="delete-img" src="../../static/images/cartImg/delete.png"></image>
 				</view>
 			</view>
-			<view class="integral-cart-item-bottom flex flex-column">
-				<text class="font-lg text-pic">500</text>
-				<image class="delete-img" src="../../static/images/cartImg/delete.png"></image>
-			</view>
+
 		</view>
-		
-		<view class="integral-cart-item flex align-center">
-			<view>
-				<label>
-					<checkbox checked="true" />
-				</label>
-			</view>
-			<view class="integral-cart-item-center flex">
-				<image class="mx-3" src="https://www.baquwangluo.cn/admin/editor/Upload/image/20191107/20191107183128_8627.jpg"></image>
-				<view class="flex flex-column font-m">
-					<text>50元优惠劵</text>
-					<text class="text-muted my-1">x1</text>
-				</view>
-			</view>
-			<view class="integral-cart-item-bottom flex flex-column">
-				<text class="font-lg text-pic">500</text>
-				<image class="delete-img" src="../../static/images/cartImg/delete.png"></image>
-			</view>
-		</view>
-		
+		<view class="text-center mt-5 font-md text-secondary" v-else>购物车空空如也~</view>
 	</view>
 </template>
 
 <script>
+	import {
+		hostUrl
+	} from '@/http/request.js';
+	export default {
+		props: {
+			cartList: {
+				type: Array,
+				default: () => {
+					return []
+				}
+			}
+		},
+		data(){
+			return {
+				hostUrl:hostUrl
+			}
+		},
+		mounted() {
+			console.log('思密达')
+			console.log(this.cartList)
+		},
+		methods:{
+			delItem(id){
+				
+			},
+			choice(){
+				
+			}
+		}
+	}
 </script>
 
 <style lang="scss">
@@ -57,18 +72,22 @@
 			border-radius: 16upx;
 			box-shadow: 0 3px 3px #ccc;
 			margin-bottom: 20upx;
-			.integral-cart-item-center{
+
+			.integral-cart-item-center {
 				width: 500upx;
-				image{
+
+				image {
 					width: 150upx;
 					height: 150upx;
 				}
 			}
-			.integral-cart-item-bottom{
-				
+
+			.integral-cart-item-bottom {
+
 				height: 100%;
 				position: relative;
-				.delete-img{
+
+				.delete-img {
 					width: 50upx;
 					height: 55upx;
 					position: absolute;

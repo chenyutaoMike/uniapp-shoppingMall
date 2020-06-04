@@ -1,6 +1,6 @@
 <template>
 	<view class="integral-box">
-		  <intagral-header @openPopup="openPopup"/>
+		  <intagral-header @openPopup="openPopup" :score="score" />
 			<view class="integral-tab flex align-center">
 				<block v-for="item in tabList" :key="item.id">
 					<view 
@@ -57,9 +57,10 @@
 			console.log('ready')
 			this.getIntegralList(this.userId);
 			this.getUseIntegral(this.userId);
+			this.getUserInfoformIntegral(this.userId);
 		},
 		methods: {
-			...mapActions(['getIntegralList','getUseIntegral']),
+			...mapActions(['getIntegralList','getUseIntegral','getUserInfoformIntegral']),
 			changeTab(id){
 				this.seleteId = id;
 			},
@@ -76,7 +77,8 @@
 		computed:{
 			...mapState({
 				useIntegralList:state => state.integral.useIntegralList,
-				integralList:state => state.integral.integralList
+				integralList:state => state.integral.integralList,
+				score:state => state.integral.score
 			})
 		},
 		
