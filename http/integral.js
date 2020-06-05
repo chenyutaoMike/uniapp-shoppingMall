@@ -50,3 +50,40 @@ export function integralAddCart(option) {
 		typeId: 2,
 	})
 }
+
+// 获取积分购物车金额
+export function dTotalIntegral(userId) {
+	return request({
+		opt: 'dTotalIntegral',
+		userId: userId,
+		typeId: 2,
+	})
+}
+
+// 检查积分购物车是否全选
+export function integralCountChecked(userId) {
+	return request({
+		opt: 'getCountChecked',
+		userId: userId,
+		typeId: 2
+	})
+}
+
+// 积分购物车全选
+export function integralSelectionAll(option) {
+	return request({
+		opt: 'selection',
+		userId: option.userId,
+		checkId: option.checkId,
+		typeId: 2
+	})
+}
+
+// 积分购物车单选
+export function integralChoice(option) {
+	return request({
+		opt: 'choice',
+		id: option.id,
+		checkId: option.checkId
+	})
+}

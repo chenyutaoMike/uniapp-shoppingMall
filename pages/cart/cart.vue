@@ -69,7 +69,15 @@
 			// 56是userId
 			this.getCartListAry(this.userId);
 			this.getCartTotalPic(this.userId);
-		
+			// 判断是否全选
+			checkCount(this.userId).then(res=>{
+				
+				if(res.data.status === 2){
+					this.selection = 2;
+				}else {
+					this.selection = 1;
+				}
+			})
 		},
 		methods: {
 			...mapActions(['getCartListAry','getCartTotalPic','getCartYouLike']),

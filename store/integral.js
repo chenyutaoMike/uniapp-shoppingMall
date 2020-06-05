@@ -4,14 +4,16 @@ import {
 	GETUSERINFO,
 	INTEGRALSHOPLIST,
 	INTEGRALCARTLIST,
-	INTEGRALADDCART
+	INTEGRALADDCART,
+	INTEGRALGETTOTALPIC
 } from './action-type.js';
 import {
 	getIntegral,
 	useIntegral,
 	integralShopList,
 	integralCartList,
-	integralAddCart
+	integralAddCart,
+	dTotalIntegral
 } from '@/http/integral.js';
 import {
 	getUser
@@ -19,6 +21,7 @@ import {
 import {
 	formatDate
 } from '@/static/utils.js';
+let userId = uni.getStorageSync('userId');
 export const integral = {
 	state: {
 		integralList: [],
@@ -30,6 +33,8 @@ export const integral = {
 		flag: true, //节流阀
 		cartList: [], //购物车列表
 		cartNumber: 0, //购物车数量
+		integralNumber:0,
+		quantity:0,
 	},
 	actions: {
 		// 获取优惠劵获得列表
@@ -79,7 +84,7 @@ export const integral = {
 		async getIntegralCartList({
 			commit
 		}) {
-			let userId = uni.getStorageSync('userId');
+			
 			let result = await integralCartList(userId);
 		
 			if (result.statusCode === 200 && result.data.length !== 0) {
@@ -103,6 +108,13 @@ export const integral = {
 				} else {
 					commit(INTEGRALADDCART,'error')
 				}
+			}
+		},
+		async getDTotalIntegral({commit}){
+			let result = await dTotalIntegral(userId);
+			console.log(result)
+			if(result.data !== null){
+				commit(INTEGRALGETTOTALPIC,result.data)
 			}
 		}
 
@@ -159,6 +171,11 @@ export const integral = {
 					duration: 2000
 				})
 			}
+		},
+		INTEGRALGETTOTALPIC(state,result){
+			console.log(result)
+			state.integralNumber = result.integral;
+			state.quantity = result.quantity;
 		}
 
 	},

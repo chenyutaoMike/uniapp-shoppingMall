@@ -12272,29 +12272,39 @@ var render = function() {
                 "v-uni-view",
                 { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } },
                 [
-                  _c("v-uni-image", {
-                    attrs: { src: _vm._$g(6, "a-src"), _i: 6 }
-                  })
+                  _vm._$g(6, "i")
+                    ? _c("v-uni-image", {
+                        attrs: { src: _vm._$g(6, "a-src"), _i: 6 }
+                      })
+                    : _c("v-uni-image", {
+                        attrs: { src: _vm._$g(7, "a-src"), _i: 7 }
+                      })
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
+                { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
                 [
+                  _vm._$g(9, "i")
+                    ? _c(
+                        "v-uni-text",
+                        { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+                        [_vm._v("请先登陆")]
+                      )
+                    : _c(
+                        "v-uni-text",
+                        { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+                        [_vm._v(_vm._$g(10, "t0-0"))]
+                      ),
                   _c(
                     "v-uni-text",
-                    { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
-                    [_vm._v("undefined")]
-                  ),
-                  _c(
-                    "v-uni-text",
-                    { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+                    { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
                     [
                       _vm._v("vip还剩余"),
                       _c(
                         "v-uni-text",
-                        { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
+                        { staticClass: _vm._$g(12, "sc"), attrs: { _i: 12 } },
                         [_vm._v("10")]
                       ),
                       _vm._v("天")
@@ -12402,7 +12412,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 20);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.open-vip-user[data-v-1991c5cb] {\r\n  height: 370upx;\r\n  background-color: #fff;\r\n  position: relative;\n}\n.open-vip-user .open-vip-user-bg[data-v-1991c5cb] {\r\n  height: 200upx;\r\n  background-color: #26221F;\r\n  -webkit-border-bottom-right-radius: 100upx;\r\n          border-bottom-right-radius: 100upx;\r\n  -webkit-border-bottom-left-radius: 100upx;\r\n          border-bottom-left-radius: 100upx;\n}\n.open-vip-user .open-vip-user-img-box[data-v-1991c5cb] {\r\n  width: 680upx;\r\n  height: 340upx;\r\n  position: absolute;\r\n  left: 50%;\r\n  bottom: 0;\r\n  -webkit-transform: translateX(-50%);\r\n          transform: translateX(-50%);\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-img[data-v-1991c5cb] {\r\n  width: 100%;\r\n  height: 100%;\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-info[data-v-1991c5cb] {\r\n  position: absolute;\r\n  left: 30upx;\r\n  top: 30upx;\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-info .user-info-img[data-v-1991c5cb] {\r\n  width: 80upx;\r\n  height: 80upx;\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-info .user-info-img uni-image[data-v-1991c5cb] {\r\n  width: 100%;\r\n  height: 100%;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.open-vip-user[data-v-1991c5cb] {\r\n  height: 370upx;\r\n  background-color: #fff;\r\n  position: relative;\n}\n.open-vip-user .open-vip-user-bg[data-v-1991c5cb] {\r\n  height: 200upx;\r\n  background-color: #26221F;\r\n  -webkit-border-bottom-right-radius: 100upx;\r\n          border-bottom-right-radius: 100upx;\r\n  -webkit-border-bottom-left-radius: 100upx;\r\n          border-bottom-left-radius: 100upx;\n}\n.open-vip-user .open-vip-user-img-box[data-v-1991c5cb] {\r\n  width: 680upx;\r\n  height: 340upx;\r\n  position: absolute;\r\n  left: 50%;\r\n  bottom: 0;\r\n  -webkit-transform: translateX(-50%);\r\n          transform: translateX(-50%);\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-img[data-v-1991c5cb] {\r\n  width: 100%;\r\n  height: 100%;\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-info[data-v-1991c5cb] {\r\n  position: absolute;\r\n  left: 30upx;\r\n  top: 30upx;\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-info .user-info-img[data-v-1991c5cb] {\r\n  width: 80upx;\r\n  height: 80upx;\r\n  -webkit-border-radius: 50%;\r\n          border-radius: 50%;\r\n  overflow: hidden;\n}\n.open-vip-user .open-vip-user-img-box .open-vip-user-info .user-info-img uni-image[data-v-1991c5cb] {\r\n  width: 100%;\r\n  height: 100%;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -13510,7 +13520,19 @@ var render = function() {
           style: _vm._$g(1, "s"),
           attrs: { "scroll-y": "true", _i: 1 }
         },
-        [_c("integral-cart-list", { attrs: { _i: 2 } })],
+        [
+          _c("integral-cart-list", {
+            attrs: { _i: 2 },
+            on: {
+              changeCart: function($event) {
+                return _vm.$handleViewEvent($event)
+              },
+              choice: function($event) {
+                return _vm.$handleViewEvent($event)
+              }
+            }
+          })
+        ],
         1
       ),
       _c(
@@ -13524,27 +13546,49 @@ var render = function() {
               _c(
                 "v-uni-label",
                 { attrs: { _i: 5 } },
-                [_c("v-uni-checkbox", { attrs: { checked: "true", _i: 6 } })],
+                [
+                  _vm._$g(6, "i")
+                    ? _c("v-uni-checkbox", {
+                        attrs: { "data-id": _vm._$g(6, "a-data-id"), _i: 6 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    : _c("v-uni-checkbox", {
+                        attrs: {
+                          checked: "",
+                          "data-id": _vm._$g(7, "a-data-id"),
+                          _i: 7
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      }),
+                  _c(
+                    "v-uni-text",
+                    { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
+                    [_vm._v("全选")]
+                  )
+                ],
                 1
               ),
               _c(
-                "v-uni-text",
-                { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-                [_vm._v("全选")]
-              ),
-              _c(
                 "v-uni-view",
-                { attrs: { _i: 8 } },
+                { attrs: { _i: 9 } },
                 [
                   _c(
                     "v-uni-text",
-                    { staticClass: _vm._$g(9, "sc"), attrs: { _i: 9 } },
+                    { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
                     [
                       _vm._v("积分:"),
                       _c(
                         "v-uni-text",
-                        { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
-                        [_vm._v("500")]
+                        { staticClass: _vm._$g(11, "sc"), attrs: { _i: 11 } },
+                        [_vm._v(_vm._$g(11, "t0-0"))]
                       )
                     ],
                     1
@@ -13558,8 +13602,13 @@ var render = function() {
           _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(11, "sc"),
-              attrs: { "hover-class": "tada", _i: 11 }
+              staticClass: _vm._$g(12, "sc"),
+              attrs: { "hover-class": "tada", _i: 12 },
+              on: {
+                click: function($event) {
+                  return _vm.$handleViewEvent($event)
+                }
+              }
             },
             [_vm._v("确认兑换")]
           )
@@ -13929,7 +13978,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 20);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.integral-cart-list[data-v-1e70bc3a] {\r\n  padding: 20upx;\n}\n.integral-cart-list .integral-cart-item[data-v-1e70bc3a] {\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  height: 220upx;\r\n  width: 100%;\r\n  background-color: #fff;\r\n  padding: 30upx;\r\n  -webkit-border-radius: 16upx;\r\n          border-radius: 16upx;\r\n  -webkit-box-shadow: 0 3px 3px #ccc;\r\n          box-shadow: 0 3px 3px #ccc;\r\n  margin-bottom: 20upx;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-center[data-v-1e70bc3a] {\r\n  width: 500upx;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-center uni-image[data-v-1e70bc3a] {\r\n  width: 150upx;\r\n  height: 150upx;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-bottom[data-v-1e70bc3a] {\r\n  height: 100%;\r\n  position: relative;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-bottom .delete-img[data-v-1e70bc3a] {\r\n  width: 50upx;\r\n  height: 55upx;\r\n  position: absolute;\r\n  right: 0;\r\n  bottom: 0;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.integral-cart-list[data-v-1e70bc3a] {\r\n  padding: 20upx;\n}\n.integral-cart-list .integral-cart-item[data-v-1e70bc3a] {\r\n  -webkit-box-sizing: border-box;\r\n          box-sizing: border-box;\r\n  height: 220upx;\r\n  width: 100%;\r\n  background-color: #fff;\r\n  padding: 30upx;\r\n  -webkit-border-radius: 16upx;\r\n          border-radius: 16upx;\r\n  -webkit-box-shadow: 0 3px 3px #ccc;\r\n          box-shadow: 0 3px 3px #ccc;\r\n  margin-bottom: 20upx;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-center[data-v-1e70bc3a] {\r\n  width: 500upx;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-center uni-image[data-v-1e70bc3a] {\r\n  width: 150upx;\r\n  height: 150upx;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-bottom[data-v-1e70bc3a] {\r\n  height: 100%;\r\n  position: relative;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  text-align: right;\n}\n.integral-cart-list .integral-cart-item .integral-cart-item-bottom .delete-img[data-v-1e70bc3a] {\r\n  width: 50upx;\r\n  height: 55upx;\r\n  position: absolute;\r\n  right: 0;\r\n  bottom: 0;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -13981,7 +14030,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 20);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.integral-cart-box {\r\n  background-color: #f5f5f5;\n}\n.integral-cart-box .integral-cart-bottom {\r\n  height: 100upx;\r\n  background-color: #fff;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\n.integral-cart-box .integral-cart-bottom .integral-cart-bottom-left {\r\n  -webkit-box-flex: 7;\r\n  -webkit-flex: 7;\r\n          flex: 7;\n}\n.integral-cart-box .integral-cart-bottom .integral-cart-bottom-right {\r\n  -webkit-box-flex: 3;\r\n  -webkit-flex: 3;\r\n          flex: 3;\r\n  background-color: #ff005a;\r\n  height: 100%;\r\n  line-height: 100upx;\r\n  -webkit-border-radius: 8upx;\r\n          border-radius: 8upx;\r\n  color: #fff;\r\n  font-size: 34upx;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.integral-cart-box {\r\n  background-color: #f5f5f5;\n}\n.integral-cart-box .integral-cart-bottom {\r\n  height: 100upx;\r\n  background-color: #fff;\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\n.integral-cart-box .integral-cart-bottom .integral-cart-bottom-left {\r\n  -webkit-box-flex: 7;\r\n  -webkit-flex: 7;\r\n          flex: 7;\n}\n.integral-cart-box .integral-cart-bottom .integral-cart-bottom-left .selete-All {\r\n  font-size: 30upx;\n}\n.integral-cart-box .integral-cart-bottom .integral-cart-bottom-right {\r\n  -webkit-box-flex: 3;\r\n  -webkit-flex: 3;\r\n          flex: 3;\r\n  background-color: #ff005a;\r\n  height: 100%;\r\n  line-height: 100upx;\r\n  -webkit-border-radius: 8upx;\r\n          border-radius: 8upx;\r\n  color: #fff;\r\n  font-size: 34upx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

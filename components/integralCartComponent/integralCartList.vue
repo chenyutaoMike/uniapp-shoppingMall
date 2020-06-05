@@ -30,6 +30,7 @@
 	import {
 		hostUrl
 	} from '@/http/request.js';
+	import {cartDel} from '@/http/cart.js';
 	export default {
 		props: {
 			cartList: {
@@ -44,16 +45,29 @@
 				hostUrl:hostUrl
 			}
 		},
-		mounted() {
-			console.log('思密达')
-			console.log(this.cartList)
-		},
+
 		methods:{
 			delItem(id){
-				
+				cartDel(id).then(res=>{
+					if(res.data !== null && res.data.status === 0){
+						this.$emit('changeCart');
+						uni.showToast({
+							title:'删除成功'
+						})
+					}else{
+						uni.showToast({
+							title:'删除失败'
+						})
+					}
+				})
 			},
-			choice(){
+			choice(e){
+				let {
+					id,
+					checkid
+				} = e.currentTarget.dataset;
 				
+				this.$emit('choice',{id,checkId:checkid})
 			}
 		}
 	}
@@ -86,7 +100,8 @@
 
 				height: 100%;
 				position: relative;
-
+				flex: 1;
+				text-align: right;
 				.delete-img {
 					width: 50upx;
 					height: 55upx;

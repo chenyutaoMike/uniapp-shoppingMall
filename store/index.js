@@ -8,6 +8,7 @@ import {user} from './user.js';
 import {address} from './address.js';
 import {buy} from './buy.js';
 import {integral} from './integral.js';
+import {openVip} from './openVip.js';
 Vue.use(Vuex);
 const store = new Vuex.Store({
     modules: {
@@ -18,7 +19,8 @@ const store = new Vuex.Store({
 				user,
 				address,
 				buy,
-				integral
+				integral,
+				openVip
       }
 })
 export default store

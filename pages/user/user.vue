@@ -114,9 +114,6 @@
 				isTransaction: state => state.user.isTransaction,
 				userInfo: state => state.user.userInfo
 			})
-		},
-		updated() {
-			console.log(this.userInfo)
 		}
 	}
 </script>

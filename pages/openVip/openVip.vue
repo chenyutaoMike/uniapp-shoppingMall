@@ -1,7 +1,7 @@
 <template>
 	<view class="open-vip-box">
-		<open-vip-user />
-		<open-vip-list :vipList="list" @seleteVip="changeTotalPic"/>
+		<open-vip-user :userInfo="vipUserInfo" />
+		<open-vip-list :vipList="vipAry" @seleteVip="changeTotalPic"/>
 		<open-vip-pay-methods />
 		<view class="open-pay-button">
 			确认支付: ￥{{totalPic}}
@@ -10,36 +10,12 @@
 </template>
 
 <script>
-	const vipList = [{
-			Id: 1,
-			Msg: '周卡',
-			Price: 5
-		},
-		{
-			Id: 2,
-			Msg: '月卡',
-			Price: 10
-		},
-		{
-			Id: 3,
-			Msg: '包月卡',
-			Price: 10
-		},
-		{
-			Id: 4,
-			Msg: '季卡',
-			Price: 20
-		},
-		{
-			Id: 5,
-			Msg: '半年卡',
-			Price: 50
-		}
-	];
+
 	
 	import openVipUser from '@/components/openVipComponent/openVipUser.vue';
 	import openVipList from '@/components/openVipComponent/openVipList.vue';
 	import openVipPayMethods from '@/components/openVipComponent/openVipPayMethods.vue';
+	import {mapActions,mapState} from 'vuex';
 	export default {
 		components:{
 			openVipUser,
@@ -48,17 +24,32 @@
 		},
 		data() {
 			return {
-					list: [],
 					totalPic:0
 			}
 		},
-		created() {
-			this.list = vipList;
+		onLoad() {
+			this.userId = uni.getStorageSync('userId');
+			if(!this.userId){
+				uni.showToast({
+					title:'请先登陆',
+					icon:'none'
+				})
+			}
+			this.getIsVip(this.userId);
+			this.getVipList();
+			this.getVipUser(this.userId)
 		},
 		methods: {
+			...mapActions(['getIsVip','getVipList','getVipUser']),
 			changeTotalPic(id){
-			this.totalPic =	this.list.find(item => item.Id === id).Price
+			this.totalPic =	this.vipAry.find(item => item.Id === id).Price
 			}
+		},
+		computed:{
+			...mapState({
+				vipAry:state => state.openVip.vipAry,
+				vipUserInfo: state => state.openVip.vipUserInfo
+			})
 		}
 	}
 </script>
