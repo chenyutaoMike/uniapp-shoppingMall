@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "order-detail-info": "/components/orderDetailComponent/orderDetailInfo"
+  }
+}

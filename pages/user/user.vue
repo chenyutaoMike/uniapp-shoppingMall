@@ -6,7 +6,7 @@
 			<userList />
 
 		</scroll-view>
-		<button @click="userlogout">退出登陆</button>
+		<!-- <button @click="userlogout">退出登陆</button> -->
 	</view>
 
 

@@ -1,0 +1,1 @@
+<view class="good-sort flex align-center justify-center"><block wx:for="{{Tab}}" wx:for-item="item" wx:for-index="index"><block><view data-event-opts="{{[['tap',[['changeTab',['$0'],[[['Tab','id+item.value',item.id+item.value,'id']]]]]]]}}" class="{{['sort-item flex-1 text-center',seleteId===item.id?'selete':'']}}" bindtap="__e">{{item.value}}</view></block></block></view>

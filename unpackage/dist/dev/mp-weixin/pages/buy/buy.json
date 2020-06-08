@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "立即购买",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "buy-list": "/components/buyComponent/buyList",
+    "popup": "/components/popup"
+  }
+}

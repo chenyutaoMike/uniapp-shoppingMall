@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "good-list-search": "/components/goodListComponent/goodListSearch",
+    "good-sort": "/components/goodListComponent/goodSort",
+    "shop-list": "/components/shopList"
+  }
+}

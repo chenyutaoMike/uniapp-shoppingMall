@@ -1,0 +1,188 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/*每个页面公共css */
+page {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 16px;
+}
+/* 原生组件模式下需要注意组件外部样式 */
+m-input {
+  width: 100%;
+  /* min-height: 100%; */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  background-color: #efeff4;
+  padding: 10px;
+}
+.input-group {
+  background-color: #ffffff;
+  margin-top: 20px;
+  position: relative;
+}
+.input-group::before {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.input-group::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.input-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  font-size: 18px;
+  line-height: 40px;
+}
+.input-row .title {
+  width: 72px;
+  padding-left: 15px;
+}
+.input-row.border::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 8px;
+  height: 1px;
+  content: '';
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  background-color: #c8c7cc;
+}
+.btn-row {
+  margin-top: 25px;
+  padding: 10px;
+}
+button.primary {
+  background-color: #0faeff;
+}
+.action-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.action-row navigator {
+  color: #007aff;
+  padding: 0 10px;
+}
+.oauth-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  position: absolute;
+  top: 100rpx;
+  left: 0;
+  width: 100%;
+}
+.oauth-image {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #dddddd;
+  -webkit-border-radius: 50px;
+          border-radius: 50px;
+  margin: 0 20px;
+  background-color: #ffffff;
+}
+.oauth-image image {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+.oauth-image button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.wxLogin {
+  width: 100%;
+  height: 100rpx;
+  background-color: #33FF00;
+  margin-top: 200rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 34rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+

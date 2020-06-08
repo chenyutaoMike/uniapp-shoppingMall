@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "user-top": "/components/userComponent/userTop",
+    "user-list": "/components/userComponent/userList"
+  }
+}

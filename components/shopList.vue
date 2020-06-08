@@ -3,7 +3,7 @@
 	<view class="shop-list-box flex flex-wrap justify-between" v-if="gooListArr.length !== 0">
 		
 		<block v-for="(item,index) in gooListArr" >
-			<view class="shop-list-item" @click="goDetail(item.id)" :key="index+item.name">
+			<view class="shop-list-item" @click="goDetail(item.id)" :key="item.id">
 				<view class="shop-list-img">
 					<image :src="hostUrl+item.litpic"></image>
 				</view>

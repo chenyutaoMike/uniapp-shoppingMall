@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "KL生活优选",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "index-top": "/components/indexComponent/indexTop",
+    "index-center": "/components/indexComponent/indexCenter",
+    "like": "/components/youLike"
+  }
+}

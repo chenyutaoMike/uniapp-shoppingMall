@@ -1,0 +1,188 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+button::after {
+  border: none;
+}
+.buy-box {
+  padding-bottom: 100rpx;
+}
+.buy-box .buy-box-top {
+  background-color: #fff;
+}
+.buy-box .buy-box-top .top-list {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.buy-box .buy-box-top .top-list .list-btn {
+  border: 1rpx solid #92012a;
+  color: #92012a;
+  padding: 10rpx 30rpx;
+  -webkit-border-radius: 10rpx;
+          border-radius: 10rpx;
+}
+.buy-box .buy-box-top .border-box {
+  font-size: 28rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.buy-box .buy-box-top .border-box .address-title {
+  display: inline-block;
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+          flex: 2;
+}
+.buy-box .buy-box-top .border-box .address {
+  -webkit-box-flex: 9;
+  -webkit-flex: 9;
+          flex: 9;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  white-space: pre-line;
+}
+.buy-box .message {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.buy-box .message .message-title {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+          flex: 2;
+}
+.buy-box .message .message-input {
+  -webkit-box-flex: 9;
+  -webkit-flex: 9;
+          flex: 9;
+}
+.buy-box .paymentMethod {
+  height: 100rpx;
+  border-bottom: 1rpx solid #ccc;
+  line-height: 100rpx;
+  padding-left: 30rpx;
+}
+.buy-box .wxPay {
+  height: 120rpx;
+}
+.buy-box .wxPay .wxPay-title image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.buy-box .wxPay .wxPay-selete {
+  width: 50rpx;
+  height: 50rpx;
+}
+.buy-box .coupon {
+  height: 100rpx;
+}
+.buy-box .coupon .coupon-left {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.buy-box .coupon .coupon-left .coupon-text {
+  width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.buy-box .coupon .coupon-right {
+  width: 30rpx;
+  height: 30rpx;
+}
+.buy-box .coupon .coupon-right .coupon-img {
+  width: 100%;
+  height: 100%;
+}
+.buy-box .total-amount {
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.buy-box .total-amount .total-amount-pic {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx dashed #ccc;
+}
+.buy-box .submit-order {
+  height: 100rpx;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.buy-box .submit-order .submit-order-buttom {
+  width: 220rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #ff005a;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+.buy-box .buy-coupon-list {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  min-height: 600rpx;
+  width: 100%;
+  background-color: #fff;
+  -webkit-border-radius: 20rpx 20rpx 0 0;
+          border-radius: 20rpx 20rpx 0 0;
+}
+.buy-box .buy-coupon-list .buy-coupon-clone {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}
+.buy-box .buy-coupon-list .buy-coupon-list-title {
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.buy-box .buy-coupon-list .buy-coupon-item {
+  height: 80rpx;
+}
+.buy-box .buy-coupon-list .buy-coupon-item image {
+  width: 50rpx;
+  height: 50rpx;
+}
+.buy-box .buy-coupon-list .selete-coupon {
+  height: 80rpx;
+  width: 80%;
+  background-color: #E5432E;
+  -webkit-border-radius: 50rpx;
+          border-radius: 50rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 20rpx auto;
+}
+

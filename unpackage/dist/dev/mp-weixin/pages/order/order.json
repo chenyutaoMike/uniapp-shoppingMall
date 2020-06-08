@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "查看订单",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "order-search": "/components/orderComponent/orderSearch",
+    "order-tab": "/components/orderComponent/orderTab",
+    "order-list": "/components/orderComponent/orderList"
+  }
+}

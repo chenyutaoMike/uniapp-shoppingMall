@@ -1,0 +1,1 @@
+<view class="order-search flex align-center"><input class="order-search-input" type="text" placeholder="请输入订单号"/><image class="order-search-img" src="{{searchImg}}"></image></view>

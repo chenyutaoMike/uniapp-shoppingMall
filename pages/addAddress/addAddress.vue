@@ -33,7 +33,7 @@
 		getAddress,
 		addAddress
 	} from '@/http/address.js';
-	import {formatAddress} from '@/static/utils.js';
+	import {formatAddress,checkLogin} from '@/static/utils.js';
 	export default {
 		components: {
 			regionPicker
@@ -50,6 +50,10 @@
 		onLoad(option) {
 			
 			this.userId = uni.getStorageSync('userId');
+			if(!this.userId){
+				checkLogin()
+				return
+			}
 			if (Number(option.id) > 0) {
 				this.getAddressInfo({
 					id: option.id,

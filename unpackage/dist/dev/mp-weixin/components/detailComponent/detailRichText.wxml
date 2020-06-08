@@ -1,0 +1,1 @@
+<view class="detail-rich-text"><view class="detail-cenert">— 商品详情 —</view><view class="grace-rich-text"><u-parse vue-id="0da393a4-1" content="{{content}}" imageProp="{{imageProp}}" bind:__l="__l"></u-parse></view></view>

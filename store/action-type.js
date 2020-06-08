@@ -72,3 +72,8 @@ export const INTEGRALGETTOTALPIC = 'INTEGRALGETTOTALPIC';
 export const ISVIP = 'ISVIP';
 export const VIPLIST = 'VIPLIST';
 export const VIPUSER = 'VIPUSER';
+
+// 优惠劵页面
+
+export const USECOUPONLIST = 'USECOUPONLIST';
+export const NOTUSECOUPONLIST = 'NOTUSECOUPONLIST';

@@ -11,7 +11,7 @@
 				<view class="user-info flex flex-column text-white">
 					<text class="font-m" v-if="!userInfo.username">请先登陆</text>
 					<text class="font-m" v-else>{{userInfo.username}}</text>
-					<text class="font-sm">vip还剩余 <text class="text-pic">10</text> 天</text>
+					<!-- <text class="font-sm">vip还剩余 <text class="text-pic">10</text> 天</text> -->
 				</view>
 			</view>
 		</view>

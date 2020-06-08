@@ -1,0 +1,1 @@
+<view class="index-center bg-grey"><recommend vue-id="12c6a8c8-1" bind:__l="__l"></recommend><good-list vue-id="12c6a8c8-2" bind:__l="__l"></good-list></view>

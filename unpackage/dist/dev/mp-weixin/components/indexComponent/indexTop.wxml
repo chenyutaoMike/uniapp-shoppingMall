@@ -1,0 +1,1 @@
+<view class="index-top"><search-input vue-id="0b83adec-1" bind:__l="__l"></search-input><view class="top-bg"></view><view class="top"><rotate bind:goDetail="__e" vue-id="0b83adec-2" data-event-opts="{{[['^goDetail',[['goDetail']]]]}}" bind:__l="__l"></rotate><left-silde-nav vue-id="0b83adec-3" scrollWithAnimation="{{true}}" bind:__l="__l"></left-silde-nav></view></view>

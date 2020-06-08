@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "优惠劵",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "coupon-list": "/components/couponComponent/couponList"
+  }
+}

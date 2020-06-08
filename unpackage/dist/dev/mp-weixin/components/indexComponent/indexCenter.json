@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "recommend": "/components/indexComponent/recommend",
+    "good-list": "/components/indexComponent/goodList"
+  }
+}

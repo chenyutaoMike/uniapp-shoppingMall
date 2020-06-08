@@ -41,6 +41,7 @@
 		},
 		methods: {
 			...mapActions(['getIsVip','getVipList','getVipUser']),
+			// 选择列表
 			changeTotalPic(id){
 			this.totalPic =	this.vipAry.find(item => item.Id === id).Price
 			}

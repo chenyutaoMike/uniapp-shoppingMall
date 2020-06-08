@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "rotate": "/components/rotate",
+    "search-input": "/components/indexComponent/searchInput",
+    "left-silde-nav": "/components/indexComponent/leftSlideNav"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "开通vip",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "open-vip-user": "/components/openVipComponent/openVipUser",
+    "open-vip-list": "/components/openVipComponent/openVipList",
+    "open-vip-pay-methods": "/components/openVipComponent/openVipPayMethods"
+  }
+}

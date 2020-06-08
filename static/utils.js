@@ -49,3 +49,31 @@ export function formatDate(ary) {
 	})
 	return result
 }
+
+export function formatCoupon(ary) {
+
+	let reg = /\d+/; //处理金额正则
+	let str = /\//g; //处理时间格式正则
+	let newAry = ary.map(item => {
+		item.money = reg.exec(item.title)[0];
+		item.updateTime = item.updateTime.replace(str, "-")
+		return item
+	}) //为list加上金额
+
+	return newAry
+}
+
+
+export function checkLogin(){
+	uni.showToast({
+		title:'请先登陆,即将帮你跳转',
+		icon:'none',
+		duration:1500,
+		success:()=> {
+			uni.switchTab({
+				url:'/pages/user/user'
+			})
+		}
+	})
+	
+}

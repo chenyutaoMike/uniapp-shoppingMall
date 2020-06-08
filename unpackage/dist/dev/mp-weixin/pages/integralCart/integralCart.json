@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "积分购物车",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "integral-cart-list": "/components/integralCartComponent/integralCartList"
+  }
+}

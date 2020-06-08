@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "添加地址",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "region-picker": "/components/region-picker/region-picker"
+  }
+}

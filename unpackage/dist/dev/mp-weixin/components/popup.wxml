@@ -1,0 +1,1 @@
+<view class="popup-box"><block wx:if="{{isShow}}"><view data-event-opts="{{[['tap',[['clone',['$event']]]],['touchmove',[['move',['$event']]]]]}}" class="popup flex align-center justify-center" bindtap="__e" catchtouchmove="__e"><slot></slot></view></block></view>

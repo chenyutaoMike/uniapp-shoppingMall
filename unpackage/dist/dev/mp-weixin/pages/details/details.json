@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "detail-top": "/components/detailComponent/detailTop",
+    "detail-rich-text": "/components/detailComponent/detailRichText",
+    "detail-popup": "/components/detailComponent/detailPopup"
+  }
+}

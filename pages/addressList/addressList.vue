@@ -14,6 +14,7 @@
 <script>
 	import addressInfo from '@/components/addressListComponent/addressInfo.vue';
 	import {mapActions,mapState} from 'vuex';
+	import {checkLogin} from '@/static/utils.js';
 	export default {
 		components:{
 			addressInfo
@@ -43,19 +44,15 @@
 			this.scrollH = res.windowHeight;
 			if(!this.userId){
 				// 如果没登陆,提示用户登陆,并跳转到user页面进行登陆
-				uni.showModal({
-					title:'温馨提示',
-					content:'请先登陆',
-					showCancel:false,
-					success:() =>{
-						uni.switchTab({
-							url:'/pages/user/user'
-						})
-					}
-				})
+				checkLogin();
+					return
 			}
 		},
 		onShow(){
+			if(!this.userId){
+			checkLogin();
+				return 
+			}
 			this.getAddressAry(this.userId)
 		},
 		computed:{

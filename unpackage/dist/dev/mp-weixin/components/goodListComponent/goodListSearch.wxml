@@ -1,0 +1,1 @@
+<view class="good-list-search"><input class="list-search" type="text" placeholder="搜索商品名称" confirm-type="search" data-event-opts="{{[['confirm',[['submitValue',['$event']]]],['input',[['__set_model',['','goodSearch','$event',[]]]]]]}}" value="{{goodSearch}}" bindconfirm="__e" bindinput="__e"/><image class="list-search-img" src="{{imgUrl}}" alt="search"></image></view>

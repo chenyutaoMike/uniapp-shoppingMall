@@ -1,0 +1,1 @@
+<view class="index"><index-top bind:goDetail="__e" vue-id="8dd740cc-1" data-event-opts="{{[['^goDetail',[['goDetail']]]]}}" bind:__l="__l"></index-top><index-center vue-id="8dd740cc-2" bind:__l="__l"></index-center><like vue-id="8dd740cc-3" list="{{youLike}}" data-event-opts="{{[['^addCart',[['addCart']]]]}}" bind:addCart="__e" bind:__l="__l"></like></view>

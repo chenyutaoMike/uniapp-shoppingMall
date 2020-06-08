@@ -1,0 +1,1 @@
+<view class="user-list"><block wx:for="{{userList}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><block><view data-event-opts="{{[['tap',[['jump',['$0'],[[['userList','id',item.id]]]]]]]}}" class="list-item" bindtap="__e"><view class="img-box"><image class="list-item-img" src="{{item.img_url}}"></image></view>{{''+item.title+''}}</view></block></block></view>

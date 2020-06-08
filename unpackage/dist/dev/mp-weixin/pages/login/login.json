@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "登陆帐号",
+  "navigationBarBackgroundColor": "#92012a",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "m-input": "/components/m-input"
+  }
+}
