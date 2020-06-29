@@ -62,7 +62,7 @@ export const integral = {
 			commit
 		}, userId) {
 			let result = await getUser(userId);
-			console.log(result)
+			
 			if (result.statusCode === 200 && result.data !== null) {
 				commit(GETUSERINFO, result.data)
 			}

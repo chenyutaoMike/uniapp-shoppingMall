@@ -42,11 +42,6 @@
 			let res = uni.getSystemInfoSync();
 			this.userId = uni.getStorageSync('userId');
 			this.scrollH = res.windowHeight;
-			if(!this.userId){
-				// 如果没登陆,提示用户登陆,并跳转到user页面进行登陆
-				checkLogin();
-					return
-			}
 		},
 		onShow(){
 			if(!this.userId){

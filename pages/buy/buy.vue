@@ -80,7 +80,7 @@
 					实际付款:
 					<text class="font-lg ml-1">￥{{totalPic}}</text>
 				</view>
-				<button class="submit-order-buttom" form-type="submit">提交订单</button>
+				<button class="submit-order-buttom" form-type="submit" @click="notOpen">提交订单</button>
 			</view>
 			<popup :isShow="isShow" @clone="clone">
 				<view class="buy-coupon-list" @click.stop>
@@ -168,6 +168,10 @@
 			]),
 			rsetForm() { //重置表单
 
+			},
+			notOpen(){
+				this.msg('暂不开放')
+				return 
 			},
 			async formSubit(e) { //提交订单
 				let formId = e.detail.formId;

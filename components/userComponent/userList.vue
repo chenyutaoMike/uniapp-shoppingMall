@@ -34,7 +34,7 @@
 			jump(item){
 				if(item.link_url === '#'){
 					if(item.id === 6){
-					
+						this.msg('暂不开放')
 					}
 					if(item.id === 7){
 						// 拨打电话

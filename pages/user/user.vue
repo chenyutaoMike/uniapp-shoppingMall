@@ -4,9 +4,10 @@
 			<user-top :userInfo="userInfo" :orderList="orderList" />
 			<view class="wall"></view>
 			<userList />
-
+			
 		</scroll-view>
 		<!-- <button @click="userlogout">退出登陆</button> -->
+		<view class="text-center privacy" @click="goPrivacy">隐私政策</view>
 	</view>
 
 
@@ -104,6 +105,11 @@
 			userlogout() {
 				// 退出登陆
 				this.logout()
+			},
+			goPrivacy(){
+				uni.navigateTo({
+					url:'/pages/privacy/privacy'
+				})
 			}
 		},
 		computed: {
@@ -124,6 +130,9 @@
 			width: 100%;
 			height: 10upx;
 			background-color: #f5f5f5;
+		}
+		.privacy{
+			color: #3485FB;
 		}
 	}
 </style>

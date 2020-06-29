@@ -54,10 +54,16 @@
 		onReady(){
 			this.tabList = tab;
 			this.userId = uni.getStorageSync('userId');
-			console.log('ready')
-			this.getIntegralList(this.userId);
-			this.getUseIntegral(this.userId);
-			this.getUserInfoformIntegral(this.userId);
+			if(this.userId){
+				
+				this.getIntegralList(this.userId);
+				this.getUseIntegral(this.userId);
+				this.getUserInfoformIntegral(this.userId);
+			}else{
+				this.msg('请先登陆')
+			}
+		
+		
 		},
 		methods: {
 			...mapActions(['getIntegralList','getUseIntegral','getUserInfoformIntegral']),

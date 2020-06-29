@@ -1,10 +1,10 @@
 <template>
 	<view class="popup-box">
 		<view 
-		class="popup flex align-center justify-center" 
-		@click="clone" 
-		v-if="isShow"
-		@touchmove.stop.prevent="move"
+			class="popup flex align-center justify-center" 
+			@click="clone" 
+			v-if="isShow"
+			@touchmove.stop.prevent="move"
 		>
 			
 			<slot @click.stop.prevent></slot>

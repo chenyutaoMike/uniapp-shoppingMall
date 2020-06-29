@@ -4,7 +4,7 @@
 		<view class="user-info">
 			<image :src="userInfo.avatarUrl ? userInfo.avatarUrl : user_img" class="user-img" ></image>
 	
-			<view class="user-login" @click="goLogin" v-if="!userInfo.nickName">微信登陆</view>
+			<view class="user-login font-lg" @click="goLogin" v-if="!userInfo.nickName">微信登陆</view>
 			<view v-else>
 				<view class="user-name">{{userInfo.nickName}}</view>
 				<!-- <view>积分：100</view> -->
@@ -64,12 +64,13 @@
 			},
 			goLogin(){
 				// this.getUniLogin();
-				// console.log('change')
+				console.log('change')
 				uni.showToast({
 					title:'暂不开放',
 					icon:'none'
 				})
 				return 
+				
 				uni.navigateTo({
 					url:'/pages/login/login'
 				})

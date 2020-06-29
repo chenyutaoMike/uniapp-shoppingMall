@@ -20,11 +20,11 @@ export function request(dataType,method="GET") {
 			},
 			fail: rej => {
 				// uni.hideLoading()
-				// reject(rej)
-				uni.showToast({
-					title:'网络错误',
-					icon:'none'
-				})
+				// // reject(rej)
+				// uni.showToast({
+				// 	title:'网络错误',
+				// 	icon:'none'
+				// })
 			}
 		})
 	})

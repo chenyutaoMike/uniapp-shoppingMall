@@ -67,10 +67,10 @@
 			},
 			async getAddressInfo(option) {
 				let result = await getAddress(option);
-				console.log(result.data)
+			
 				if(result.data !== null){
 					let {consignee,cellphone,address,id} = result.data;
-					console.log(id)
+					
 					// 使用格式化函数格式化地址
 					const addressAry = formatAddress(address);
 					this.username = consignee;
@@ -108,6 +108,7 @@
 					})
 					return 
 				}
+				
 				let address = regions.join("") + detailedAddress;
 				addAddress({
 					userId:userId,

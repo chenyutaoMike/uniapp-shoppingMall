@@ -31,7 +31,6 @@
 			}
 		},
 		onLoad(option) {
-			console.log(option)
 			if(option.searchValue){
 				this.search = option.searchValue;
 			}
@@ -71,17 +70,11 @@
 						type: this.type
 					})
 				} else {
-					uni.showToast({
-						title: '没有更多商品了',
-						icon: 'none',
-						duration: 1500
-					})
+					this.msg("没有更多商品")
 				}
 			},
 			updataList(result) {
-				// console.log(result)
-				// console.log(this.where)
-				// 接口有问题
+				
 				this.orderBy = result;
 				this.updateGoodListArr({
 					orderBy: result,

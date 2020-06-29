@@ -19,7 +19,8 @@
 					<image class="like-cart" @click.stop="addCart(item)" src="../static/images/goodListImg/shopcart.png" mode=""></image>
 				</li>
 			</block>
-
+			
+			
 		</ul>
 	</view>
 </template>

@@ -1,9 +1,9 @@
 <template>
 	<view class="detail-popup" @click="clone" @touchmove.stop.prevent="move">
 		<view class="detail-popup-desc">
-			<view class="detail-popup-box">
+			<view class="detail-popup-box" @click.stop="move" >
 				<view class="detail-popup-top flex align-center">
-					<view class="popup-top-img mr-2">
+					<view class="popup-top-img mr-2" >
 						<image :src="hostUrl+info.litpic"></image>
 					</view>
 					<view class="detail-popup-pic">
@@ -34,17 +34,21 @@
 				<view class="popup-button" v-if="addCartorBuy === 0" @click.stop="addCart">加入购物车</view>
 				<view class="popup-button" v-else @click.stop @click="buy">立即购买</view>
 		</view>
+		
 	</view>
 </template>
 
 <script>
 	import {mapState,mapActions} from 'vuex';
 	import {hostUrl} from '@/http/request.js';
+
 	export default {
+
 		props:{
 			addCartorBuy:{
 				type:Number,
-				default:0
+				default:0,
+			
 			}
 		},
 		data() {
@@ -52,11 +56,12 @@
 				cloneImg: '@/static/images/detailImg/gbico.png',
 				hostUrl:hostUrl,
 				seleteUnitIndex:0,
-				seleteNumber:1
+				seleteNumber:1,
 			}
 		},
 		methods: {
 			...mapActions(['getAddCart']),
+
 			addCart(){
 				// 验证登陆信息
 				let userId = uni.getStorageSync('userId');

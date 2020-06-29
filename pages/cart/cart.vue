@@ -54,7 +54,7 @@
 		
 		},
 		onLoad() {
-			if(this.cartList !== 0){
+			if(this.cartList.length !== 0){
 				this.getCartYouLike()
 			}
 		},

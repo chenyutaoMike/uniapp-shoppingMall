@@ -10,20 +10,20 @@
 						<view class="address-user-phone">{{item.cellphone}}</view>
 					</view>
 					<view class="address-bottom flex justify-between align-center">
-						<view class="flex align-center " @click="changeSelete(item.id)">
+						<view class="flex align-center " @click="changeSelete" :data-id="item.id">
 							<view class="flex align-center">
 								<icon type="success" size="20" v-if="item.is_default === 1"></icon>
-								<image src="../../static/images/addressImg/Choice.png" v-else></image>
+								<image :src="choiceImage" v-else></image>
 							</view>
 							<text class="ml-1">设为默认</text>
 						</view>
 						<view class="flex align-center address-bottom-right">
 							<view @click="editAddress(item.id)">
-								<image class="mr-1 edit" src="../../static/images/addressImg/bjico.png"></image>
+								<image class="mr-1 edit" :src="editImage"></image>
 								<text>编辑</text>
 							</view>
 							<view class="ml-3" @click="removeAddress(item.id)">
-								<image class="mr-1 delete" src="../../static/images/addressImg/scico.png"></image>
+								<image class="mr-1 delete" :src="deleImage"></image>
 								<text>删除</text>
 							</view>
 						</view>
@@ -55,14 +55,19 @@
 		},
 		data() {
 			return {
-				seleteDefault: false
+				seleteDefault: false,
+				deleImage:'/static/images/addressImg/scico.png',
+				editImage:'/static/images/addressImg/bjico.png',
+				choiceImage:'/static/images/addressImg/Choice.png'
 			}
 		},
 		created() {
 			this.userId = uni.getStorageSync('userId');
 		},
 		methods: {
-			changeSelete(id) {
+			changeSelete(e) {
+				const {id} = e.currentTarget.dataset;
+			
 				defaultAddress({
 					id,
 					userId: this.userId

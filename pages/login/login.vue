@@ -119,7 +119,6 @@
 						uni.getUserInfo({
 							provider: value,
 							success: (infoRes) => {
-								console.log(infoRes)
 								this.getUniLogin(infoRes);
 								uni.navigateBack({
 									delta:1
@@ -143,7 +142,7 @@
 						
 					}
 				});
-
+				
 			// 	let _this = this;
 			// 	let getAppid = 'wxeee2536abcf8a3d8';
 			// 	uni.login({

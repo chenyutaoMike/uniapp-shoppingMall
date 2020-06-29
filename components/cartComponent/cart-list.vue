@@ -26,7 +26,7 @@
 							<view class="add animated " hover-class="tada" @click="add(item)">+</view>
 						</view>
 					</view>
-
+bu
 				</view>
 				<view class="list-pic">
 					<view class="list-new-pic">￥{{item.price}}</view>
@@ -67,7 +67,7 @@
 		},
 		mounted() {
 				this.userId = uni.getStorageSync('userId');
-				console.log(this.userId)
+				
 		},
 		methods: {
 			decrease(info) {

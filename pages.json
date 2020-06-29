@@ -129,6 +129,15 @@
 				    	 "navigationBarTextStyle":"white"
 				    }
 				}
+        ,{
+            "path" : "pages/privacy/privacy",
+            "style" : {
+							"navigationBarTitleText": "隐私政策",
+							 "navigationBarBackgroundColor":"#92012a",
+							 "navigationBarTextStyle":"white"
+						}
+        }
+       
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
